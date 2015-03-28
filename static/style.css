@@ -1,4 +1,17 @@
 
+html, body{ 
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+body > #container { height: auto; min-height: 100%; }
+#content { padding-bottom: 3em; }
+
 .jumbotron {
   background-image: url('./cibeles.jpg');
   height: 500px;
@@ -67,9 +80,13 @@
   background-color: #D5E1DD;
   box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
   width: 100%;
-
   position: fixed;
   z-index: 2;
+}
+
+#content {
+  padding:10px;
+  padding-bottom:10px;
 }
 
 .button-nav {
@@ -89,7 +106,7 @@
   box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
 }
 
-.footer {
+/*.footer {
   background-color: #f7f7f7;
 }
 
@@ -100,6 +117,27 @@
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
+}*/
+
+#footer {
+  width:100%;
+  height:20px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background-color: #D5E1DD;
+  box-shadow: 6px 6px 29px 0px rgba(0,0,0,0.75);
+  text-align: center;
+  font-size:9px;
+  font-family: sans-serif; 
+}
+
+.pull-left #nav{
+  margin-left: 250px;
+}
+
+.pull-right #nav{
+  margin-right: 250px;
 }
 
 /*style de events*/
