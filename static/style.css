@@ -84,11 +84,6 @@ body > #container { height: auto; min-height: 100%; }
   z-index: 2;
 }
 
-#content {
-  padding:10px;
-  padding-bottom:10px;
-}
-
 .button-nav {
   font-family: sans-serif;
   color: black;
@@ -118,6 +113,15 @@ body > #container { height: auto; min-height: 100%; }
   padding: 14px 10px;
   text-transform: uppercase;
 }*/
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+#content {
+  padding-bottom: 20px;
+}
 
 #footer {
   width:100%;
