@@ -11,6 +11,7 @@
 }
 
 .list {
+  padding-top: 60px;
   background-color: #efefef;
   border-bottom: 1px solid #dbdbdb;
 }

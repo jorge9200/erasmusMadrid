@@ -36,6 +36,10 @@ body > #container { height: auto; min-height: 100%; }
   color: #fff;
 }
 
+#eventExample{
+  padding-top: 60px;
+}
+
 .learn-more {
   background-color: #f7f7f7;
 }
