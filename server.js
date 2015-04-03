@@ -56,10 +56,22 @@ connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-//Query test
-connection.query('SELECT id_user FROM user', function(err, rows, fields) {
 
-  console.log('The solution is: ', rows[0].id_user);
+
+//Query test
+connection.query('SELECT id_user FROM user', function(err, rows, fields) {    
+    console.log('The solution is: ', rows[0].id_user);
+});
+
+
+var getUserInfo = function(callback) {
+    connection.query('SELECT id_user FROM user', function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+getUserInfo(function(err, result){
+    console.log(err || result);
 });
 
 //Conection end
