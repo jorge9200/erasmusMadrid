@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="spa">
+
+<head>
+
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+
+    <script>
+      $(document).ready(function(){
+        $("#load-header").load("header-footer.html #header");
+        $("#load-registry").load("header-footer.html #formRegistryModal");
+        $("#load-log").load("header-footer.html #formLogModal");
+        $("#load-footer").load("header-footer.html #footer")
+      });
+    </script>
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <script>
+      function initialize() {
+        var coord = new google.maps.LatLng(40.415152, -3.702341);
+        var mapProp = {
+        center: coord,
+        zoom:17,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+      var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+      var marker = new google.maps.Marker({
+        position: coord,
+        map: map,
+        title: 'Hello World!'
+      });
+
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="load-header"></div>
+    <div id="load-registry"></div>
+    <div id="load-log"></div>
+
+    <!-- Page Content -->
+    <div class="container" id="descImg">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Portfolio Item
+                    <small>Item Subheading</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+            </div>
+
+            <div class="col-md-4">
+                <h3>Project Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                
+                <div id="googleMap" style="width:400px;height:198px;"></div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Related Projects Row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h3 class="page-header">Related Projects</h3>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+<div id="load-footer"></div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+</div>
+</body>
+
+</html>
