@@ -230,3 +230,10 @@ body > #container { height: auto; min-height: 100%; }
     .tfclear{
         clear:both;
     }
+
+/*style de evento.html*/
+#descImg{
+  padding-top: 20px;
+}
+
+/*FIN style de evento.html*/
