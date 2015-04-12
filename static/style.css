@@ -124,6 +124,7 @@ body > #container { height: auto; min-height: 100%; }
 #wrapper {
   min-height: 100%;
   position: relative;
+  background-color: #F7F3E8;
 }
 #eventList{
   padding-top: 60px;
@@ -151,6 +152,16 @@ body > #container { height: auto; min-height: 100%; }
 
 .pull-right #nav{
   margin-right: 250px;
+}
+
+.row .col-lg-12 .page-header{
+  border-bottom: 2px solid #77BED2;
+  margin: 40px 0 20px;
+  padding-bottom: 9px;
+}
+
+.container hr{
+  border-bottom: 2px solid #77BED2;  
 }
 
 /*style de events*/
