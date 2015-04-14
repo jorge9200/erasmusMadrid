@@ -15,7 +15,9 @@ var app = express();
 //VIEW ENGINE SETUP
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+app.set('views', __dirname + '/')
 
+app.use('/' ,express.static(path.join(__dirname, '/')));
 app.use('/static' ,express.static(path.join(__dirname, '/static')));
 app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(logger('dev'));

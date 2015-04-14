@@ -5,17 +5,17 @@
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" href="/static/style.css">
-    <link href="/static/bootstrap.min.css" rel="stylesheet">
-    <script src="/static/jquery.js"></script>
-    <script src="/static/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
 
 	<script>
 	$(document).ready(function(){
-	    $("#load-header").load("/header-footer.html #header");
-	    $("#load-registry").load("/header-footer.html #formRegistryModal");
-	    $("#load-log").load("/header-footer.html #formLogModal");
-	    $("#load-footer").load("/header-footer.html #footer")
+	    $("#load-header").load("header-footer.html #header");
+	    $("#load-registry").load("header-footer.html #formRegistryModal");
+	    $("#load-log").load("header-footer.html #formLogModal");
+	    $("#load-footer").load("header-footer.html #footer")
 	});
 	</script>
 </head>
