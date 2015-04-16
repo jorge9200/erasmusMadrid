@@ -6,11 +6,19 @@ html, body{
 }
 
 #wrapper {
-  min-height:100%;
-  position:relative;
+  min-height: 100%;
+  position: relative;
+  background-color: #F7F3E8;
 }
-body > #container { height: auto; min-height: 100%; }
-#content { padding-bottom: 3em; }
+
+body > #container {
+  height: auto;
+  min-height: 100%;
+}
+
+#content {
+  padding-bottom: 3em;
+}
 
 #content .jumbotron {
   background-image: url('./cibeles.jpg');
@@ -26,7 +34,7 @@ body > #container { height: auto; min-height: 100%; }
   width: 1000px
 }
 
-.jumbotron .container h1 a{
+.jumbotron .container h1{
   color: Black;
   font-size: 48px;  
   font-family: 'Shift', sans-serif;
@@ -121,11 +129,6 @@ body > #container { height: auto; min-height: 100%; }
   text-transform: uppercase;
 }*/
 
-#wrapper {
-  min-height: 100%;
-  position: relative;
-  background-color: #F7F3E8;
-}
 #eventList{
   padding-top: 60px;
 }

@@ -4,18 +4,19 @@
 <head>
 
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
+    <title>erasmusMadrid | Evento</title>
 
     <script>
       $(document).ready(function(){
-        $("#load-header").load("/header-footer.html #header");
-        $("#load-registry").load("/header-footer.html #formRegistryModal");
-        $("#load-log").load("/header-footer.html #formLogModal");
-        $("#load-footer").load("/header-footer.html #footer")
+        $("#load-header").load("header-footer.html #header");
+        $("#load-registry").load("header-footer.html #formRegistryModal");
+        $("#load-log").load("header-footer.html #formLogModal");
+        $("#load-footer").load("header-footer.html #footer")
       });
     </script>
 
@@ -34,7 +35,6 @@
       var marker = new google.maps.Marker({
         position: coord,
         map: map,
-        title: 'Hello World!'
       });
 
       }
@@ -54,7 +54,7 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">BeerPong Tournament</h1>
+                <h1 class="page-header" id="eventTitle">BeerPong Tournament</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -63,7 +63,7 @@
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="/static/bpong.jpg" alt="">
+                <img class="img-responsive" src="./static/bpong.jpg" alt="">
             </div>
 
             <div class="col-md-4">
@@ -75,7 +75,7 @@
                     <li>C/ Espoz y Mina 20</li>
                     <li>23:30</li>
                 </ul>
-                <div id="googleMap" style="width:400px;height:198px;"></div>
+                <div id="googleMap" style="height:198px;"></div>
             </div>
 
         </div>
@@ -90,25 +90,25 @@
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="/static/bpong1.jpg" alt="">
+                    <img class="img-responsive portfolio-item" src="./static/bpong1.jpg" alt="">
                 </a>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="/static/bpong2.jpg" alt="">
+                    <img class="img-responsive portfolio-item" src="./static/bpong2.jpg" alt="">
                 </a>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="/static/bpong3.jpg" alt="">
+                    <img class="img-responsive portfolio-item" src="./static/bpong3.jpg" alt="">
                 </a>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="/static/bpong4.jpg" alt="">
+                    <img class="img-responsive portfolio-item" src="./static/bpong4.jpg" alt="">
                 </a>
             </div>
 
