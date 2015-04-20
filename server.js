@@ -49,18 +49,8 @@ var connection = mysql.createConnection({
     database : 'erasmus_madrid',
 });
 
-//Check connection
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connected as id ' + connection.threadId);
-});
-
-
-
-//Query test
+//Query test como encapsular una funcion asincrona
+/*
 connection.query('SELECT id_user FROM user', function(err, rows, fields) {    
     console.log('The solution is: ', rows[0].id_user);
 });
@@ -75,7 +65,7 @@ var getUserInfo = function(callback) {
 getUserInfo(function(err, result){
     console.log(err || result);
 });
-
+*/
 //Conection end
 connection.end();
 

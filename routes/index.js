@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/registry', function(req, res, next){
-    res.render('index', { title: 'Express' })
+    res.render('index', { title: 'Express' });
+    console.dir(req.body);
 });
 
 module.exports = router;
