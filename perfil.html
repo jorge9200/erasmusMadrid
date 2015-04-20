@@ -63,6 +63,37 @@
 		</div>
 		
 			<div class="container" id="ownEvents">
+
+<div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Búsqueda de eventos
+                    <small>
+                        <p>Categoría</p>
+
+						<div class="row">
+	                        <select class="col-md-2">
+	                             <option value="todos">Todos</option>
+	                             <option value="turismo">Turismo</option>
+	                             <option value="gastronomia">Gastronomía</option>
+	                             <option value="vidaNocturna">Vida nocturna</option>         
+	                        </select>
+	                        <select class="col-md-2">
+	                             <option value="recentDate">Más reciente</option>
+	                             <option value="lastDate">Más antigua</option>
+	                             <option value="mvp">Mejor valorada</option>         
+	                        </select>
+	                        <button class="col-md-2" type="button" id="createEvent" data-toggle="modal" data-target="#formCreateEvent">Crear Evento</button>
+	                        <form class="pull-right" id="tfnewsearch" method="get" action="http://www.google.com">
+	                            <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+	                        </form>
+	                        <div class="tfclear"></div> 
+	                    </div>
+
+                    </small>
+                </h1>
+            </div>
+        </div>
+
 				<div class="row">
 		            <div class="col-md-7">
 		                <img class="img-responsive" src="./static/MEET-AND-EXPLORE-WEB.jpg" style="width:653px;height:280px;">
