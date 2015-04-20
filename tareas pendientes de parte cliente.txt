@@ -1,0 +1,26 @@
+Cosas por hacer:
+
+Formulario de creación de evento
+	categoria
+	titulo
+	descripcion
+	direccion
+	fecha y hora
+	comentario
+	foto (no va a BD)
+
+Funcionalidad con usuario logeado
+	nombre usuario
+	boton menu
+		MiPerfil
+			[Crear Evento] [Buscar Evento]
+			configuracion
+				nombre usuario
+				contraseña
+				foto perfil
+				email
+			ListaEventos
+		Logout
+		
+Boton de subscripcion a evento
+Comentarios en los eventos
