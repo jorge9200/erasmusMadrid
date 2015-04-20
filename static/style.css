@@ -251,3 +251,29 @@ body > #container {
 }
 
 /*FIN style de evento.html*/
+
+/* perfil */
+#profileHeader{
+  padding-top: 60px;
+  padding-left: 40px;
+}
+#profileHeader h1{
+  padding-top: 95px;
+}
+#wrapper hr{
+  border-bottom: 2px solid #77BED2;
+}
+#config{
+  padding-left: 40px;
+}
+#configOptions{
+  display: none;
+}
+#profileEvents{
+  padding-left: 40px;
+}
+#ownEvents{
+  display: none;
+}
+
+/* FIN perfil */

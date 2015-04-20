@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+	<link rel="stylesheet" href="./static/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<title>erasmusMadrid | Perfil</title>
+
+	<script>
+	$(document).ready(function(){
+		$("#load-header").load("header-footer.html #header");
+		$("#load-registry").load("header-footer.html #formRegistryModal");
+		$("#load-log").load("header-footer.html #formLogModal");
+		$("#load-footer").load("header-footer.html #footer");
+
+		$("#config").click(function(){
+			$("#configOptions").slideToggle(500);
+		});
+		$("#profileEvents").click(function(){
+			$("#ownEvents").slideToggle(500);
+		})		
+	});
+	</script>
+
+</head>
+<body>
+	<div id="wrapper">
+		<div id="load-header"></div>
+		<div id="load-registry"></div>
+		<div id="load-log"></div>
+	<!-- encabezado -->
+		<div class="row"id="profileHeader">
+			<div class="col-md-2">
+				<img class="img-responsive portfolio-item" src="./static/marco.jpg">
+			</div>
+			<div class="col-md-10">
+				<h1>Marco y su mono Amedio</h1>
+			</div>
+		</div>
+		<div class="col-md-12"><hr></div>
+	<!-- /encabezado -->
+	<!-- configuracion -->
+		<div id="config">
+			<h2>Configuración</h2>
+		</div>
+		<div class="container" id="configOptions">
+			<ul>
+				<li>Foto de perfil</li>
+				<li>Contraseña</li>
+				<li>Nombre de usuario</li>
+				<li>Email</li>
+			</ul>
+		</div>
+		<div class="col-md-12"><hr></div>
+	<!-- /configuracion -->
+	<!-- lista de eventos -->
+		<div id="profileEvents">
+			<h2>Lista de Eventos</h2>
+		</div>
+		
+			<div class="container" id="ownEvents">
+				<div class="row">
+		            <div class="col-md-7">
+		                <img class="img-responsive" src="./static/MEET-AND-EXPLORE-WEB.jpg" style="width:653px;height:280px;">
+		            </div>
+		            <div class="col-md-5">
+		                <h3>Conoce Madrid</h3>
+		                <h4><div id="14270474947718" class="wE"><script src="http://widget-engine.com/w:0:003:14270474947719:3:000000:40" type="text/javascript"></script></h4>
+		                <p>Disfruta de una visita guiada gratuita por el Madrid de los Austrias y los Borbones, en castellano y en inglés, todos los sábados y domingos a las 11 frente al oso y el madroño.</p>
+						<p>Enjoy a free tour around the royal Madrid, in English and Spanish, every saturday and sanday at 11 in front of the oso y el madroño statue.</p>
+		                <a class="btn btn-primary" href="#">Ver evento  <span class="glyphicon glyphicon-chevron-right"></span></a>
+		            </div>
+		        </div>
+				<hr>
+				<div class="row">
+					<div class="col-md-7">
+					<img class="img-responsive" src="./static/AranjuezTour.jpg" style="width:653px;height:280px;">
+					</div>
+					<div class="col-md-5">
+						<h3>Visita Aranjuez</h3>
+						<h4><div id="14270474947716" class="wE"><script src="http://widget-engine.com/w:0:003:14270474947719:3:000000:41" type="text/javascript"></script></h4>
+						<p>Seguimos conociendo los alrededores más bonitos de Madrid, en esta ocasión visita guiada a Aranjuez y Chinchón, Sábado 11 de Abril, 19 euros transporte incluido, quedamos a las 9:00 en la estación de Atocha.</p>
+						<a class="btn btn-primary" href="#">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
+					</div>
+				</div>
+			</div>
+
+	<!-- /lista de evento -->
+		<footer>
+			<div id="load-footer"></div>
+		</footer>
+	</div>
+</body>
+</html>

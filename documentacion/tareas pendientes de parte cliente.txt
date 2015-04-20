@@ -1,13 +1,6 @@
 Cosas por hacer:
 
-Formulario de creación de evento
-	categoria
-	titulo
-	descripcion
-	direccion
-	fecha y hora
-	comentario
-	foto (no va a BD)
+Formulario de creación de evento - HECHO
 
 Funcionalidad con usuario logeado
 	nombre usuario
@@ -24,3 +17,5 @@ Funcionalidad con usuario logeado
 		
 Boton de subscripcion a evento
 Comentarios en los eventos
+
+Documento word con especificacion de requisitos
