@@ -15,7 +15,7 @@ var app = express();
 //VIEW ENGINE SETUP
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/')
+app.set('views', __dirname + '/');
 
 app.use('/' ,express.static(path.join(__dirname, '/')));
 app.use('/static' ,express.static(path.join(__dirname, '/static')));
@@ -67,7 +67,7 @@ getUserInfo(function(err, result){
 });
 */
 //Conection end
-connection.end();
+//connection.end();
 
 
 // ERROR HANDLERS
