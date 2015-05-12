@@ -331,22 +331,38 @@ body > #container {
 #wrapper hr{
   border-bottom: 2px solid #77BED2;
 }
+
+#configMenu{
+  display: none;
+}
+
 #configTitle{
   padding-left: 40px;
 }
-#configOptions{
-  display: none;
+
+#configOptions ul{
+  list-style: none;
 }
+
 #profileEvents{
   padding-left: 40px;
 }
+
 #ownEvents{
   /*display: none;*/
 }
 
+.glyphicon{
+  cursor: pointer;
+}
+
+input {
+  width: 250px;
+}
+
 .fb-profile img.fb-image-lg{
     z-index: 0;
-    width: 100%;  
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -354,7 +370,7 @@ body > #container {
 {
     margin: -90px 10px 0px 50px;
     z-index: 9;
-    width: 20%; 
+    width: 20%;
 }
 
 @media (max-width:768px)
@@ -373,7 +389,3 @@ body > #container {
 }
 
 /* FIN perfil */
-
-.glyphicon:hover{
-  cursor: pointer;
-}
