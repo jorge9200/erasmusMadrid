@@ -6,12 +6,13 @@ $( document ).ready(function() {
 	$("#load-footer").load("header-footer.html #footer");
 
 	$("#config").click(function(){
+		$("#ownEvents").slideToggle(500);
 		$("#configOptions").slideToggle(500);
 	});
 	$("#profileEvents").click(function(){
 		$("#ownEvents").slideToggle(500);
 	})
-	
+
 });
 
 	

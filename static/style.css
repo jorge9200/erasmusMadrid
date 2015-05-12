@@ -331,7 +331,7 @@ body > #container {
 #wrapper hr{
   border-bottom: 2px solid #77BED2;
 }
-#config{
+#configTitle{
   padding-left: 40px;
 }
 #configOptions{
@@ -341,7 +341,7 @@ body > #container {
   padding-left: 40px;
 }
 #ownEvents{
-  display: none;
+  /*display: none;*/
 }
 
 .fb-profile img.fb-image-lg{
@@ -373,3 +373,7 @@ body > #container {
 }
 
 /* FIN perfil */
+
+.glyphicon:hover{
+  cursor: pointer;
+}
