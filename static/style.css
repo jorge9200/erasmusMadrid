@@ -47,9 +47,11 @@ body > #container {
   margin-bottom: 7px
 }
 
+/*
 #eventExample{
   padding-top: 60px;
 }
+*/
 
 .learn-more {
   background-color: #f7f7f7;
@@ -325,13 +327,7 @@ body > #container {
 }
 =======
 /* perfil */
-#profileHeader{
-  padding-top: 60px;
-  padding-left: 40px;
-}
-#profileHeader h1{
-  padding-top: 95px;
-}
+
 #wrapper hr{
   border-bottom: 2px solid #77BED2;
 }
@@ -348,5 +344,32 @@ body > #container {
   display: none;
 }
 
+.fb-profile img.fb-image-lg{
+    z-index: 0;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+
+.fb-image-profile
+{
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%; 
+}
+
+@media (max-width:768px)
+{
+    
+.fb-profile-text>h1{
+    font-weight: 700;
+    font-size:16px;
+}
+
+.fb-image-profile
+{
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%; 
+}
+
 /* FIN perfil */
->>>>>>> origin/master
