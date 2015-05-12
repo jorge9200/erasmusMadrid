@@ -5,7 +5,6 @@ $( document ).ready(function() {
 	$("#load-registry").load("header-footer.html #formRegistryModal");
 	$("#load-log").load("header-footer.html #formLogModal");
 	$("#load-footer").load("header-footer.html #footer");
-	$("#load-createevent").load("header-footer.html #formCreateEvent");
 
 	
 	// EVENTOS
