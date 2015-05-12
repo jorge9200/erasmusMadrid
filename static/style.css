@@ -1,0 +1,352 @@
+
+html, body{ 
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+  background-color: #F7F3E8;
+}
+
+body > #container {
+  height: auto;
+  min-height: 100%;
+}
+
+#content {
+  padding-bottom: 3em;
+}
+
+#content .jumbotron {
+  background-image: url('./cibeles.jpg');
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 0px
+}
+
+.jumbotron .container {
+  position: relative;
+  top: 25px;
+  width: 1000px
+}
+
+.jumbotron .container h1{
+  color: Black;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron .container p {
+  font-size: 20px;
+  color: Black;
+  margin-bottom: 7px
+}
+
+#eventExample{
+  padding-top: 60px;
+}
+
+.learn-more {
+  background-color: #f7f7f7;
+}
+
+.learn-more h3 {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.learn-more a {
+  color: #00b0ff;
+}
+
+.neighborhood-guides {
+    background-color: #F7F3E8;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.neighborhood-guides h2 {
+    color: #393c3d;
+    font-size: 24px;
+}
+
+.neighborhood-guides p {
+    font-size: 15px;
+    margin-bottom: 13px;
+}
+
+.modal-title {
+  color: #FFFFFF;
+  font-size: 18px;
+}
+
+.modal-header {
+    background-color: #77BED2;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+#header {
+  background-image: -moz-linear-gradient(bottom, #D5E1DD, 75%, #ffffff);
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+
+.button-nav {
+  font-family: sans-serif;
+  color: black;
+  font-size: 16px;
+  background-image: -moz-linear-gradient(bottom, #D5E1DD, 75%, #ffffff);
+  padding: 6px 10px 6px 10px;
+  border: none;
+  text-decoration: none;
+}
+
+.button-nav:hover{
+  background-image: -moz-linear-gradient(bottom, #000000, 75%, #2B3E42);
+  border-color: #2B3E42;
+  color: white;
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+}
+
+/*.footer {
+  background-color: #f7f7f7;
+}
+
+.footer li {
+  display: inline;
+  color: #5a5a5a;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}*/
+
+#eventList{
+  padding-top: 60px;
+}
+#eventList h2{
+  font-size: 20px;
+}
+#content {
+  padding-bottom: 20px;
+}
+
+#footer {
+  width:100%;
+  height:20px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background-image: -moz-linear-gradient(top, #D5E1DD, 75%, #ffffff);
+  box-shadow: 6px 6px 29px 0px rgba(0,0,0,0.75);
+  text-align: center;
+  font-size:9px;
+  font-family: sans-serif; 
+}
+
+.pull-left #nav{
+  margin-left: 250px;
+}
+
+.pull-right #nav{
+  margin-right: 250px;
+}
+
+.row .col-lg-12 .page-header{
+  border-bottom: 2px solid #77BED2;
+  margin: 40px 0 20px;
+  padding-bottom: 9px;
+}
+
+.container hr{
+  border-bottom: 2px solid #77BED2;  
+}
+
+/*style de events*/
+.list {
+  padding-top: 60px; /*lo pongo para que al salir un evento la parte de arriba no quede tapada por el header*/
+  background-color: #efefef;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.list h2 {
+  color: #393c3d;
+  font-size: 24px;
+}
+
+.list p {
+  font-size: 15px;
+  margin-bottom: 13px;
+}
+
+.wE {
+  padding-top: 18px;
+}
+
+.prototype {
+  display: none;
+}
+
+#imgEvents {
+  padding: 15px;
+  height: 271px;
+  width: 242px;
+}
+/*FIN style de events*/
+ #tfheader{
+        background-color:#c3dfef;
+    }
+    #tfnewsearch{
+        float:right;
+        padding:20px;
+    }
+    .tftextinput{
+        margin: 0;
+        padding: 5px 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:14px;
+        border:1px solid #0076a3; border-right:0px;
+        border-top-left-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;
+    }
+    .tfbutton {
+        margin: 0;
+        padding: 5px 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:14px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        border: solid 1px #0076a3; border-right:0px;
+        background: #0095cd;
+        background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+        background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+        border-top-right-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+    }
+    .tfbutton:hover {
+        text-decoration: none;
+        background: #007ead;
+        background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+        background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+    }
+    /* Fixes submit button height problem in Firefox */
+    .tfbutton::-moz-focus-inner {
+      border: 0;
+    }
+    .tfclear{
+        clear:both;
+    }
+
+/*style de evento.html*/
+#descImg{
+  padding-top: 20px;
+}
+
+/*FIN style de evento.html*/
+
+<<<<<<< HEAD
+/*CSS Comentarios*/
+.detailBox {
+    width:320px;
+    border:1px solid #bbb;
+    margin:50px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+=======
+/* perfil */
+#profileHeader{
+  padding-top: 60px;
+  padding-left: 40px;
+}
+#profileHeader h1{
+  padding-top: 95px;
+}
+#wrapper hr{
+  border-bottom: 2px solid #77BED2;
+}
+#config{
+  padding-left: 40px;
+}
+#configOptions{
+  display: none;
+}
+#profileEvents{
+  padding-left: 40px;
+}
+#ownEvents{
+  display: none;
+}
+
+/* FIN perfil */
+>>>>>>> origin/master
