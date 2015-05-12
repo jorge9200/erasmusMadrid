@@ -21,7 +21,7 @@
 	    	<div class="pull-right" id="nav">
 		        <button type="button" class="button-nav" id="log" data-toggle="modal" data-target="#formLogModal">Log in</button>
 		       	<button type="button" class="button-nav" id="sign" data-toggle="modal" data-target="#formRegistryModal">Sign in</button>
-		       	<button type="button" class="button-nav" id="createEvent" data-toggle="modal" data-target="#formCreateEvent">Crear Evento</button>
+		       	<button type="button" class="button-nav" id="createEvent" data-toggle="modal" data-target="#formCreateEvent" style="display:none">Crear Evento</button>
 		    </div>
 	    </div>
     </div>
@@ -63,7 +63,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-success pull-right">Guardar</button>
+							<button type="submit" onclick='userLogIn()'class="btn btn-success pull-right">Guardar</button>
 						</div>
 					</form>
 				</div>

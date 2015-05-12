@@ -1,14 +1,5 @@
 Cosas por hacer:
 
-Formulario de creación de evento
-	categoria
-	titulo
-	descripcion
-	direccion
-	fecha y hora
-	comentario
-	foto (no va a BD)
-
 Funcionalidad con usuario logeado
 	nombre usuario
 	boton menu
