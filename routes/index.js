@@ -18,6 +18,7 @@ router.post('/registry', function(req, res, next){
 		});
 
     console.dir(req.body);
+		res.send('puta');
 });
 
 module.exports = router;
