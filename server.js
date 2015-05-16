@@ -40,9 +40,40 @@ var connection = mysql.createConnection({
     database : 'erasmus_madrid',
 });
 
+//función para dejar los datos de las consultas listos para mostrarlos bien en el cliente
+global.toStringQuest=function(evento){
+  evento=evento.replace('title',"");
+  evento=evento.replace(':',"");
+  evento=evento.replace(',',"");
+  evento=evento.replace('[{',"");
+  evento=evento.replace('}]',"");
+  evento=evento.replace('description',""); //para nextyes 
+  evento=evento.replace('comment',""); //para la ayuda  
+  evento=evento.replace('address',""); //para nextno
+  evento=evento.replace('time',""); //para id
+ 
+  for (var i = 0; i < evento.length; i++) {     
+    if(evento[i]=='"'){
+      evento=evento.replace(evento[i],"");
+    }
+  };
+  evento=evento.replace('rnt',"");
+  evento=evento.replace('"',"");
+  evento=evento.replace('"',"");
+  evento=evento.replace('"',"");
+  evento=evento.replace('"',"");
+  return evento;
+}
+
 //insertar usuario
 global.insertUser = function(id_user, name_user, password, email ,callback) {
     connection.query("INSERT INTO user(id_user,name_user,password,email) VALUES ("+id_user+",'"+name_user+"','"+password+"','"+email+"');", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.getEvent = function(callback) {
+    connection.query('SELECT title,description FROM event WHERE id_event="1"', function(err, rows, fields) {
         callback(err, rows);
     });
 };
