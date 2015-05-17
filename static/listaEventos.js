@@ -5,11 +5,12 @@ $(function(){
 	$("#load-log").load("header-footer.html #formLogModal");
 	$("#load-footer").load("header-footer.html #footer");
 	$("#load-createevent").load("header-footer.html #formCreateEvent")
-	
+
     $.get('/lista', function(data){
         $("#title").html(data[0]);
         $("#description").html(data[1]);
-        //$("#time").html(data[2]);
+        var numEvents  = parseInt(data[2]); //tenemos el nnumero de eventos de la BBDD para hacer un bucle y crear prototipos ese número de veces
+        $("#time").html(data[2]);
         //$("#address").html(data[3]);
     });
 });

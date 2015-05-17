@@ -28,9 +28,16 @@ router.get('/lista', function(req, res, next){
 		var evento = JSON.stringify(rows);
         evento = toStringQuest(evento);
         evento = evento.split(":");
-        res.send(evento);
+        maxId(function(err, rows){
+			//console.log(rows);
+			var id = JSON.stringify(rows);
+        	id = toStringQuest(id);
+        	//console.log(id);
+        	evento=evento.concat(id);
+        	res.send(evento);
+		});
 	});
-	
+
 });
 
 module.exports = router;

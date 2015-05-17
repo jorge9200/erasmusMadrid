@@ -51,6 +51,7 @@ global.toStringQuest=function(evento){
   evento=evento.replace('comment',""); //para la ayuda  
   evento=evento.replace('address',""); //para nextno
   evento=evento.replace('time',""); //para id
+  evento=evento.replace('MAX(id_event)',""); //para max(id_event)
  
   for (var i = 0; i < evento.length; i++) {     
     if(evento[i]=='"'){
@@ -74,6 +75,12 @@ global.insertUser = function(id_user, name_user, password, email ,callback) {
 
 global.getEvent = function(callback) {
     connection.query('SELECT title,description FROM event WHERE id_event="1"', function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.maxId = function(callback) {
+    connection.query('SELECT MAX(id_event) FROM event', function(err, rows, fields) {
         callback(err, rows);
     });
 };
