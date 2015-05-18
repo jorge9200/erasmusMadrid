@@ -49,9 +49,9 @@ var afterLogged = function(){
 	 $('.createEvent').show();
 	 $('.signIn').hide();
 	 $('.logIn').hide();	 
-	 var user = $('.user');
-	/* $('.userProfile').text(user);
-	 $('.userProfile').show();*/
+	 var user = $('.user').val();
+	$('.userProfile').text(user);
+	$('.userProfile').show();
 }
 
 	
