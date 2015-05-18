@@ -20,9 +20,9 @@ $( document ).ready(function() {
 	$('.register-modal').on( 'submit', function(e){
 		e.preventDefault();
 
-		var infoOK = chechPassword();
+		var passOK = checkPassword();
 
-		if(infoOK){
+		if(passOK){
 			$.post( "/registry", $(this).serialize(), function( data ) {
 				console.log(data);
 			});
@@ -40,6 +40,8 @@ var checkPassword = function(){
 	var pass2 = $('.password2').val();
 	if(pass1!=pass2){
 		$('.errorMessage').text("Las contraseñas no coinciden")
+	}else{
+		$('.errorMessage').text("")
 	}
 	return passOk;
 }
