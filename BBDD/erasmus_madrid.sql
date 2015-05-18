@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2015 a las 15:08:21
+-- Tiempo de generación: 18-05-2015 a las 19:16:18
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -45,9 +45,9 @@ INSERT INTO `event` (`id_event`, `title`, `category`, `description`, `address`, 
 (2, 'Erasmus Party', 'Turismo', 'Ven a la fiesta Erasmus más diverdida de Madrid, todos los lunes y miércoles en la sala Joy, Madrid... nunca duerme.', 'C/ Calle del Arenal, 11', '2015-09-23 00:00:00', '¡Ven a la mejor fiesta Erasmus de Madrid!'),
 (3, 'Conoce Madrid', 'Turismo', 'Disfruta de una visita guiada gratuita por el Madrid de los Austrias y los Borbones, en castellano y en inglés, todos los sábados y domingos a las 11 frente al oso y el madroño.\r\n\r\nEnjoy a free tour around the royal Madrid, in English and Spanish, every saturday and sanday at 11 in front of the oso y el madroño statue.', 'C/ Plaza de la Puerta del Sol, s/n', '2015-10-20 17:00:00', ''),
 (4, 'Visita Aranjuez', 'Turismo', 'Seguimos conociendo los alrededores más bonitos de Madrid, en esta ocasión visita guiada a Aranjuez y Chinchón, Sábado 11 de Abril, 19 euros transporte incluido, quedamos a las 9:00 en la estación de Atocha.', 'C/ Plaza de la Constitución, s/n', '2015-10-22 11:00:00', '¡La alianza de paisajes culturales patrimonio de la humanidad se reúne en Aranjuez!'),
-(5, 'Bravas y Cerves', 'Gastronomía', 'Disfruta de la tapa más famosa de Madrid acompañada de otros estudiantes de Erasmus con los que podrás practicar el Castellano y otros idiomas, todos los Martes a las 19:00 casa Pepe.', 'C/ RD Valencia 16', '2015-10-08 19:00:00', '¡Disfruta de las mejores raciones!'),
+(5, 'Bravas y Cerves', 'Gastronomía', 'Disfruta de la tapa más famosa de Madrid acompañada de otros estudiantes de Erasmus con los que podrás practicar el Castellano y otros idiomas.', 'C/ RD Valencia 16', '2015-10-08 19:00:00', '¡Disfruta de las mejores raciones!'),
 (6, 'La Sureña', 'Gastronomía', 'Decoración marinera, fritura de pescado, cubos de cerveza y tapas españolas en tabernas de estilo andaluz.', ' C/ Cava Baja, 15', '2015-11-05 19:00:00', ''),
-(7, 'Visita al Museo del Prado', 'Turismo', 'Información \r\nEl Museo Nacional del Prado preside uno de los itinerarios turísticos más visitados de la capital: el Paseo del Arte. Además de Las meninas de Velázquez y de Los fusilamientos del 3 de mayo de Goya, en sus salas pueden verse obras maestras de las escuelas española, italiana y flamenca. El Prado cuenta con una valiosa colección de 8.600 cuadros y más de 700 esculturas. Es recomendable consultar una guía y preparar la visita antes de entrar en el museo.', 'Paseo del Prado, s/n', '2015-09-16 18:00:00', '¡El Museo del Prado tiene la colección de pintura española más completa del mundo!'),
+(7, 'Visita al Museo del Prado', 'Turismo', 'El Museo Nacional del Prado preside uno de los itinerarios turísticos más visitados de la capital: el Paseo del Arte. Además de Las meninas de Velázquez y de Los fusilamientos del 3 de mayo de Goya, en sus salas pueden verse obras maestras de las escuelas española, italiana y flamenca. El Prado cuenta con una valiosa colección de 8.600 cuadros y más de 700 esculturas. Es recomendable consultar una guía y preparar la visita antes de entrar en el museo.', 'Paseo del Prado, s/n', '2015-09-16 18:00:00', '¡El Museo del Prado tiene la colección de pintura española más completa del mundo!'),
 (8, 'Templo de Debod', 'Turismo', 'Se trata de un templo egipcio del siglo II a. d C instalado en el Parque del Cuartel de la Montaña, cerca de la Plaza de España. El templo fue donado a España por el gobierno egipcio para evitar que quedara inundado tras la construcción de la gran presa de Asuán.', 'Calle Ferraz, 1', '2015-11-17 16:15:00', '¡Ven a ver el templo Egipcio!');
 
 -- --------------------------------------------------------

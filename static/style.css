@@ -273,29 +273,7 @@ body > #container {
   margin:0;
   display:inline-block;
 }
-.row .col-lg-12 .form-inline .form-control {
-  display: inline-block;
-  height: 100px;
-  vertical-align: middle;
-  width: 93%;
-}
 
-.row .col-lg-12 ul {
-  list-style-type: none;
-}
-
-.listComments {
-  background-color: #DFD9C8;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
-}
-
-textarea {
-    resize: none;
-}
 .commentBox {
     padding:10px;
     border-top:1px dotted #bbb;

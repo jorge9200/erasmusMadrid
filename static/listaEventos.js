@@ -6,11 +6,19 @@ $(function(){
 	$("#load-footer").load("header-footer.html #footer");
 	$("#load-createevent").load("header-footer.html #formCreateEvent")
 
-    $.get('/lista', function(data){
-        $("#title").html(data[0]);
-        $("#description").html(data[1]);
-        var numEvents  = parseInt(data[2]); //tenemos el nnumero de eventos de la BBDD para hacer un bucle y crear prototipos ese número de veces
-        $("#time").html(data[2]);
-        //$("#address").html(data[3]);
+    $.get('/lista', function(data){  
+         for (var i = 0; i < data.length; i++) {
+             addEvent(data[i].title,data[i].description);
+         };
     });
 });
+
+var addEvent = function(title, description){
+    var eventToDom = $('.event.prototype').clone();
+    eventToDom.removeClass('prototype');
+    eventToDom.find('.event-image').attr("src", "./static/"+title+".jpg");
+    eventToDom.find('#title').text(title);
+    eventToDom.find('#description').text(description);
+    $('.search-menu').after(eventToDom);
+    eventToDom.after('<hr>');
+}

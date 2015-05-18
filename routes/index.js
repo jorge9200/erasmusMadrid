@@ -22,20 +22,11 @@ router.post('/registry', function(req, res, next){
 });
 
 router.get('/lista', function(req, res, next){
-	
+	var evento;
+
 	getEvent(function(err, rows){
-		//console.log(rows);
-		var evento = JSON.stringify(rows);
-        evento = toStringQuest(evento);
-        evento = evento.split(":");
-        maxId(function(err, rows){
-			//console.log(rows);
-			var id = JSON.stringify(rows);
-        	id = toStringQuest(id);
-        	//console.log(id);
-        	evento=evento.concat(id);
-        	res.send(evento);
-		});
+  	   evento=rows;
+       res.send(evento);
 	});
 
 });
