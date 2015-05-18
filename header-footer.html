@@ -19,9 +19,11 @@
 	    </div>
 	    <div>
 	    	<div class="pull-right" id="nav">
-		        <button type="button" class="button-nav" id="log" data-toggle="modal" data-target="#formLogModal">Log in</button>
-		       	<button type="button" class="button-nav" id="sign" data-toggle="modal" data-target="#formRegistryModal">Sign in</button>
-		       	<button type="button" class="button-nav" id="createEvent" data-toggle="modal" data-target="#formCreateEvent" style="display:none">Crear Evento</button>
+	    		<button type="button" class="button-nav userProfile" id="log" style="display:none" ></button>
+		        <button type="button" class="button-nav logIn" id="log" data-toggle="modal" data-target="#formLogModal">Log in</button>
+		       	<button type="button" class="button-nav signIn" id="sign" data-toggle="modal" data-target="#formRegistryModal">Sign in</button>
+		       	<button type="button" class="button-nav createEvent" id="createEvent" data-toggle="modal" data-target="#formCreateEvent" style="display:none">Crear Evento</button>
+		       	<button type="button" class="button-nav signOut" id="sign" style="display:none" >Sign out</button>
 		    </div>
 	    </div>
     </div>
@@ -42,11 +44,11 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Contraseña</label>
-							<input type="password" class="form-control" id="password" name="password" placeholder="Introduzca su contraseña">
+							<input type="password" class="password1 form-control" id="password" name="password" placeholder="Introduzca su contraseña">
 						</div>
 						<div class="form-group">
 							<label for="password">Contraseña</label>
-							<input type="password" class="form-control" id="password" name="password2" placeholder="Vuelva a introducir su contraseña">
+							<input type="password" class="password2 form-control" id="password" name="password2" placeholder="Vuelva a introducir su contraseña">
 						</div>
 						<div class="form-group">
 							<label for="email">Dirección de Email</label>
@@ -57,13 +59,17 @@
 							<input type="date" class="form-control" id="date" name="date" placeholder="dd/mm/aaaa">
 						</div>
 						<div class="checkbox">
-							<label>
-								<input type="checkbox">Acepto las condiciones y confirmo que he leído la política de datos de la empresa, así como el uso de cookies.
-							</label>
+							<input type="checkbox" style="width: 32px">
+							<label>	Acepto las condiciones y confirmo que he leído la política de datos de la empresa, así como el uso de cookies.
+							</label>							
+						</div>
+						<div>
+							<label style="color:red"class ="errorMessage"></label>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-							<button type="submit" onclick='userLogIn()'class="btn btn-success pull-right">Guardar</button>
+
+							<button type="submit" onclick='checkPassword()'class="btn btn-success pull-right">Guardar</button>
 						</div>
 					</form>
 				</div>
@@ -83,7 +89,7 @@
 					<form method="post" action="/login">
 						<div class="form-group">
 							<label for="username">Usuario</label>
-							<input type="text" class="form-control" id="username" name="username" placeholder="Introduzca su usuario">
+							<input type="text" class="form-control user" id="username" name="username" placeholder="Introduzca su usuario">
 						</div>
 						<div class="form-group">
 							<label for="password">Contraseña</label>
@@ -91,7 +97,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-success pull-right">Aceptar</button>
+							<button type="submit" class="btn btn-success pull-right" onclick='afterLogged()'>Aceptar</button>
 						</div>
 					</form>
 				</div>
@@ -107,7 +113,7 @@
 					<h4 class="modal-title" id="formModalLabel"><strong>Formulario creación de evento</strong></h4>
 				</div>
 				<div class="modal-body">
-					<form method="post" action="/createEvent">
+					<form method="post" action="/registry">
 						<div class="form-group">
 							<label for="title">Título</label>
 							<input type="text" class="form-control" id="title" name="title" placeholder="Introduzca el título">
