@@ -1,30 +1,29 @@
+// When the document is ready
 $( document ).ready(function() {
-	
+
 	// LOAD MODAL CABECERA Y FOOTER
 	$("#load-header").load("header-footer.html #header");
 	$("#load-registry").load("header-footer.html #formRegistryModal", function(){
+		// When submit the registry modal
 		$('.register-modal').on('submit', function(e){
-			//e.prevcentDefault();
-			var checkRes = checkParameters();
-			if (checkParameters == true){
-				$.post( "/registry", $(this).serialize(), function( data ) {
-					console.log(data);
-				});
+			e.preventDefault();
+			if (checkParameters()){
+				$.post( "/registry", $(this).serialize(), function( data ) {});
 			}
 		});
-
+		// When focus out the password 2 input
 		$('.password2').on('focusout',function(){
 			checkPassword();
 		});
-
+		// When focus out the email input
 		$('.email').on('focusout',function(){
 			validateEmail($(this).val());
 		});
-
+		// When focus out the date input
 		$('.date').on('focusout',function(){
 			validateDate($(this).val());
 		});
-
+		// When change the status of the checkPolicy radio button
 		$('.check').on('change',function(){
 			if ($('.check').prop('checked')){
 				$('.check-error .sr-only').text("");
@@ -32,7 +31,6 @@ $( document ).ready(function() {
 			}
 		});
 	});
-	
 	$("#load-log").load("header-footer.html #formLogModal");
 	$("#load-footer").load("header-footer.html #footer");
 
@@ -41,14 +39,16 @@ $( document ).ready(function() {
 		$("#ownEvents").slideToggle(500);
 		$("#configOptions").slideToggle(500);
 	});
-	
+
 	$("#profileEvents").on('click', function(){
 		$("#ownEvents").slideToggle(500);
 	});
 
 });
 
-// Functions
+// -- AUXILIAR FUNCTIONS --
+
+// Validate/show/hide the password input and date error
 var checkPassword = function(){
 	var pass1 = $('.password1').val();
 	var pass2 = $('.password2').val();
@@ -61,7 +61,8 @@ var checkPassword = function(){
 	}
 }
 
-function validateEmail(email) {
+// Validate/show/hide the email input and date error
+var validateEmail = function(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     if (!re.test(email)){
     	$('.email-error .text').text("ERROR: Mail incorrecto");
@@ -72,8 +73,8 @@ function validateEmail(email) {
     }
 }
 
-function validateDate(date)
-{
+// Validate/show/hide the date input and date error
+var validateDate = function(date){
     var matches = /^(\d{2})[-\/](\d{2})[-\/](\d{4})$/.exec(date);
     if (matches == null) {
     	$('.date-error .text').text("ERROR: Formato de fecha de nacimiento incorrecto, introducir dd/mm/aaaa");
@@ -84,47 +85,49 @@ function validateDate(date)
     }
 }
 
+// Check if all the inputs are filled
 var checkParameters = function(){
+	// Gets the input values
 	var usuario = $('.usuario').val();
 	var password1 = $('.password1').val();
 	var password2 = $('.password2').val();
 	var mail = $('.email').val();
 	var date = $('.date').val();
-	var checkbox = isChecked()
-	var checkRes = false;
+	// Check if the policy is checked
+	policyChecked();
+
+	// Show a error message if remains some input to fill
+	var parametersOk = false;
 	if (usuario=="" || password1=="" || password2=="" || email=="" || date=="" || checkbox){
-		checkRes = false;
-		$('.param-error .text').text("ERROR: Por favor, introduzca todos los caracteres obligatorios");
+		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos");
 		$('.param-error').show();
 	}else{
-		checkRes = true;
+		parametersOk = true;
 		$('.param-error .sr-only').text("");
 		$('.param-error').hide();
 	}
-	return checkRes;
+	return parametersOk;
 }
 
-var isChecked = function(){
-	var checkedProp = $('.check').prop('checked');
-	if (!checkedProp) {
+// Check if the policy is checked
+var policyChecked = function(){
+	var isChecked = $('.check').prop('checked');
+	if (!isChecked) {
 		$('.check-error .text').text("ERROR: Debe aceptar las condiciones y políticas de uso de la empresa");
 		$('.check-error').show();
 	}else{
 		$('.check-error .sr-only').text("");
 		$('.check-error').hide();
 	}
-	return checkedProp;
+	return isChecked;
 }
 
+// Do ...
 var afterLogged = function(){
 	$('.createEvent').show();
 	$('.signIn').hide();
-	$('.logIn').hide();	 
+	$('.logIn').hide();
 	var user = $('.user').val();
 	$('.userProfile').text(user);
 	$('.userProfile').show();
 }
-
-
-
-	
