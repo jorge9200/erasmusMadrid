@@ -2,7 +2,9 @@
 $( document ).ready(function() {
 
 	// LOAD MODAL CABECERA Y FOOTER
-	$("#load-header").load("header-footer.html #header");
+	$("#load-header").load("header-footer.html #header",function(){
+		cargaCabecera();
+	});
 	$("#load-registry").load("header-footer.html #formRegistryModal", function(){
 		// When submit the registry modal
 		$('.register-modal').on('submit', function(e){
@@ -124,11 +126,12 @@ var policyChecked = function(){
 }
 
 // Global variables
-var logged = false
-var userName=""
+
 
 var cargaCabecera = function(){
+	var logged=$.cookie('logged');
 	if(logged==true){
+		var userName=$.cookie('userName');
 		$('.createEvent').show();
 		$('.signIn').hide();
 		$('.logIn').hide();
@@ -138,7 +141,9 @@ var cargaCabecera = function(){
 }
 //Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie 
 var afterLogged = function(){
-	$('#formLogModal').modal('toggle')
+	
+	$('#formLogModal').modal('toggle');
+	var logged=$.cookie('logged');
 	 $('.createEvent').show();
 	 $('.signOut').show();
 	 $('.signIn').hide();
@@ -146,11 +151,17 @@ var afterLogged = function(){
 	 var user = $('.user').val();
 	$('.userProfile').text(user);
 	$('.userProfile').show();
-	logged=true
-	userName=user
+	$.cookie('logged', true);
+	$.cookie('userName', user);	
+	var logged=$.cookie('logged');
+	var userName=$.cookie('userName');
+	console.log(logged)
+	console.log(userName)
 }
 //Sign Out TODO: actualizar coockie
 var signOut=function(){
+	$.removeCookie('logged');
+	$.removeCookie('userName');
 	 $('.createEvent').hide();
 	 $('.signOut').hide();
 	 $('.signIn').show();
