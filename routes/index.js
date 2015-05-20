@@ -25,8 +25,12 @@ router.get('/lista', function(req, res, next){
 	var evento;
 
 	getEvent(function(err, rows){
-  	   evento=rows;
-       res.send(evento);
+  	   ordenaEvent(function(err, rows){
+  	   	  evento=rows;
+  	   
+  	   	  console.log(evento);
+       	  res.send(evento);
+	   });
 	});
 
 });
