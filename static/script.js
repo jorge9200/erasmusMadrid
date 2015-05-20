@@ -237,3 +237,11 @@ var signOut=function(){
 	$('.userProfile').text("");
 	$('.userProfile').hide();
 }
+var swichImage= function(id){
+	var x=id;
+	var image=$('#'+x).attr('src')
+	var principal=$('#principalImage').attr('src');
+	$('#principalImage').attr('src',image);
+	$('#'+x).attr('src',principal);
+
+}
