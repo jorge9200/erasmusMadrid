@@ -7,21 +7,21 @@ $( document ).ready(function() {
 	});
 
 	$('.log-modal').on('submit', function(e){
-			e.preventDefault();
-			// Send log in
-			$.post( "/log", $(this).serialize(), function( data ) {
-				// Receive answer with OK (if the user is in the DB) or ERROR (if the user isn't in the DB)
-				/*data = ...
-				if (data == 'ERROR') {
-					$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
-					$('.log-error').show();
-				}else{
-					$('.log-error .sr-only').text("");
-					$('.log-error').hide();
-				}*/
-			}
+		e.preventDefault();
+		// Send log in
+		$.post( "/log", $(this).serialize(), function( data ) {
+			// Receive answer with OK (if the user is in the DB) or ERROR (if the user isn't in the DB)
+			/*data = ...
+			if (data == 'ERROR') {
+				$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
+				$('.log-error').show();
+			}else{
+				$('.log-error .sr-only').text("");
+				$('.log-error').hide();
+			}*/
 		});
-	
+	});
+
 	$("#load-registry").load("header-footer.html #formRegistryModal", function(){
 		// When submit the registry modal
 		$('.register-modal').on('submit', function(e){
