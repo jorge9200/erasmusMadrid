@@ -1,0 +1,3 @@
+En evento.html función que al hacer click en una de las fotos, ésta se intercambie por la principal
+
+Función en listaEventos de búsqueda
