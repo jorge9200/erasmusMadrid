@@ -50,9 +50,41 @@ $( document ).ready(function() {
 			}
 		});
 	});
+
 	$("#load-log").load("header-footer.html #formLogModal");
 	$("#load-footer").load("header-footer.html #footer");
-	$("#load-event").load("header-footer.html #formCreateEvent");
+	$("#load-event").load("header-footer.html #formCreateEvent", function(){
+		// When submit the event modal
+		$('.event-modal').on('submit', function(e){
+			e.preventDefault();
+			if (checkParametersEvent()){
+				//First to upperCase
+				//First to upperCase
+				var title = firstUppercase();
+				var descripcion = firstUppercase($('.descripcion').val());
+				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {});
+			}
+		});
+		// When focus out the email input
+		$('.descripcion').on('focusout',function(){
+			checkDescription($(this).val());
+		});
+		// When focus out the direction input
+		/*$('.direccion').on('focusout',function(){
+			validateDirection($(this).val());
+		});*/
+		// When focus out the date input
+		$('.date').on('focusout',function(){
+			validateDate($(this).val());
+		});
+		// When change the status of the checkPolicy radio button
+		$('.check').on('change',function(){
+			if ($('.check').prop('checked')){
+				$('.check-error .sr-only').text("");
+				$('.check-error').hide();
+			}
+		});
+	});
 
 	// EVENTOS
 	$("#config").on('click', function(){
@@ -142,15 +174,33 @@ var policyChecked = function(){
 	return isChecked;
 }
 
+// Validate/show/hide the title input and date error
+var firstUppercase = function(text){
+	title[0] == title[0].toUpperCase();
+	return  title
+}
+
+var checkDescription = function(desc){
+	var longitud = desc.size;
+	if (longitud<10) {
+		$('.desc-error .text').text("ERROR: La descripcion es demasiado corta");
+		$('.desc-error').show();
+	}if (longitud>500) {
+		$('.desc-error .text').text("ERROR: La descripcion es demasiado larga");
+		$('.desc-error').show();
+	}
+	else{
+		$('.desc-error .sr-only').text("");
+		$('.desc-error').hide();
+	}
+	return isChecked;
+}
 // Global variables
-
-
 var cargaCabecera = function(){
 	var logged=$.cookie('logged');
 	if(logged=='true'){
 		var userName=$.cookie('userName');
 		$('.createEvent').show();
-		$('.signOut').show();
 		$('.signIn').hide();
 		$('.logIn').hide();
 		$('.userProfile').text(userName);
@@ -159,7 +209,6 @@ var cargaCabecera = function(){
 }
 //Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie 
 var afterLogged = function(){
-	
 	$('#formLogModal').modal('toggle');
 	var logged=$.cookie('logged');
 	 $('.createEvent').show();
