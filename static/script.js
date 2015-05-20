@@ -95,11 +95,11 @@ var checkParameters = function(){
 	var mail = $('.email').val();
 	var date = $('.date').val();
 	// Check if the policy is checked
-	policyChecked();
+	var checkbox = policyChecked();
 
 	// Show a error message if remains some input to fill
 	var parametersOk = false;
-	if (usuario=="" || password1=="" || password2=="" || email=="" || date=="" || checkbox){
+	if (usuario=="" || password1=="" || password2=="" || email=="" || date=="" || !checkbox){
 		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos");
 		$('.param-error').show();
 	}else{

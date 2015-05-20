@@ -59,7 +59,7 @@
 							<input type="date" class="date form-control" id="date" name="date" placeholder="dd/mm/aaaa">
 						</div>
 						<div class="checkbox">
-							<input class="check" type="checkbox" style="width: 32px">
+							<input class="check" type="checkbox">
 							<label>* Acepto las condiciones y confirmo que he leído la política de datos de la empresa, así como el uso de cookies.
 							</label>							
 						</div>
@@ -134,7 +134,7 @@
 					<h4 class="modal-title" id="formModalLabel"><strong>Formulario creación de evento</strong></h4>
 				</div>
 				<div class="modal-body">
-					<form method="post" action="/registry">
+					<form method="POST" action="/insertNewEvent">
 						<div class="form-group">
 							<label for="title">Título</label>
 							<input type="text" class="form-control" id="title" name="title" placeholder="Introduzca el título">
@@ -165,9 +165,7 @@
 						</div>
 						<div>
 							<label for="foto">Introduzca foto del evento</label>
-							<form action="demo_form.asp">
-							  <input type="file" name="img">  
-							</form>
+							<input type="file" name="img">  
 						</div>						
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>

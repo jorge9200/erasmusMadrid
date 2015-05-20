@@ -356,9 +356,9 @@ body > #container {
   cursor: pointer;
 }
 
-input {
+/*input {
   width: 250px;
-}
+}*/
 
 .fb-profile img.fb-image-lg{
     z-index: 0;
