@@ -107,7 +107,7 @@
 					<h4 class="modal-title" id="formModalLabel"><strong>Log in</strong></h4>
 				</div>
 				<div class="modal-body">
-					<form method="post" action="/login">
+					<form class="log-modal" method="POST" action="/login">
 						<div class="form-group">
 							<label for="username">Usuario</label>
 							<input type="text" class="form-control user" id="username" name="username" placeholder="Introduzca su usuario">
@@ -115,6 +115,11 @@
 						<div class="form-group">
 							<label for="password">Contraseña</label>
 							<input type="password" class="form-control" id="password" name="password" placeholder="Introduzca su contraseña">
+						</div>
+						<div style="display:none" class="log-error alert alert-danger" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only"></span>
+							<span class="text"></span>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
