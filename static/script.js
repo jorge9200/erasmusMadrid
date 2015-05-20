@@ -122,12 +122,37 @@ var policyChecked = function(){
 	return isChecked;
 }
 
-// Do ...
+// Global variables
+var logged = false
+var userName=""
+
+var cargaCabecera = function(){
+	if(logged==true){
+		$('.createEvent').show();
+		$('.signIn').hide();
+		$('.logIn').hide();
+		$('.userProfile').text(userName);
+		$('.userProfile').show();
+	}
+}
+
 var afterLogged = function(){
-	$('.createEvent').show();
-	$('.signIn').hide();
-	$('.logIn').hide();
-	var user = $('.user').val();
+	 $('.createEvent').show();
+	 $('.signOut').show();
+	 $('.signIn').hide();
+	 $('.logIn').hide();	 
+	 var user = $('.user').val();
 	$('.userProfile').text(user);
 	$('.userProfile').show();
+	logged=true
+	userName=user
+}
+var signOut=function(){
+	 $('.createEvent').hide();
+	 $('.signOut').hide();
+	 $('.signIn').show();
+	 $('.logIn').show();	 
+	 var user = $('.user').val();
+	$('.userProfile').text("");
+	$('.userProfile').hide();
 }
