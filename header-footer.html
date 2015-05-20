@@ -154,16 +154,33 @@
 							<span class="text"></span>
 						</div>
 						<div class="form-group">
-							<label for="Categoria">Categoría</label>
+							<label for="Categoria">Categoría *</label>
 							<select id="categoria">
-                             <option value="turismo">Turismo</option>
-                             <option value="gastronomia">Gastronomía</option>
-                             <option value="vidaNocturna">Vida nocturna</option>         
+	                             <option value="turismo">Turismo</option>
+	                             <option value="gastronomia">Gastronomía</option>
+	                             <option value="vidaNocturna">Vida nocturna</option>         
                         	</select>
 						</div>
 						<div class="form-group">
 							<label for="direccion">Dirección del evento *</label>
-							<input type="text" class="direccion form-control" id="direccion" name="direccion" placeholder="Introduzca la dirección del evento">
+							<select id="calle">
+	                             <option value="calle">Calle</option>
+	                             <option value="avenida">Avenida</option>
+	                             <option value="via">Vía</option>     
+	                             <option value="carretera">Carretera</option>
+	                             <option value="avenida">Avenida</option>
+	                             <option value="plaza">Plaza</option> 
+	                             <option value="ronda">Ronda</option>
+	                             <option value="urbanizacion">Urbanización</option>
+	                             <option value="paseo">Paseo</option>     
+                        	</select>
+							<input type="text" class="direccion form-control" id="bloque" name="direccion" placeholder="Nombre">
+							<input type="number" class="numero form-control" id="bloque" name="numero" placeholder="Número">
+						</div>
+						<div style="display:none" class="num-error alert alert-danger" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only"></span>
+							<span class="text"></span>
 						</div>
 						<div class="form-group">
 							<label for="date">Fecha del evento *</label>
@@ -179,14 +196,14 @@
 							<input type="text" class="form-control" id="comentario" name="comentario" placeholder="Introduzca un eslogan para su evento">
 						</div>
 						<div>
-							<label for="foto">Introduzca fotos para el evento (mínimo una)</label>
+							<label for="foto">Introduzca imágenes para el evento (mínimo una)</label>
 							<input class="image1" type="file" name="img"> 
 							<input disabled class="image2" type="file" name="img">
 							<input disabled class="image3" type="file" name="img">
 							<input disabled class="image4" type="file" name="img">
 							<input disabled class="image5" type="file" name="img">
 						</div>
-						<br></br>
+						</br>
 						<div style="display:none" class="img1-error alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 							<span class="sr-only"></span>
@@ -219,7 +236,7 @@
 						</div>				
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-success pull-right">Guardar</button>
+							<button type="submit" class="btn btn-success pull-right">Crear</button>
 						</div>
 					</form>
 				</div>

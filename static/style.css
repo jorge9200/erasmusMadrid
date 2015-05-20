@@ -161,7 +161,16 @@ body > #container {
 .pull-right #nav{
   margin-right: 250px;
 }
-
+.form-group #bloque {
+  display: inline-block;
+}
+.form-group .direccion{
+  width: 30%;
+}
+.form-group .numero{
+  display: block;
+  width: 17%;
+}
 .row .col-lg-12 .page-header{
   border-bottom: 2px solid #77BED2;
   margin: 40px 0 20px;

@@ -58,10 +58,6 @@ $( document ).ready(function() {
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
 			if (checkParametersEvent()){
-				//First to upperCase
-				var title = firstUppercase($('.title').val());
-				//First to upperCase
-				var descripcion = firstUppercase($('.descripcion').val());
 				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {});
 			}
 		});
@@ -69,14 +65,13 @@ $( document ).ready(function() {
 		$('.descripcion').on('focusout',function(){
 			checkDescription($(this).val());
 		});
-		// When focus out the direction input
-		/*$('.direccion').on('focusout',function(){
-			validateDirection($(this).val());
-		});*/
 		// When focus out the date input
 		$('.date').on('focusout',function(){
 			validateDate($(this).val());
 		});		
+		$('.numero').on('focusout',function(){
+			checkNumber($(this).val());
+		});	
 		$('.image1').on('change',function(){
 			if(checkIfFileIsImage($(this).val(),'img1')){
 				$(".image2").prop('disabled', false);
@@ -187,12 +182,6 @@ var policyChecked = function(){
 	return isChecked;
 }
 
-// Validate/show/hide the title input and date error
-var firstUppercase = function(text){
-	text[0] == text[0].toUpperCase();
-	return  text
-}
-
 var checkDescription = function(desc){
 	var longitud = desc.length;
 	if (longitud<10) {
@@ -224,19 +213,32 @@ var checkIfFileIsImage = function(img, nImg){
 	return isImage;
 }
 
+// Check if the input is a number
+var checkNumber = function(number){
+	var isNumber = $.isNumeric(number);
+	if (!isNumber) {
+		$('.num-error .text').text("ERROR: Por favor, debe introducir un número");
+		$('.num-error').show();
+	}else{
+		$('.num-error .sr-only').text("");
+		$('.num-error').hide();
+	}
+}
+
 // Check if all the inputs are filled
 var checkParametersEvent = function(){
 	// Gets the input values
 	var titulo = $('.titulo').val();
 	var descripcion = $('.descripcion').val();
 	var direccion = $('.direccion').val();
+	var numero = $('.numero').val();
 	var date = $('.event-modal .form-group .date').val();
 	var image1 = $('.image1').val();
 
 	// Show a error message if remains some input to fill
 	var parametersEventOk = false;
 	var isImage = checkIfFileIsImage(image1,'img1');
-	if (titulo=="" || descripcion=="" || direccion=="" || date=="" || !isImage){
+	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage){
 		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos obligatorios");
 		$('.param-error').show();
 	}else{
