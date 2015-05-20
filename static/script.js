@@ -26,6 +26,7 @@ $( document ).ready(function() {
 		// When submit the registry modal
 		$('.register-modal').on('submit', function(e){
 			e.preventDefault();
+			var check = checkParameters();
 			if (checkParameters()){
 				$.post( "/registry", $(this).serialize(), function( data ) {});
 			}
@@ -59,8 +60,8 @@ $( document ).ready(function() {
 			e.preventDefault();
 			if (checkParametersEvent()){
 				//First to upperCase
+				var title = firstUppercase($('.title').val());
 				//First to upperCase
-				var title = firstUppercase();
 				var descripcion = firstUppercase($('.descripcion').val());
 				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {});
 			}
@@ -76,13 +77,26 @@ $( document ).ready(function() {
 		// When focus out the date input
 		$('.date').on('focusout',function(){
 			validateDate($(this).val());
-		});
-		// When change the status of the checkPolicy radio button
-		$('.check').on('change',function(){
-			if ($('.check').prop('checked')){
-				$('.check-error .sr-only').text("");
-				$('.check-error').hide();
+		});		
+		$('.image1').on('change',function(){
+			if(checkIfFileIsImage($(this).val(),'img1')){
+				$(".image2").prop('disabled', false);
+				$(".image3").prop('disabled', false);
+				$(".image4").prop('disabled', false);
+				$(".image5").prop('disabled', false);
 			}
+		});
+		$('.image2').on('change',function(){
+			checkIfFileIsImage($(this).val(),'img3');
+		});
+		$('.image3').on('change',function(){
+			checkIfFileIsImage($(this).val(),'img4');
+		});
+		$('.image4').on('change',function(){
+			checkIfFileIsImage($(this).val(),'img4');
+		});
+		$('.image5').on('change',function(){
+			checkIfFileIsImage($(this).val(),'img5');
 		});
 	});
 
@@ -95,7 +109,6 @@ $( document ).ready(function() {
 	$("#profileEvents").on('click', function(){
 		$("#ownEvents").slideToggle(500);
 	});
-
 });
 
 // -- AUXILIAR FUNCTIONS --
@@ -129,7 +142,7 @@ var validateEmail = function(email) {
 var validateDate = function(date){
     var matches = /^(\d{2})[-\/](\d{2})[-\/](\d{4})$/.exec(date);
     if (matches == null) {
-    	$('.date-error .text').text("ERROR: Formato de fecha de nacimiento incorrecto, introducir dd/mm/aaaa");
+    	$('.date-error .text').text("ERROR: Formato de fecha incorrecto, introducir dd/mm/aaaa");
 		$('.date-error').show();
 	}else{
 		$('.date-error .sr-only').text("");
@@ -176,26 +189,64 @@ var policyChecked = function(){
 
 // Validate/show/hide the title input and date error
 var firstUppercase = function(text){
-	title[0] == title[0].toUpperCase();
-	return  title
+	text[0] == text[0].toUpperCase();
+	return  text
 }
 
 var checkDescription = function(desc){
-	var longitud = desc.size;
+	var longitud = desc.length;
 	if (longitud<10) {
 		$('.desc-error .text').text("ERROR: La descripcion es demasiado corta");
 		$('.desc-error').show();
 	}if (longitud>500) {
 		$('.desc-error .text').text("ERROR: La descripcion es demasiado larga");
 		$('.desc-error').show();
-	}
-	else{
+	}if (longitud>=10 && longitud<=500){
 		$('.desc-error .sr-only').text("");
 		$('.desc-error').hide();
 	}
-	return isChecked;
 }
-// Global variables
+
+// Check if the file uploaded is an image
+var checkIfFileIsImage = function(img, nImg){
+	var ext = img.split('.').pop().toLowerCase();
+	var isImage = false;
+	if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+		if (ext != "") {
+			$('.'+nImg+'-error .text').text("ERROR: Por favor, debe subir únicamente archivos que sean imágenes");
+			$('.'+nImg+'-error').show();
+		}
+	}else{
+		isImage = true;
+		$('.'+nImg+'-error .sr-only').text("");
+		$('.'+nImg+'-error').hide();
+	}
+	return isImage;
+}
+
+// Check if all the inputs are filled
+var checkParametersEvent = function(){
+	// Gets the input values
+	var titulo = $('.titulo').val();
+	var descripcion = $('.descripcion').val();
+	var direccion = $('.direccion').val();
+	var date = $('.event-modal .form-group .date').val();
+	var image1 = $('.image1').val();
+
+	// Show a error message if remains some input to fill
+	var parametersEventOk = false;
+	var isImage = checkIfFileIsImage(image1,'img1');
+	if (titulo=="" || descripcion=="" || direccion=="" || date=="" || !isImage){
+		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos obligatorios");
+		$('.param-error').show();
+	}else{
+		parametersEventOk = true;
+		$('.param-error .sr-only').text("");
+		$('.param-error').hide();
+	}
+	return parametersEventOk;
+}
+
 var cargaCabecera = function(){
 	var logged=$.cookie('logged');
 	if(logged=='true'){
@@ -205,6 +256,7 @@ var cargaCabecera = function(){
 		$('.logIn').hide();
 		$('.userProfile').text(userName);
 		$('.userProfile').show();
+		$('.signOut').show();
 	}
 }
 //Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie 
@@ -225,7 +277,7 @@ var afterLogged = function(){
 	console.log(logged)
 	console.log(userName)
 }
-//Sign Out TODO: actualizar coockie
+//Sign Out TODO: actualizar cockie
 var signOut=function(){
 	$.removeCookie('logged');
 	$.removeCookie('userName');
