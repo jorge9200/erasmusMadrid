@@ -33,6 +33,7 @@ $( document ).ready(function() {
 	});
 	$("#load-log").load("header-footer.html #formLogModal");
 	$("#load-footer").load("header-footer.html #footer");
+	$("#load-event").load("header-footer.html #formCreateEvent");
 
 	// EVENTOS
 	$("#config").on('click', function(){
@@ -135,8 +136,9 @@ var cargaCabecera = function(){
 		$('.userProfile').show();
 	}
 }
-
+//Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie 
 var afterLogged = function(){
+	$('#formLogModal').modal('toggle')
 	 $('.createEvent').show();
 	 $('.signOut').show();
 	 $('.signIn').hide();
@@ -147,6 +149,7 @@ var afterLogged = function(){
 	logged=true
 	userName=user
 }
+//Sign Out TODO: actualizar coockie
 var signOut=function(){
 	 $('.createEvent').hide();
 	 $('.signOut').hide();
