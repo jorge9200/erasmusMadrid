@@ -147,9 +147,10 @@ var policyChecked = function(){
 
 var cargaCabecera = function(){
 	var logged=$.cookie('logged');
-	if(logged==true){
+	if(logged=='true'){
 		var userName=$.cookie('userName');
 		$('.createEvent').show();
+		$('.signOut').show();
 		$('.signIn').hide();
 		$('.logIn').hide();
 		$('.userProfile').text(userName);
@@ -168,7 +169,7 @@ var afterLogged = function(){
 	 var user = $('.user').val();
 	$('.userProfile').text(user);
 	$('.userProfile').show();
-	$.cookie('logged', true);
+	$.cookie('logged', 'true');
 	$.cookie('userName', user);	
 	var logged=$.cookie('logged');
 	var userName=$.cookie('userName');
