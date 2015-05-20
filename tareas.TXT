@@ -1,3 +1,9 @@
-En evento.html función que al hacer click en una de las fotos, ésta se intercambie por la principal
-
-Función en listaEventos de búsqueda
+﻿- Validar direccion en creacion de evento.
+- Página de perfil del usuario, al darle al boton del usuario en la cabecera que vaya a esa página de su perfil.
+- Al darle a HOME ir al index.html.
+- Repasar estilos.
+- Molaría crear mosaico con las imágenes del index.html.
+- Cargar imagen del logado a la izquiera de su nombre.
+- Al crear un evento, molaría que nada más darle a crear llevase directamente a la página de ese evento.
+- Incluir el ratio de puntuaciones en cada evento.
+- Si da tiempo terminar lo de los comentarios de un evento.

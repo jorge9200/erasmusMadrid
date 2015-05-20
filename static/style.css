@@ -171,7 +171,13 @@ body > #container {
 .container hr{
   border-bottom: 2px solid #77BED2;  
 }
-
+.register-modal .checkbox label {
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0;
+  min-height: 20px;
+  padding-left: 0px;
+}
 /*style de events*/
 .list {
   padding-top: 60px; /*lo pongo para que al salir un evento la parte de arriba no quede tapada por el header*/

@@ -2,6 +2,7 @@
 $( document ).ready(function() {
 
 	// LOAD MODAL CABECERA Y FOOTER
+	$("#load-log").load("header-footer.html #formLogModal");
 	$("#load-header").load("header-footer.html #header",function(){
 		cargaCabecera();
 	});
@@ -52,8 +53,6 @@ $( document ).ready(function() {
 		});
 	});
 
-	$("#load-log").load("header-footer.html #formLogModal");
-	$("#load-footer").load("header-footer.html #footer");
 	$("#load-event").load("header-footer.html #formCreateEvent", function(){
 		// When submit the event modal
 		$('.event-modal').on('submit', function(e){
@@ -109,6 +108,7 @@ $( document ).ready(function() {
 	$("#profileEvents").on('click', function(){
 		$("#ownEvents").slideToggle(500);
 	});
+	$("#load-footer").load("header-footer.html #footer");
 });
 
 // -- AUXILIAR FUNCTIONS --
