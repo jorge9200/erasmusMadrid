@@ -101,6 +101,7 @@ $( document ).ready(function() {
 				$(".image4").prop('disabled', false);
 				$(".image5").prop('disabled', false);
 			}
+		
 		});
 		$('.image2').on('change',function(){
 			checkIfFileIsImage($(this).val(),'img3');
@@ -354,7 +355,7 @@ var signOut=function(){
 var swichImage= function(id){
 	var x=id;
 	var image=$('#'+x).attr('src')
-	var principal=$('#principalImage').attr('src');
-	$('#principalImage').attr('src',image);
+	var principal=$('#eventImg1').attr('src');
+	$('#eventImg1').attr('src',image);
 	$('#'+x).attr('src',principal);
 }

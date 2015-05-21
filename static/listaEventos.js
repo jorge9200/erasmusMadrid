@@ -1,11 +1,11 @@
 $(function(){
-
+    var verEvento;
     var sel= $("#sel_categ").val();
     $('.refresh').click(function(){
         location.reload();
     });
 
-    $.get('/lista', function(data){
+    $.get('/lista',function(data){
         for (var i = 0; i < data.length; i++) {
             if(sel==data[i].category || sel=='Todos'){
                 //var prueba=(data[i].date).substring(11,19); Esta línea cogería la hora del dataTime de la BBDD
@@ -28,7 +28,13 @@ var addEvent = function(title, description,date){
     eventToDom.find('#title').text(title);
     eventToDom.find('#description').text(description);
     eventToDom.find('#date').text(date);
+    //eventToDom.find('#verEvento').data('id', title);;
     //eventToDom.find('#infoDate').text(infoDate);
+    eventToDom.find('.verEvento').on('click', function(){
+        $.get('/enviarTitulo', {x: 'title'}, function(){
+
+        });
+    });
 
     $('.search-menu').after(eventToDom);
     eventToDom.after('<hr>');

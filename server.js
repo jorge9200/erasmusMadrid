@@ -48,10 +48,17 @@ global.insertUser = function(id_user, name_user, password, email ,callback) {
 };
 
 global.getEvent = function(callback) {
-    connection.query('SELECT title,description,category,date FROM event ORDER BY date DESC', function(err, rows, fields) {
+    connection.query("SELECT title,description,category,date FROM event ORDER BY date DESC", function(err, rows, fields) {
         callback(err, rows);
     });
 };
+
+global.getOneEvent = function(titulo,callback) {
+    connection.query("SELECT title,description,category,address,date,comment FROM event WHERE title="+titulo+"", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
 
 // ERROR HANDLERS
 // catch 404 and forward to error handler
