@@ -146,6 +146,16 @@ body > #container {
   text-decoration: none;
 }
 
+.userProfile {
+  font-family: sans-serif;
+  color: black;
+  font-size: 16px;
+  background-image: -moz-linear-gradient(bottom, #889C95, 75%, #ffffff);
+  padding: 6px 10px 6px 10px;
+  border: none;
+  text-decoration: none;
+}
+
 .button-nav:hover{
   background-image: -moz-linear-gradient(bottom, #000000, 75%, #2B3E42);
   border-color: #2B3E42;
