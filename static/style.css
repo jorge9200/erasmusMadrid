@@ -165,6 +165,14 @@ body > #container {
   color: white;
   box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
 }
+#sign-success {
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+  width: 30%;
+  position: fixed;
+  z-index: 2;
+  top: 35px;
+  right: 0;
+}
 
 /*.footer {
   background-color: #f7f7f7;

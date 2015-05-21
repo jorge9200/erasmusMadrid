@@ -37,8 +37,11 @@ $( document ).ready(function() {
 						$('.registry-error .text').text("ERROR: El nombre de usuario ya existe");
 						$('.registry-error').show();
 					}else{
+						$('#formRegistryModal').modal('toggle');
 						$('.registry-error .sr-only').text("");
 						$('.registry-error').hide();
+						$("#load-alert").load("header-footer.html #sign-success");
+						window.setTimeout(function() { $("#sign-success").alert('close'); }, 2000);
 					}
 				});
 			}
@@ -75,6 +78,7 @@ $( document ).ready(function() {
 					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
 					$('.cevent-error').show();
 				}else{
+					$('#formCreateEvent').modal('toggle');
 					$('.cevent-error .sr-only').text("");
 					$('.cevent-error').hide();
 				}
@@ -101,7 +105,6 @@ $( document ).ready(function() {
 				$(".image4").prop('disabled', false);
 				$(".image5").prop('disabled', false);
 			}
-		
 		});
 		$('.image2').on('change',function(){
 			checkIfFileIsImage($(this).val(),'img3');
@@ -336,8 +339,6 @@ var afterLogged = function(){
 	$.cookie('userName', user);	
 	var logged=$.cookie('logged');
 	var userName=$.cookie('userName');
-	console.log(logged)
-	console.log(userName)
 }
 
 //Sign Out TODO: actualizar cockie
