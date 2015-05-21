@@ -42,7 +42,7 @@ var connection = mysql.createConnection({
 
 //Inserta un usuario en la base de datos
 global.insertUser = function(id_user, name_user, password, email, birthDate, callback) {
-    connection.query("INSERT INTO user(id_user,name_user,password,email,birth_date) VALUES ("+id_user+",'"+name_user+"','"+password+"','"+email+"','"+birthDate+"');", function(err, rows, fields) {
+    connection.query("INSERT INTO user(id_user,name_user,password,email,date_birth) VALUES ("+id_user+",'"+name_user+"','"+password+"','"+email+"','"+birthDate+"');", function(err, rows, fields) {
         callback(err, rows);
     });
 };
