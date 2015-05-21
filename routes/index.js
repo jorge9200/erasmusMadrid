@@ -23,14 +23,10 @@ router.post('/registry', function(req, res, next){
 
 router.get('/lista', function(req, res, next){
 	var evento;
-
 	getEvent(function(err, rows){
-  	   ordenaEvent(function(err, rows){
-  	   	  evento=rows;
-  	   
-  	   	  console.log(evento);
-       	  res.send(evento);
-	   });
+  	   evento=rows;
+  	   //console.log(evento);
+       res.send(evento);
 	});
 
 });

@@ -48,13 +48,7 @@ global.insertUser = function(id_user, name_user, password, email ,callback) {
 };
 
 global.getEvent = function(callback) {
-    connection.query('SELECT title,description,category,time FROM event', function(err, rows, fields) {
-        callback(err, rows);
-    });
-};
-
-global.ordenaEvent = function(callback) {
-    connection.query('SELECT * FROM event ORDER BY time DESC', function(err, rows, fields) {
+    connection.query('SELECT title,description,category,date FROM event ORDER BY date DESC', function(err, rows, fields) {
         callback(err, rows);
     });
 };
