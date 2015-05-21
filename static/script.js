@@ -13,6 +13,7 @@ $( document ).ready(function() {
 					$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
 					$('.log-error').show();
 				}else{
+					afterLogged();
 					$('.log-error .sr-only').text("");
 					$('.log-error').hide();
 				}
@@ -33,12 +34,11 @@ $( document ).ready(function() {
 				$.post( "/registry", $(this).serialize(), function( data ) {
 					// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
 					if (data == 'ERROR') {
-						$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
-						$('.log-error').show();
+						$('.registry-error .text').text("ERROR: El nombre de usuario ya existe");
+						$('.registry-error').show();
 					}else{
-						afterLogged();
-						$('.log-error .sr-only').text("");
-						$('.log-error').hide();
+						$('.registry-error .sr-only').text("");
+						$('.registry-error').hide();
 					}
 				});
 			}
@@ -70,6 +70,14 @@ $( document ).ready(function() {
 			e.preventDefault();
 			if (checkParametersEvent()){
 				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {});
+				// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
+				if (data == 'ERROR') {
+					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
+					$('.cevent-error').show();
+				}else{
+					$('.cevent-error .sr-only').text("");
+					$('.cevent-error').hide();
+				}
 			}
 		});
 		// When focus out the email input
@@ -330,6 +338,7 @@ var afterLogged = function(){
 	console.log(logged)
 	console.log(userName)
 }
+
 //Sign Out TODO: actualizar cockie
 var signOut=function(){
 	$.removeCookie('logged');
@@ -348,5 +357,4 @@ var swichImage= function(id){
 	var principal=$('#principalImage').attr('src');
 	$('#principalImage').attr('src',image);
 	$('#'+x).attr('src',principal);
-
 }
