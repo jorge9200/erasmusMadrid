@@ -10,7 +10,33 @@ html, body{
   position: relative;
   background-color: #F7F3E8;
 }
-
+.item{
+    height: 500px;
+    margin-top: 0px;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+}
+#skyline{
+  background-image: url('./skyline.jpg');
+  margin-top: 35px
+}
+#palacio{
+  background-image: url('./palacio.jpg');
+  margin-top: 35px
+}
+#plazamayor{
+  background-image: url('./plazamayor.jpg');
+  margin-top: 35px
+}
+#metropolis{
+  background-image: url('./metropoli.jpg');
+  margin-top: 35px
+}
+#ayuntamiento{
+  background-image: url('./ayuntamiento.jpg');
+  margin-top: 35px
+}
 body > #container {
   height: auto;
   min-height: 100%;
@@ -21,7 +47,6 @@ body > #container {
 }
 
 #content .jumbotron {
-  background-image: url('./cibeles.jpg');
   height: 500px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,7 +55,6 @@ body > #container {
 
 .jumbotron .container {
   position: relative;
-  top: 25px;
   width: 1000px
 }
 
@@ -47,6 +71,17 @@ body > #container {
   margin-bottom: 7px
 }
 
+.jumbotron .container a{
+  color: Black;
+  font-size: 35px;
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron .container a:hover{
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  text-decoration: underline;
+}
 /*
 #eventExample{
   padding-top: 60px;
