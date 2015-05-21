@@ -10,16 +10,34 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/registry', function(req, res, next){
-		
 	var name_user=req.body.username;
 	var password=req.body.password;
 	var email=req.body.email;
-	
-	insertUser(id_user, name_user, password, email, function(err, result){
-    	id_user=id_user+1;
-	});
-	res.render('index', { title: 'Express' });
-    	
+  var birthDate = req.body.date;
+
+  getUser(name_user, function(err, result){
+    if (result.length != 0) {
+      res.send('ERROR');
+    }else{
+      insertUser(id_user, name_user, password, email, birthDate, function(err, result){
+        id_user=id_user+1;
+          res.send('OK');
+      });
+    }
+  });
+});
+
+router.post('/log', function(req, res, next){
+	var name_user=req.body.username;
+	var password=req.body.password;
+
+  getUser(name_user, function(err, result){
+    if (result.length == 0 || password != result[0].password) {
+      res.send('ERROR');
+    }else{
+      res.send('OK');
+    }
+  });
 });
 
 router.get('/lista', function(req, res, next){

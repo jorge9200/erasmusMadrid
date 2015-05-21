@@ -40,9 +40,16 @@ var connection = mysql.createConnection({
     database : 'erasmus_madrid',
 });
 
-//insertar usuario
-global.insertUser = function(id_user, name_user, password, email ,callback) {
-    connection.query("INSERT INTO user(id_user,name_user,password,email,date_birth) VALUES ("+id_user+",'"+name_user+"','"+password+"','"+email+"');", function(err, rows, fields) {
+//Inserta un usuario en la base de datos
+global.insertUser = function(id_user, name_user, password, email, birthDate, callback) {
+    connection.query("INSERT INTO user(id_user,name_user,password,email,birth_date) VALUES ("+id_user+",'"+name_user+"','"+password+"','"+email+"','"+birthDate+"');", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+//Devuelve el usuario que tenga el nombre pasado como parametro y null si no lo encuentra
+global.getUser = function(name_user, callback) {
+    connection.query("SELECT * FROM user WHERE name_user='"+ name_user +"';", function(err, rows, fields) {
         callback(err, rows);
     });
 };
