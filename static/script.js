@@ -92,6 +92,9 @@ $( document ).ready(function() {
 		$('.image5').on('change',function(){
 			checkIfFileIsImage($(this).val(),'img5');
 		});
+		$('.imgEvent').click(function () {
+		    swichImage($(this).attr('id'));
+		});
 	});
 
 	// EVENTOS
