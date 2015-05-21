@@ -23,7 +23,7 @@
 		        <button type="button" class="button-nav logIn" id="log" data-toggle="modal" data-target="#formLogModal">Log in</button>
 		       	<button type="button" class="button-nav signIn" id="sign" data-toggle="modal" data-target="#formRegistryModal">Sign in</button>
 		       	<button type="button" class="button-nav createEvent" id="createEvent" data-toggle="modal" data-target="#formCreateEvent" style="display:none">Crear evento</button>
-		       	<button type="button" class="button-nav signOut" id="sign" style="display:none" onclick='signOut()'>Sign out</button>
+		       	<button type="button" class="button-nav signOut" id="sign" style="display:none" onclick="signOut()">Log out</button>
 		    </div>
 	    </div>
     </div>
@@ -114,7 +114,12 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Contraseña</label>
-							<input type="password" class="form-control" id="password" name="password" placeholder="Introduzca su contraseña">
+							<input type="password" class="form-control pass" id="password" name="password" placeholder="Introduzca su contraseña">
+						</div>
+						<div style="display:none" class="paramlog-error alert alert-danger" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only"></span>
+							<span class="text"></span>
 						</div>
 						<div style="display:none" class="log-error alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -123,7 +128,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-success pull-right" onclick='afterLogged()'>Aceptar</button>
+							<button type="submit" class="aceptar btn btn-success pull-right">Aceptar</button>
 						</div>
 					</form>
 				</div>
@@ -184,9 +189,15 @@
 						</div>
 						<div class="form-group">
 							<label for="date">Fecha del evento *</label>
-							<input type="text" class="date form-control" id="date" name="date" placeholder="dd/mm/aaaa">
+							<input type="text" class="date form-control" id="bloque2" name="date" placeholder="dd/mm/aaaa">
+							<input type="text" class="hora form-control" id="bloque2" name="hora" placeholder="hh:mm">
 						</div>
 						<div style="display:none" class="date-error alert alert-danger" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only"></span>
+							<span class="text"></span>
+						</div>
+						<div style="display:none" class="hour-error alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 							<span class="sr-only"></span>
 							<span class="text"></span>
@@ -197,11 +208,11 @@
 						</div>
 						<div>
 							<label for="foto">Introduzca imágenes para el evento (mínimo una)</label>
-							<input class="image1" type="file" name="img"> 
-							<input disabled class="image2" type="file" name="img">
-							<input disabled class="image3" type="file" name="img">
-							<input disabled class="image4" type="file" name="img">
-							<input disabled class="image5" type="file" name="img">
+							<input class="image1" type="file" name="img" accept="image/*"> 
+							<input disabled class="image2" type="file" name="img" accept="image/*">
+							<input disabled class="image3" type="file" name="img" accept="image/*">
+							<input disabled class="image4" type="file" name="img" accept="image/*">
+							<input disabled class="image5" type="file" name="img" accept="image/*">
 						</div>
 						</br>
 						<div style="display:none" class="img1-error alert alert-danger" role="alert">

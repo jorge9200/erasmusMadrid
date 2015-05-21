@@ -2,34 +2,45 @@
 $( document ).ready(function() {
 
 	// LOAD MODAL CABECERA Y FOOTER
-	$("#load-log").load("header-footer.html #formLogModal");
-	$("#load-header").load("header-footer.html #header",function(){
-		cargaCabecera();
+	$("#load-log").load("header-footer.html #formLogModal",function(){
+		$('.log-modal').on('submit', function(e){
+		e.preventDefault();
+		if(checkParametersLog()){
+			// Send log in
+			$.post( "/log", $(this).serialize(), function( data ) {
+				// Receive answer with OK (if the user is in the DB) or ERROR (if the user isn't in the DB)
+				if (data == 'ERROR') {
+					$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
+					$('.log-error').show();
+				}else{
+					$('.log-error .sr-only').text("");
+					$('.log-error').hide();
+				}
+			});
+		}
 	});
 
-	$('.log-modal').on('submit', function(e){
-		e.preventDefault();
-		// Send log in
-		$.post( "/log", $(this).serialize(), function( data ) {
-			// Receive answer with OK (if the user is in the DB) or ERROR (if the user isn't in the DB)
-			/*data = ...
-			if (data == 'ERROR') {
-				$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
-				$('.log-error').show();
-			}else{
-				$('.log-error .sr-only').text("");
-				$('.log-error').hide();
-			}*/
-		});
+	});
+	$("#load-header").load("header-footer.html #header",function(){
+		cargaCabecera();
 	});
 
 	$("#load-registry").load("header-footer.html #formRegistryModal", function(){
 		// When submit the registry modal
 		$('.register-modal').on('submit', function(e){
 			e.preventDefault();
-			var check = checkParameters();
 			if (checkParameters()){
-				$.post( "/registry", $(this).serialize(), function( data ) {});
+				$.post( "/registry", $(this).serialize(), function( data ) {
+					// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
+					if (data == 'ERROR') {
+						$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
+						$('.log-error').show();
+					}else{
+						afterLogged();
+						$('.log-error .sr-only').text("");
+						$('.log-error').hide();
+					}
+				});
 			}
 		});
 		// When focus out the password 2 input
@@ -69,6 +80,9 @@ $( document ).ready(function() {
 		$('.date').on('focusout',function(){
 			validateDate($(this).val());
 		});		
+		$('.hora').on('focusout',function(){
+			checkHour($(this).val());
+		});	
 		$('.numero').on('focusout',function(){
 			checkNumber($(this).val());
 		});	
@@ -146,6 +160,25 @@ var validateDate = function(date){
 		$('.date-error .sr-only').text("");
 		$('.date-error').hide();
     }
+}
+
+// Check if all the inputs are filled
+var checkParametersLog = function(){
+	// Gets the input values
+	var usuario = $('.user').val();
+	var password = $('.pass').val();
+
+	// Show a error message if remains some input to fill
+	var parametersOk = false;
+	if (usuario=="" || password==""){
+		$('.paramlog-error .text').text("ERROR: Por favor, rellene todos los campos");
+		$('.paramlog-error').show();
+	}else{
+		parametersOk = true;
+		$('.paramlog-error .sr-only').text("");
+		$('.paramlog-error').hide();
+	}
+	return parametersOk;
 }
 
 // Check if all the inputs are filled
@@ -228,6 +261,20 @@ var checkNumber = function(number){
 	}
 }
 
+// Validate/show/hide the hour input and date error
+var checkHour = function(hour){
+    var matches = /^(\d{2})[-\:](\d{2})$/.exec(hour);
+    var hh = hour.substring(0,2);
+    var mm = hour.substring(3,5);
+   if (matches == null || hh > 24 || hh < 00 || mm > 60 || mm < 00 ) {
+    	$('.hour-error .text').text("ERROR: Formato de hora incorrecto, debe introducir otros valores (hh:mm)");
+		$('.hour-error').show();
+	}else{
+		$('.hour-error .sr-only').text("");
+		$('.hour-error').hide();
+    }
+}
+
 // Check if all the inputs are filled
 var checkParametersEvent = function(){
 	// Gets the input values
@@ -236,12 +283,13 @@ var checkParametersEvent = function(){
 	var direccion = $('.direccion').val();
 	var numero = $('.numero').val();
 	var date = $('.event-modal .form-group .date').val();
+	var hour = $('.hour').val();
 	var image1 = $('.image1').val();
 
 	// Show a error message if remains some input to fill
 	var parametersEventOk = false;
 	var isImage = checkIfFileIsImage(image1,'img1');
-	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage){
+	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage || hour==""){
 		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos obligatorios");
 		$('.param-error').show();
 	}else{

@@ -212,10 +212,20 @@ body > #container {
 .form-group #bloque {
   display: inline-block;
 }
+.form-group #bloque2{
+  display: inline-block;
+}
 .form-group .direccion{
   width: 30%;
 }
 .form-group .numero{
+  display: block;
+  width: 17%;
+}
+.form-group .date{
+  width: 54%;
+}
+.form-group .hora{
   display: block;
   width: 17%;
 }
