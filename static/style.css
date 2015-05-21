@@ -419,23 +419,6 @@ body > #container {
   padding-top: 10px;
 }
 
-
-
-
-/*
-body { /*este selector sólo debería afectar el body del perfil*/
-  /*left: 0;
-  margin: 0;
-  overflow: hidden;
-  position: relative;
-}
-*/
-
-
-
-
-
-
 .glyphicon{
   cursor: pointer;
 }
