@@ -10,6 +10,9 @@ html, body{
   position: relative;
   background-color: #F7F3E8;
 }
+.imgEvent:hover { 
+  opacity: 0.3; filter: alpha(opacity=30);
+} 
 .item{
     height: 500px;
     margin-top: 0px;
