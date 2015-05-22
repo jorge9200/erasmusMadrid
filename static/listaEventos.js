@@ -36,7 +36,7 @@ var addEvent = function(title, description,date){
         });
     });
 
-    $('.search-menu').after(eventToDom);
+    $('#startEvents').after(eventToDom);
     eventToDom.after('<hr>');
 }
 

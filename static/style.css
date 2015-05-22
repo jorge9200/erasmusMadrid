@@ -193,7 +193,31 @@ body > #container {
 #eventList h2{
   font-size: 20px;
 }
-#content {
+
+#lista{
+  background-color: white;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  z-index: 3;
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+  margin-bottom: 50px;
+}
+
+#lista .event{
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+#lista hr:last-of-type{
+ opacity:0;
+}
+#startEvents{
+  opacity: 0;
+}
+
+#content { 
   padding-bottom: 20px;
 }
 
@@ -414,11 +438,14 @@ body > #container {
 }
 
 .menu {
-  background: #202024 url('./fondo_menu.jpg') repeat left top;
+  background-image: url('./fondo_menu.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   left: -285px;  /* start off behind the scenes */
   height: 100%;
   position: fixed;
   width: 285px;
+  z-index: 2;
 }
 
 .menu ul {
