@@ -11,23 +11,27 @@ $(function(){
                 //var prueba=(data[i].date).substring(11,19); Esta línea cogería la hora del dataTime de la BBDD
                 //var infoDate=restaFechas(data[i].date);
                 //console.log(data[i].date);
+
                 fechaOK=fechaCorrecta(data[i].date);
+                var dias=days_between(fechaOK);
+
                 var description=(data[i].description).split('.');
                 description=description[0]+'...';
-                addEvent(data[i].title,description,fechaOK);
+                addEvent(data[i].title,description,fechaOK,dias);
             }
         };
 
     });
 });
 
-var addEvent = function(title, description,date){
+var addEvent = function(title, description,date,dias){
     var eventToDom = $('.event.prototype').clone();
     eventToDom.removeClass('prototype');
     eventToDom.find('.event-image').attr("src", "./static/"+title+".jpg");
     eventToDom.find('#title').text(title);
     eventToDom.find('#description').text(description);
     eventToDom.find('#date').text(date);
+    eventToDom.find('#infoDate').text('Faltan '+dias+' días para el evento.');
     //eventToDom.find('#verEvento').data('id', title);;
     //eventToDom.find('#infoDate').text(infoDate);
     eventToDom.find('.verEvento').on('click', function(){
@@ -47,20 +51,11 @@ var fechaCorrecta = function(date){
     return fechaOK;
 }
 
-// restaFechas = function(fecha1){
-// var aFecha2 = new Date().toJSON().slice(0,10)
+function days_between(date1) {
+    var hoy=new Date();
+    var arrayDate1=date1.split('/');
+    var oneDay = 1000 * 60 * 60 * 24; // hours*minutes*seconds*milliseconds
+    var firstDate = new Date(arrayDate1[2],arrayDate1[1],arrayDate1[0]);
+    return Math.round(Math.abs((hoy.getTime() - firstDate.getTime())/(oneDay)));
 
-// aFecha2 = aFecha2.split('-');
-// console.log(aFecha1);
-
-// var aFecha1=fecha1.substring(0, 10);
-// aFecha1 = aFecha1.split('-');
-
-// console.log(aFecha1);
-
-// var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]); 
-// var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]); 
-// var dif = fFecha2 - fFecha1;
-// var dias = Math.floor(dif / (1000 * 60 * 60 * 24)); 
-// return dias;
-// }
+}
