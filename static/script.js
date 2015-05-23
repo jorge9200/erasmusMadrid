@@ -72,7 +72,8 @@ $( document ).ready(function() {
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
 			if (checkParametersEvent()){
-				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {});
+				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
+				console.log('VALOR DE DATA: '+data);
 				// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
 				if (data == 'ERROR') {
 					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
@@ -82,6 +83,7 @@ $( document ).ready(function() {
 					$('.cevent-error .sr-only').text("");
 					$('.cevent-error').hide();
 				}
+				});
 			}
 		});
 		// When focus out the email input

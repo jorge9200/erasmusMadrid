@@ -54,6 +54,25 @@ global.getUser = function(name_user, callback) {
     });
 };
 
+global.maxIdEvent = function(callback) {
+    connection.query("SELECT max(id_event) FROM event", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.insertNewEvent = function(id_event,title,category,description,address,date,comment,callback) {
+    connection.query("INSERT INTO event(id_event,title,category,description,address,date,comment) VALUES ("+id_event+",'"+title+"','"+category+"','"+description+"','"+address+"','"+date+"','"+comment+"');", function(err, rows, fields) {
+        callback(err, rows);0
+    });
+};
+
+global.getTitle = function(title, callback) {
+    connection.query("SELECT * FROM event WHERE title='"+ title +"';", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+
 global.getEvent = function(callback) {
     connection.query("SELECT title,description,category,date FROM event ORDER BY date DESC", function(err, rows, fields) {
         callback(err, rows);

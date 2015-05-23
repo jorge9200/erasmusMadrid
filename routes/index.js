@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var id_user=1;
+var id_event;
 var titulo;
 
 /* GET home page. */
@@ -39,14 +40,48 @@ router.post('/log', function(req, res, next){
     }
   });
 });
+router.post('/insertNewEvent', function(req, res, next){
+  //console.log(req.body.number);//el numero no lo recoge bien
+  var title=req.body.title;
+  var category=req.body.category;
+  var description=req.body.description;
+  var address=req.body.address;
+  var calle=req.body.calle;
+  var number=req.body.number;
+  address=calle+' '+address+', '+number;
+  var date=req.body.date;
+  var hour=req.body.hora;
+  var arrayDate=date.split('/');
+  date=arrayDate[2]+'-'+arrayDate[1]+'-'+arrayDate[0]+' '+hour+':00';
+  var comment=req.body.comment;
+
+  maxIdEvent(function(err, rows){
+    id_string = JSON.stringify(rows);
+    id_string = id_string.replace('max(id_event)','');
+    id_string = id_string.replace('"','');
+    id_string = id_string.replace('"','');
+    id_string = id_string.replace(':','');
+    id_string = id_string.replace('[{','');
+    id_string = id_string.replace('}]','');
+    id_event=parseInt(id_string)+1;
+
+    getTitle(title,function(err, rows){
+      if (rows.length != 0) {
+        res.send('ERROR');
+      }else{
+        insertNewEvent(id_event,title,category,description,address,date,comment,function(err, rows){
+          id_event=id_event + 1;
+          res.send('OK');
+        });
+      }
+    });
+  });
+});
 
 router.get('/lista', function(req, res, next){
 	var evento;
-	//console.log('aaaaaaaaaa'+req.body);
-	//titulo=req.body.titulo;
 	getEvent(function(err, rows){
   	   evento=rows;
-  	   //console.log(evento);
        res.send(evento);
 	});
 
