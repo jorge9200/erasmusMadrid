@@ -79,9 +79,12 @@ $( document ).ready(function() {
 					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
 					$('.cevent-error').show();
 				}else{
+					saveImages();
 					$('#formCreateEvent').modal('toggle');
 					$('.cevent-error .sr-only').text("");
 					$('.cevent-error').hide();
+					$("#load-alert").load("header-footer.html #event-success");
+					window.setTimeout(function() { $("#event-success").alert('close'); }, 2000);
 				}
 				});
 			}
@@ -119,6 +122,9 @@ $( document ).ready(function() {
 		});
 		$('.image5').on('change',function(){
 			checkIfFileIsImage($(this).val(),'img5');
+		});
+		$('.image6').on('change',function(){
+			checkIfFileIsImage($(this).val(),'img6');
 		});
 		$('.imgEvent').click(function () {
 		    swichImage($(this).attr('id'));
@@ -312,6 +318,35 @@ var checkParametersEvent = function(){
 		$('.param-error').hide();
 	}
 	return parametersEventOk;
+}
+// Save the images of the creation of the event in /static
+var saveImages = function(){
+	// Gets the input values
+	var image1 = $('.image1').val();
+	var image2 = $('.image2').val();
+	var image3 = $('.image3').val();
+	var image4 = $('.image4').val();
+	var image5 = $('.image5').val();
+	var image6 = $('.image6').val();
+	if (image1 != ""){
+		// Copy image to this directory 
+		var path = $('.image1').formaction();
+	}
+	if (image2 != ""){
+		// Copy image to this directory
+	}
+	if (image3 != ""){
+		// Copy image to this directory
+	}
+	if (image4 != ""){
+		// Copy image to this directory
+	}
+	if (image5 != ""){
+		// Copy image to this directory
+	}
+	if (image6 != ""){
+		// Copy image to this directory
+	}
 }
 
 var cargaCabecera = function(){
