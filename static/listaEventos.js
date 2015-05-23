@@ -10,7 +10,8 @@ $(function(){
             if(sel==data[i].category || sel=='Todos'){
 
                 fechaOK=fechaCorrecta(data[i].date);
-                var mensaje=days_between(fechaOK);
+                hour=(data[i].date).substring(11, 19);
+                var mensaje=days_between(fechaOK,hour);
       
                 description=(data[i].description).split('.');
                 description=description[0]+'...';
@@ -47,12 +48,13 @@ var fechaCorrecta = function(date){
 }
 
 //Devuelve un mensaje con los días que faltan para el evento
-function days_between(date1) {
+function days_between(date1,hour) {
     var hoy=new Date();
     var arrayDate1=date1.split('/');
+    var arrayHour=hour.split(':');
     var oneDay = 1000 * 60 * 60 * 24; // hours*minutes*seconds*milliseconds
-    console.log(arrayDate1[2]+''+arrayDate1[1]+''+arrayDate1[0]);
-    var firstDate = new Date(arrayDate1[2],arrayDate1[1]-1,arrayDate1[0]);
+    var firstDate = new Date(arrayDate1[2],arrayDate1[1]-1,arrayDate1[0],arrayHour[0],arrayHour[1],arrayHour[2]);
+    
     console.log(hoy);
     console.log('fecha modificada: '+firstDate);
     var dias=Math.round(Math.abs((hoy.getTime() - firstDate.getTime())/(oneDay)));
@@ -60,11 +62,11 @@ function days_between(date1) {
     console.log('--------------------------');
     var mensaje;
     if(dias==0){
-        mensaje='El evento es hoy';
+        mensaje='¡El evento es hoy!';
     }else if(dias==1){
-        mensaje='Falta '+dias+' día para el evento.';
+        mensaje='¡Falta '+dias+' día para el evento!';
     }else{
-        mensaje='Faltan '+dias+' días para el evento.';
+        mensaje='¡Faltan '+dias+' días para el evento!';
     }
     return mensaje;
 }
