@@ -54,33 +54,44 @@ global.getUser = function(name_user, callback) {
     });
 };
 
+//Devuelve el max(id_event) para que se inserte un evento con el siguiente id al obtenido
 global.maxIdEvent = function(callback) {
     connection.query("SELECT max(id_event) FROM event", function(err, rows, fields) {
         callback(err, rows);
     });
 };
 
+//Inserta un evento nuevo creado por el usuario
 global.insertNewEvent = function(id_event,title,category,description,address,date,comment,callback) {
     connection.query("INSERT INTO event(id_event,title,category,description,address,date,comment) VALUES ("+id_event+",'"+title+"','"+category+"','"+description+"','"+address+"','"+date+"','"+comment+"');", function(err, rows, fields) {
         callback(err, rows);0
     });
 };
 
+//Devuelve el titulo que tenga el title pasado como parametro y null si no lo encuentra
 global.getTitle = function(title, callback) {
     connection.query("SELECT * FROM event WHERE title='"+ title +"';", function(err, rows, fields) {
         callback(err, rows);
     });
 };
 
-
+//Devuelve la información de todos los eventos 
 global.getEvent = function(callback) {
     connection.query("SELECT title,description,category,date FROM event ORDER BY date DESC", function(err, rows, fields) {
         callback(err, rows);
     });
 };
 
+//Devuelve la información correspondiente al evento pasado como parámetro
 global.getOneEvent = function(titulo,callback) {
     connection.query("SELECT title,description,category,address,date,comment FROM event WHERE title="+titulo+"", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+//Almacena eventos a los que se subscribe el usuario (EN PROCESO)
+global.subscribeEvents = function(id_user,id_event,callback) {
+    connection.query("INSERT INTO user_event(id_user,id_event) VALUES ("+id_user+",'"+id_event+"');", function(err, rows, fields) {
         callback(err, rows);
     });
 };
