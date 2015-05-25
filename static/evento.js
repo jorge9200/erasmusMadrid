@@ -1,6 +1,10 @@
 $(function(){
 /*Carga datos del evento*/
-	$.get('/evento', function(data){
+
+    var titleEvent={titulo: $.cookie('evento')};
+    console.log(titleEvent);
+    $.removeCookie('evento');
+	$.post('/evento',titleEvent,function(data){
 		fechaOK=fechaCorrecta(data[0].date);
 		horaOK=(data[0].date).substring(11, 16);
 		completeEvent(data[0].title,data[0].description,data[0].address,fechaOK,horaOK,data[0].comment);
