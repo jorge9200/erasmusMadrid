@@ -30,6 +30,7 @@ var addEvent = function(title, description,date,mensaje){
     eventToDom.find('#description').text(description);
     eventToDom.find('#date').text(date);
     eventToDom.find('#infoDate').text(mensaje);
+    eventToDom.find('#calendario').text(date);
     eventToDom.find('.verEvento').on('click', function(){
         $.get('/enviarTitulo', {x: 'title'}, function(){
 
