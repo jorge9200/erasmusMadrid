@@ -29,15 +29,9 @@ $(function(){
         };
 
     });
-    // $('.verEvento').click(function(){
-    //     //var titulo = $(this).siblings("#title").val();
 
-    //     var titulo=$('#title').val();
-         if($.cookie('user')!=''){
-            $('#subscribe').show();
-         }
-    //     console.log(titulo);
-    // });
+         $('#subscribe').show();
+    }
 
 });
 

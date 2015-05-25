@@ -145,7 +145,6 @@ var fechaCorrecta = function(date){
 	return fechaOK;
 }
 
-<<<<<<< HEAD
 //Devuelve un mensaje con los días que faltan para el evento
 function days_between(date1,hour) {
     var hoy=new Date();
@@ -164,7 +163,7 @@ function days_between(date1,hour) {
     }
     return mensaje;
 }
-=======
+
 // Validate/show/hide the email input and date error
 var validateEmail = function(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -190,4 +189,3 @@ var checkValue = function(param,value) {
     }
     return parametersOk;
 }
->>>>>>> 631588d3c917dc56c93ac876c5e411ab20e466ca
