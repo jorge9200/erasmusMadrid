@@ -129,6 +129,9 @@ $( document ).ready(function() {
 		$('.imgEvent').click(function () {
 		    swichImage($(this).attr('id'));
 		});
+		$('.toEventFilter').click(function () {
+		   searchEvent($(this).attr('id'));
+		});
 	});
 
 	// EVENTOS
@@ -360,6 +363,7 @@ var cargaCabecera = function(){
 		$('.userProfile').show();
 		$('.signOut').show();
 	}
+	
 }
 //Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie 
 var afterLogged = function(){
@@ -397,3 +401,9 @@ var swichImage= function(id){
 	$('#eventImg1').attr('src',image);
 	$('#'+x).attr('src',principal);
 }
+var searchEvent=function(id){
+	$.cookie('event', id);
+	$.cookie('eventB', 'true');
+
+}
+

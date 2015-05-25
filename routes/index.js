@@ -56,7 +56,7 @@ router.post('/insertNewEvent', function(req, res, next){
   var comment=req.body.comment;
 
   maxIdEvent(function(err, rows){
-    id_string = JSON.stringify(rows);
+    var id_string = JSON.stringify(rows);
     id_string = id_string.replace('max(id_event)','');
     id_string = id_string.replace('"','');
     id_string = id_string.replace('"','');
@@ -82,20 +82,28 @@ router.get('/lista', function(req, res, next){
 	var evento;
 	getEvent(function(err, rows){
   	   evento=rows;
+       //console.log(rows);
        res.send(evento);
 	});
 
 });
 
-router.get('/enviarTitulo', function(req, res, next) {
-	console.log('POST RECIBIDO');
-  console.log(req.x);
+router.post('/eventSubscribe', function(req, res, next){
+  var nombre=req.body.nombre;
+   getIdUser(nombre,function(err, rows){
+    var id=rows[0].id_user;
+    subscribeEvent(id,function(err, rows){  
+      res.send(rows);
+    }); 
+  });
+ 
+ 
+
 });
 
-router.get('/evento', function(req, res, next){
-	//title="BeerPong Tournament";
+router.post('/evento', function(req, res, next){
+  var titulo=req.body.titulo;
 	getOneEvent(titulo,function(err, rows){
-  	   //console.log(rows);
        res.send(rows);
 	});
 

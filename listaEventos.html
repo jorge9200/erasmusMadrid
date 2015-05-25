@@ -40,8 +40,8 @@
 							 <option class="refresh" value="Gastronomía">Gastronomía</option>
 							 <option class="refresh" value="Vida nocturna">Vida nocturna</option>
 						</select>
-						<form id="tfnewsearch" method="get" action="http://www.google.com">
-							<input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="Buscar" class="tfbutton">
+						<form id="tfnewsearch">
+							<input type="text" id="texto" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="Buscar" id="search" class="tfbutton">
 						</form>
 						<div class="tfclear"></div>
 					</small>
@@ -60,8 +60,8 @@
 						<p id="description"></p>
 						<p id="date"></p>
 						<p id="infoDate"></p>
-						<a class="btn btn-primary verEvento" >Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
-						<a class="btn btn-primary" style="display:none" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
+						<a class="btn btn-primary verEvento" href="evento.html" >Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
+						<a class="btn btn-primary" style="display:none" id="subscribe" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
 					</div>
 					<hr>
 				</div>
