@@ -5,3 +5,5 @@
 - Al crear un evento, molaría que nada más darle a crear llevase directamente a la página de ese evento.
 - Incluir el ratio de puntuaciones en cada evento.
 - Si da tiempo terminar lo de los comentarios de un evento.
+- ListaEventos.html botón subscribirse hay que mostralo si el usuario ha hecho login (esta oculto el boton sino se hace login).
+- El buscador darle funcionalidad.
