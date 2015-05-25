@@ -30,6 +30,8 @@ $(function(){
 
     });
 
+    var logIn=$.cookie('logged');
+    if(logIn=='true'){
          $('#subscribe').show();
     }
 
