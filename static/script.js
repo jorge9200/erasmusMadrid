@@ -73,13 +73,11 @@ $( document ).ready(function() {
 			e.preventDefault();
 			if (checkParametersEvent()){
 				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
-				console.log('VALOR DE DATA: '+data);
-				// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
+				// Receive answer with OK (if the event isn't in the DB) or ERROR (if  is in the DB)
 				if (data == 'ERROR') {
 					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
 					$('.cevent-error').show();
 				}else{
-					saveImages();
 					$('#formCreateEvent').modal('toggle');
 					$('.cevent-error .sr-only').text("");
 					$('.cevent-error').hide();
@@ -89,7 +87,7 @@ $( document ).ready(function() {
 				});
 			}
 		});
-		// When focus out the email input
+		// When focus out the description input
 		$('.descripcion').on('focusout',function(){
 			checkDescription($(this).val());
 		});
@@ -109,6 +107,7 @@ $( document ).ready(function() {
 				$(".image3").prop('disabled', false);
 				$(".image4").prop('disabled', false);
 				$(".image5").prop('disabled', false);
+				$(".image6").prop('disabled', false);
 			}
 		});
 		$('.image2').on('change',function(){
@@ -321,35 +320,6 @@ var checkParametersEvent = function(){
 		$('.param-error').hide();
 	}
 	return parametersEventOk;
-}
-// Save the images of the creation of the event in /static
-var saveImages = function(){
-	// Gets the input values
-	var image1 = $('.image1').val();
-	var image2 = $('.image2').val();
-	var image3 = $('.image3').val();
-	var image4 = $('.image4').val();
-	var image5 = $('.image5').val();
-	var image6 = $('.image6').val();
-	if (image1 != ""){
-		// Copy image to this directory 
-		var path = $('.image1').formaction();
-	}
-	if (image2 != ""){
-		// Copy image to this directory
-	}
-	if (image3 != ""){
-		// Copy image to this directory
-	}
-	if (image4 != ""){
-		// Copy image to this directory
-	}
-	if (image5 != ""){
-		// Copy image to this directory
-	}
-	if (image6 != ""){
-		// Copy image to this directory
-	}
 }
 
 var cargaCabecera = function(){
