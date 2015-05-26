@@ -72,6 +72,7 @@ $( document ).ready(function() {
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
 			if (checkParametersEvent()){
+<<<<<<< HEAD
 				console.log(new FormData( this ));
 				//$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
 				$.ajax( {
@@ -95,10 +96,24 @@ $( document ).ready(function() {
 							window.setTimeout(function() { $("#event-success").alert('close'); }, 2000);
 						}
 					}
+=======
+				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
+				// Receive answer with OK (if the event isn't in the DB) or ERROR (if  is in the DB)
+				if (data == 'ERROR') {
+					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
+					$('.cevent-error').show();
+				}else{
+					$('#formCreateEvent').modal('toggle');
+					$('.cevent-error .sr-only').text("");
+					$('.cevent-error').hide();
+					$("#load-alert").load("header-footer.html #event-success");
+					window.setTimeout(function() { $("#event-success").alert('close'); }, 2000);
+				}
+>>>>>>> origin/master
 				});
 			}
 		});
-		// When focus out the email input
+		// When focus out the description input
 		$('.descripcion').on('focusout',function(){
 			checkDescription($(this).val());
 		});
@@ -118,6 +133,7 @@ $( document ).ready(function() {
 				$(".image3").prop('disabled', false);
 				$(".image4").prop('disabled', false);
 				$(".image5").prop('disabled', false);
+				$(".image6").prop('disabled', false);
 			}
 		});
 		$('.image2').on('change',function(){
@@ -137,6 +153,9 @@ $( document ).ready(function() {
 		});
 		$('.imgEvent').click(function () {
 		    swichImage($(this).attr('id'));
+		});
+		$('.toEventFilter').click(function () {
+		   searchEvent($(this).attr('id'));
 		});
 	});
 
@@ -328,6 +347,7 @@ var checkParametersEvent = function(){
 	}
 	return parametersEventOk;
 }
+<<<<<<< HEAD
 // Save the images of the creation of the event in /static
 var saveImages = function(){
 	// Gets the input values
@@ -357,6 +377,8 @@ var saveImages = function(){
 		// Copy image to this directory
 	}
 }
+=======
+>>>>>>> origin/master
 
 var cargaCabecera = function(){
 	var logged=$.cookie('logged');
@@ -369,6 +391,7 @@ var cargaCabecera = function(){
 		$('.userProfile').show();
 		$('.signOut').show();
 	}
+	
 }
 //Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie
 var afterLogged = function(){
@@ -406,3 +429,12 @@ var swichImage= function(id){
 	$('#eventImg1').attr('src',image);
 	$('#'+x).attr('src',principal);
 }
+<<<<<<< HEAD
+=======
+var searchEvent=function(id){
+	$.cookie('event', id);
+	$.cookie('eventB', 'true');
+
+}
+
+>>>>>>> origin/master

@@ -31,10 +31,51 @@
 
 			<!-- Menu -->
 			<ul>
-				<li><a href="#">Foto de perfil</a></li>
-				<li><a href="#">Contraseña</a></li>
-				<li><a href="#">Nombre de usuario</a></li>
-				<li><a href="#">Email</a></li>
+				<div class="form-group">
+				<li><button type="button" class="foto-perfil btn btn-primary"> Foto de perfil <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-foto btn btn-success">Guardar</button>
+					<input style="display:none" class="image1" id="image-perfil" type="file" name="img" accept="image/*"> 
+				</li>
+				</div>
+				<div style="display:none" class="foto-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>
+				<div class="form-group">
+				<li><button type="button" class="usuario-perfil btn btn-primary"> Nombre de usuario <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-usuario btn btn-success">Guardar</button>
+					<input style="display:none" type="text" class="usuario form-control" id="usuario-perfil" name="username" placeholder="Introduzca su usuario">
+				</li>
+				</div>
+				<div style="display:none" class="usuario-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>
+				<div class="form-group">
+				<li><button type="button" class="password-perfil btn btn-primary"> Contraseña <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-password btn btn-success">Guardar</button>
+					<input style="display:none" type="password" class="password form-control" id="password-perfil" name="password" placeholder="Introduzca su contraseña">
+				</li>
+				</div>
+				<div style="display:none" class="password-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>
+				<div class="form-group">
+				<li><button type="button" class="email-perfil btn btn-primary"> Email <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-mail btn btn-success">Guardar</button>
+					<input style="display:none" type="text" class="mail-perfil form-control" id="mail-perfil" name="email" placeholder="Introduzca su email">
+				</li>
+				</div>
+				<div style="display:none" class="email-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>	
+				<div style="display:none" class="mail-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>
 			</ul>
 		</div>
 
@@ -87,7 +128,7 @@
 							<p id="description"></p>
 							<p id="date"></p>
 							<p id="infoDate"></p>
-							<a class="btn btn-primary verEvento" >Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
+							<a class="btn btn-primary verEvento" href="evento.html">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
 							<a class="btn btn-primary" style="display:none" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
 						</div>
 						<hr>

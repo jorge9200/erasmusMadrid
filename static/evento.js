@@ -1,6 +1,13 @@
 $(function(){
 /*Carga datos del evento*/
-	$.get('/evento', function(data){
+
+    var titleEvent={titulo: $.cookie('evento')};
+    console.log(titleEvent);
+    var prueba=$.cookie('prueba');
+    console.log(prueba);
+    //Borrar coockie carga la primera vez siempre el mismo evento
+    //$.removeCookie('evento');
+	$.post('/evento',titleEvent,function(data){
 		fechaOK=fechaCorrecta(data[0].date);
 		horaOK=(data[0].date).substring(11, 16);
 		completeEvent(data[0].title,data[0].description,data[0].address,fechaOK,horaOK,data[0].comment);
@@ -25,9 +32,9 @@ var completeEvent = function(title,description,address,date,hour,comment){
 	/*Cargamos los campos de información*/
 	$('#eventTitle').text(title);
 	$('#eventDescription').text(description);
-	$('#eventAddress').text(address);
-	$('#eventDate').text(date);
-	$('#eventHour').text(hour);
+	$('#eventAddress').text('Dirección: '+address);
+	$('#eventDate').text('Fecha: '+date);
+	$('#eventHour').text('Hora: '+hour);
 	$('#eventEslogan').text(comment);
 }
 

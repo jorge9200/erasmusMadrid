@@ -56,6 +56,13 @@ global.getUser = function(name_user, callback) {
     });
 };
 
+//Devuelve el id_user según el nombre de usuario
+global.getIdUser = function(name_user, callback) {
+    connection.query("SELECT id_user FROM user WHERE name_user='"+ name_user +"';", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
 //Devuelve el max(id_event) para que se inserte un evento con el siguiente id al obtenido
 global.maxIdEvent = function(callback) {
     connection.query("SELECT max(id_event) FROM event", function(err, rows, fields) {
@@ -86,18 +93,36 @@ global.getEvent = function(callback) {
 
 //Devuelve la información correspondiente al evento pasado como parámetro
 global.getOneEvent = function(titulo,callback) {
-    connection.query("SELECT title,description,category,address,date,comment FROM event WHERE title="+titulo+"", function(err, rows, fields) {
+    connection.query("SELECT title,description,category,address,date,comment FROM event WHERE title='"+ titulo +"';", function(err, rows, fields) {
         callback(err, rows);
     });
 };
 
-//Almacena eventos a los que se subscribe el usuario (EN PROCESO)
-global.subscribeEvents = function(id_user,id_event,callback) {
-    connection.query("INSERT INTO user_event(id_user,id_event) VALUES ("+id_user+",'"+id_event+"');", function(err, rows, fields) {
+//Devuelve los eventos a los que esta subscrito un usuario segun el id_user que se le pasa como entrada, ordenados por fecha
+global.subscribeEvent = function(id_user,callback) {
+    connection.query("SELECT title, category, description, address,date,comment FROM event INNER JOIN user_event ON event.id_event=user_event.id_event WHERE id_user='"+ id_user +"'ORDER BY date DESC" , function(err, rows, fields) {
         callback(err, rows);
     });
 };
 
+//perfil
+global.changeUser = function(name_userNew,name_userOld,callback) {
+    connection.query("UPDATE user SET name_user='"+name_userNew+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.changePassword = function(name_userOld,newPassword,callback) {
+    connection.query("UPDATE user SET password='"+newPassword+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.changeMail = function(name_userOld,newEmail,callback) {
+    connection.query("UPDATE user SET email='"+newEmail+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
 
 // ERROR HANDLERS
 // catch 404 and forward to error handler

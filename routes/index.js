@@ -24,7 +24,7 @@ router.post('/registry', function(req, res, next){
     }else{
       insertUser(id_user, name_user, password, email, birthDate, function(err, result){
         id_user=id_user+1;
-          res.send('OK');
+        res.send('OK');
       });
     }
   });
@@ -42,6 +42,7 @@ router.post('/log', function(req, res, next){
     }
   });
 });
+
 router.post('/insertNewEvent', function(req, res, next){
   //console.log(req.body.number);//el numero no lo recoge bien
   var title=req.body.title;
@@ -58,7 +59,7 @@ router.post('/insertNewEvent', function(req, res, next){
   var comment=req.body.comment;
 
   maxIdEvent(function(err, rows){
-    id_string = JSON.stringify(rows);
+    var id_string = JSON.stringify(rows);
     id_string = id_string.replace('max(id_event)','');
     id_string = id_string.replace('"','');
     id_string = id_string.replace('"','');
@@ -89,18 +90,52 @@ router.get('/lista', function(req, res, next){
 
 });
 
-router.get('/enviarTitulo', function(req, res, next) {
-	console.log('POST RECIBIDO');
-  console.log(req.x);
+router.post('/eventSubscribe', function(req, res, next){
+  var nombre=req.body.nombre;
+   getIdUser(nombre,function(err, rows){
+    var id=rows[0].id_user;
+    subscribeEvent(id,function(err, rows){  
+      res.send(rows);
+    }); 
+  });
 });
 
-router.get('/evento', function(req, res, next){
-	//title="BeerPong Tournament";
+router.post('/evento', function(req, res, next){
+  var titulo=req.body.titulo;
 	getOneEvent(titulo,function(err, rows){
-  	   //console.log(rows);
        res.send(rows);
 	});
+});
 
+//perfil
+router.post('/changeUser', function(req, res, next){
+  var name_userOld=req.body.name_userOld;
+  var name_userNew=req.body.name_userNew;
+  getUser(name_userNew, function(err, result){
+      if (result.length != 0) {
+        res.send('ERROR');
+      }else{
+      changeUser(name_userNew,name_userOld,function(err, result){
+          res.send('OK');
+      });
+      }
+  });
+});
+
+router.post('/changePassword', function(req, res, next){
+  var name_userOld=req.body.name_userOld;
+  var newPassword=req.body.newPassword;
+  changePassword(name_userOld,newPassword,function(err, result){
+      res.send('OK');
+  });    
+});
+
+router.post('/changeMail', function(req, res, next){
+  var name_userOld=req.body.name_userOld;
+  var newEmail=req.body.newEmail;
+  changeMail(name_userOld,newEmail,function(err, result){
+      res.send('OK');
+  });    
 });
 
 module.exports = router;
