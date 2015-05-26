@@ -1,4 +1,3 @@
-
 html, body{ 
   margin:0;
   padding:0;
@@ -85,11 +84,6 @@ body > #container {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   text-decoration: underline;
 }
-/*
-#eventExample{
-  padding-top: 60px;
-}
-*/
 
 .learn-more {
   background-color: #f7f7f7;
@@ -216,6 +210,65 @@ body > #container {
 #startEvents{
   opacity: 0;
 }
+
+
+/*Tabla para mostrar la fecha con el calendario de fondo*/
+.dateImg{
+  background-image: url(./calendarIcon.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+.year{
+  height: 30px;
+}
+
+.year td{
+  padding-top: 25px;
+  font-size: 20px;
+}
+
+.day{
+  height: 60px;
+}
+
+.day td{
+  /*font-family: CalendarFont;
+  font-size: 70px;*/
+  font-size: 50px;
+}
+
+.month{
+  height: 30px;
+}
+
+.month td{
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+/***************/
+
+.dateMssg{
+  float: right;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  text-align: center;
+  font-size:2.8em;
+  font-family: 'Permanent Marker', cursive;
+
+}
+
+/*
+.oculto{
+  opacity: 0;
+}
+*/
 
 #content { 
   padding-bottom: 20px;
@@ -438,14 +491,13 @@ body > #container {
 }
 
 .menu {
-  /*background-image: url('./fondo_menu.jpg');*/
-  background-color: #77BED2;
+  background-image: url('./fondo_menu.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  left: -380px;  /* start off behind the scenes */
+  left: -285px;  /* start off behind the scenes */
   height: 100%;
   position: fixed;
-  width: 380px;
+  width: 285px;
   z-index: 2;
 }
 
@@ -462,31 +514,9 @@ body > #container {
   line-height: 45px;
   padding-bottom: 3px;
   padding-left: 20px;
+  padding-top: 3px;
 }
 
-.form-group .perfil-guardar-foto {
-  margin-left: 130px;
-}
-
-.form-group .perfil-guardar-usuario {
-  margin-left: 87px;
-}
-.form-group #usuario-perfil {
-  width: 346px;
-}
-
-.form-group .perfil-guardar-password {
-  margin-left: 143px;
-}
-.form-group #password-perfil {
-  width: 346px;
-}
-.form-group .perfil-guardar-mail {
-  margin-left: 182px;
-}
-.form-group #mail-perfil {
-  width: 346px;
-}
 .menu a {
   color: #636366;
   font-size: 15px;

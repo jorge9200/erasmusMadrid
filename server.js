@@ -103,6 +103,25 @@ global.subscribeEvent = function(id_user,callback) {
     });
 };
 
+//perfil
+global.changeUser = function(name_userNew,name_userOld,callback) {
+    connection.query("UPDATE user SET name_user='"+name_userNew+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.changePassword = function(name_userOld,newPassword,callback) {
+    connection.query("UPDATE user SET password='"+newPassword+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.changeMail = function(name_userOld,newEmail,callback) {
+    connection.query("UPDATE user SET email='"+newEmail+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
 // ERROR HANDLERS
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

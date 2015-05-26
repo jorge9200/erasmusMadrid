@@ -71,7 +71,8 @@ $(function(){
 	});
 	$('.perfil-guardar-usuario').click(function(){
 		if (checkValue($('#usuario-perfil').val(),'usuario')) {
-			$.post( "/changeUser", $(this).serialize(), function( data ) {
+			var datos={name_userOld: $.cookie('userName'), name_userNew: $('#usuario-perfil').val()};
+			$.post( "/changeUser",datos, function( data ) {
 				// Receive answer with OK (if the event isn't in the DB) or ERROR (if  is in the DB)
 				if (data == 'ERROR') {
 					$('.usuario-perfil-error .text').text("ERROR: El nombre de usuario ya existe");
@@ -82,13 +83,17 @@ $(function(){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 					$("#load-alert").load("header-footer.html #perfil-success");
 					window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+					$.removeCookie('userName');
+					$.cookie('userName',datos.name_userNew);
 				}
 				});
 		}
 	});
 	$('.perfil-guardar-password').click(function(){
 		if (checkValue($('#password-perfil').val(),'password')) {
-			$.post( "/changePassword", $(this).serialize(), function( data ) {
+			console.log($.cookie('userName'));
+			var datos={name_userOld: $.cookie('userName'), newPassword: $('#password-perfil').val()};
+			$.post( "/changePassword", datos, function( data ) {
 				$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 				$("#load-alert").load("header-footer.html #perfil-success");
 				window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
@@ -97,7 +102,8 @@ $(function(){
 	});
 	$('.perfil-guardar-mail').click(function(){
 		if (checkValue($('#mail-perfil').val(),'mail')) {
-			$.post( "/changeMail", $(this).serialize(), function( data ) {
+			var datos={name_userOld: $.cookie('userName'), newEmail: $('#mail-perfil').val()};
+			$.post( "/changeMail", datos, function( data ) {
 				$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 				$("#load-alert").load("header-footer.html #perfil-success");
 				window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
