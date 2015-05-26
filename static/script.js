@@ -72,20 +72,29 @@ $( document ).ready(function() {
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
 			if (checkParametersEvent()){
-				$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
-				console.log('VALOR DE DATA: '+data);
-				// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
-				if (data == 'ERROR') {
-					$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
-					$('.cevent-error').show();
-				}else{
-					saveImages();
-					$('#formCreateEvent').modal('toggle');
-					$('.cevent-error .sr-only').text("");
-					$('.cevent-error').hide();
-					$("#load-alert").load("header-footer.html #event-success");
-					window.setTimeout(function() { $("#event-success").alert('close'); }, 2000);
-				}
+				console.log(new FormData( this ));
+				//$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
+				$.ajax( {
+		      url: '/insertNewEvent',
+		      type: 'POST',
+		      data: new FormData( this ),
+		      processData: false,
+		      contentType: false,
+					success : function( data ){
+						console.log('VALOR DE DATA: '+data);
+						// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
+						if (data == 'ERROR') {
+							$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
+							$('.cevent-error').show();
+						}else{
+							saveImages();
+							$('#formCreateEvent').modal('toggle');
+							$('.cevent-error .sr-only').text("");
+							$('.cevent-error').hide();
+							$("#load-alert").load("header-footer.html #event-success");
+							window.setTimeout(function() { $("#event-success").alert('close'); }, 2000);
+						}
+					}
 				});
 			}
 		});
@@ -96,13 +105,13 @@ $( document ).ready(function() {
 		// When focus out the date input
 		$('.date').on('focusout',function(){
 			validateDate($(this).val());
-		});		
+		});
 		$('.hora').on('focusout',function(){
 			checkHour($(this).val());
-		});	
+		});
 		$('.numero').on('focusout',function(){
 			checkNumber($(this).val());
-		});	
+		});
 		$('.image1').on('change',function(){
 			if(checkIfFileIsImage($(this).val(),'img1')){
 				$(".image2").prop('disabled', false);
@@ -329,7 +338,7 @@ var saveImages = function(){
 	var image5 = $('.image5').val();
 	var image6 = $('.image6').val();
 	if (image1 != ""){
-		// Copy image to this directory 
+		// Copy image to this directory
 		var path = $('.image1').formaction();
 	}
 	if (image2 != ""){
@@ -361,19 +370,19 @@ var cargaCabecera = function(){
 		$('.signOut').show();
 	}
 }
-//Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie 
+//Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie
 var afterLogged = function(){
 	$('#formLogModal').modal('toggle');
 	var logged=$.cookie('logged');
 	 $('.createEvent').show();
 	 $('.signOut').show();
 	 $('.signIn').hide();
-	 $('.logIn').hide();	 
+	 $('.logIn').hide();
 	 var user = $('.user').val();
 	$('.userProfile').text(user);
 	$('.userProfile').show();
 	$.cookie('logged', 'true');
-	$.cookie('userName', user);	
+	$.cookie('userName', user);
 	var logged=$.cookie('logged');
 	var userName=$.cookie('userName');
 }
@@ -385,7 +394,7 @@ var signOut=function(){
 	 $('.createEvent').hide();
 	 $('.signOut').hide();
 	 $('.signIn').show();
-	 $('.logIn').show();	 
+	 $('.logIn').show();
 	 var user = $('.user').val();
 	$('.userProfile').text("");
 	$('.userProfile').hide();

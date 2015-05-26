@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var formidable = require('formidable');
+
 var id_user=1;
 var id_event;
 var titulo;
