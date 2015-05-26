@@ -60,19 +60,42 @@ $(function(){
 		$('.perfil-guardar-foto').show();
 		$('#image-perfil').show();
 	});
+	$('.foto-portada').click(function(){
+		$('.portada-guardar-foto').show();
+		$('#image-portada').show();
+	});
 	$('.perfil-guardar-foto').click(function(){
-		if (checkValue($('#image-perfil').val(),'foto')) {
-			$.post( "/changeImage", $(this).serialize(), function( data ) {
-				$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
-				$("#load-alert").load("header-footer.html #perfil-success");
-				window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
-			});
+		if (checkValue($('#image-perfil').val(),'image1')) {
+			if (checkIfFileIsImage($('.image1-perfil').val(),'image1')) {
+				var datos = {name_userOld:$.cookie('userName'), name_fotoPerfil:$('.image1-perfil').val()};
+				$.post( "/changeImage", datos, function( data ) {
+					if (data =='OK') {
+						$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
+						$("#load-alert").load("header-footer.html #perfil-success");
+						window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+					}
+				});
+			}
+		}
+	});
+	$('.portada-guardar-foto').click(function(){
+		if (checkValue($('#image-portada').val(),'image2')) {
+			if (checkIfFileIsImage($('.image2-perfil').val(),'image2')) {
+				var datos = {name_userOld:$.cookie('userName'), name_fotoPortada:$('.image2-perfil').val()};
+				$.post( "/changeImagePortada", datos, function( data ) {
+					if (data == 'OK') {
+						$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
+						$("#load-alert").load("header-footer.html #perfil-success");
+						window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+					}
+				});
+			}
 		}
 	});
 	$('.perfil-guardar-usuario').click(function(){
 		if (checkValue($('#usuario-perfil').val(),'usuario')) {
-			var datos={name_userOld: $.cookie('userName'), name_userNew: $('#usuario-perfil').val()};
-			$.post( "/changeUser",datos, function( data ) {
+			var datos = {name_userOld:$.cookie('userName'), name_userNew:$('#usuario-perfil').val()};
+			$.post( "/changeUser", datos, function( data ) {
 				// Receive answer with OK (if the event isn't in the DB) or ERROR (if  is in the DB)
 				if (data == 'ERROR') {
 					$('.usuario-perfil-error .text').text("ERROR: El nombre de usuario ya existe");
@@ -86,27 +109,30 @@ $(function(){
 					$.removeCookie('userName');
 					$.cookie('userName',datos.name_userNew);
 				}
-				});
+			});
 		}
 	});
 	$('.perfil-guardar-password').click(function(){
-		if (checkValue($('#password-perfil').val(),'password')) {
-			console.log($.cookie('userName'));
-			var datos={name_userOld: $.cookie('userName'), newPassword: $('#password-perfil').val()};
+		if (checkValue($('#password1-perfil').val(),'password') && checkValue($('#password2-perfil').val(),'password')) {
+			var datos = {name_userOld:$.cookie('userName'), newPassword:$('.password2-perfil').val()};
 			$.post( "/changePassword", datos, function( data ) {
-				$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
-				$("#load-alert").load("header-footer.html #perfil-success");
-				window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+				if (data == 'OK'){
+					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
+					$("#load-alert").load("header-footer.html #perfil-success");
+					window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+				}
 			});
 		}
 	});
 	$('.perfil-guardar-mail').click(function(){
 		if (checkValue($('#mail-perfil').val(),'mail')) {
-			var datos={name_userOld: $.cookie('userName'), newEmail: $('#mail-perfil').val()};
+			var datos = {name_userOld:$.cookie('userName'), newEmail:$('.mail-perfil').val()};
 			$.post( "/changeMail", datos, function( data ) {
-				$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
-				$("#load-alert").load("header-footer.html #perfil-success");
-				window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+				if (data == 'OK'){
+					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
+					$("#load-alert").load("header-footer.html #perfil-success");
+					window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+				}
 			});
 		}
 	});
@@ -116,7 +142,10 @@ $(function(){
 	});
 	$('.password-perfil').click(function(){
 		$('.perfil-guardar-password').show();
-		$('#password-perfil').show();
+		$('#password1-perfil-label').show();
+		$('#password1-perfil').show();
+		$('#password2-perfil-label').show();
+		$('#password2-perfil').show();
 	});
 	$('.email-perfil').click(function(){
 		$('.perfil-guardar-mail').show();
@@ -125,6 +154,15 @@ $(function(){
 	// When focus out the email input
 	$('.mail-perfil').on('focusout',function(){
 		validateEmail($(this).val());
+	});
+	$('.image1-perfil').on('change',function(){
+		checkIfFileIsImage($(this).val(),'image1');
+	});
+	$('.image2-perfil').on('change',function(){
+		checkIfFileIsImage($(this).val(),'image2');
+	});
+	$('#password2-perfil').on('focusout',function(){
+		checkPassword($(this).val());
 	});
 /********************************/
 });
@@ -186,7 +224,16 @@ var validateEmail = function(email) {
 var checkValue = function(param,value) {
 	var parametersOk = false;
     if (param==''){
-    	$('.'+value+'-perfil-error .text').text("ERROR: Debe introducir "+value);
+    	if (value == 'image1'){
+    		value1 = 'imagen de perfil';
+    	}
+    	else if (value == 'image2'){
+    		value1 = 'imagen de portada';
+    	}
+    	else {
+    		value1 = value;
+    	}
+    	$('.'+value+'-perfil-error .text').text("ERROR: Debe introducir "+value1);
 		$('.'+value+'-perfil-error').show();
 	}else{
 		parametersOk = true;
@@ -194,4 +241,34 @@ var checkValue = function(param,value) {
 		$('.'+value+'-perfil-error').hide();
     }
     return parametersOk;
+}
+
+// Check if the file uploaded is an image
+var checkIfFileIsImage = function(img, nImg){
+	var ext = img.split('.').pop().toLowerCase();
+	var isImage = false;
+	if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+		if (ext != "") {
+			$('.'+nImg+'-perfil-error .text').text("ERROR: Por favor, debe subir únicamente archivos que sean imágenes");
+			$('.'+nImg+'-perfil-error').show();
+		}
+	}else{
+		isImage = true;
+		$('.'+nImg+'-perfil-error .sr-only').text("");
+		$('.'+nImg+'-perfil-error').hide();
+	}
+	return isImage;
+}
+
+// Validate/show/hide the password input and date error
+var checkPassword = function(){
+	var pass1 = $('#password1-perfil').val();
+	var pass2 = $('#password2-perfil').val();
+	if(pass1!=pass2){
+		$('.passwordcheck-perfil-error .text').text("ERROR: Las contraseñas no coinciden");
+		$('.passwordcheck-perfil-error').show();
+	}else{
+		$('.passwordcheck-perfil-error .sr-only').text("");
+		$('.passwordcheck-perfil-error').hide();
+	}
 }

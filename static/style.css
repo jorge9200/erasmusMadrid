@@ -491,13 +491,14 @@ body > #container {
 }
 
 .menu {
-  background-image: url('./fondo_menu.jpg');
+  /*background-image: url('./fondo_menu.jpg');*/
+  background-color: #77BED2;
   background-size: cover;
   background-repeat: no-repeat;
-  left: -285px;  /* start off behind the scenes */
+  left: -380px;  /* start off behind the scenes */
   height: 100%;
   position: fixed;
-  width: 285px;
+  width: 380px;
   z-index: 2;
 }
 
@@ -515,6 +516,34 @@ body > #container {
   padding-bottom: 3px;
   padding-left: 20px;
   padding-top: 3px;
+}
+
+.form-group .perfil-guardar-foto {
+  margin-left: 130px;
+}
+.form-group .portada-guardar-foto {
+  margin-left: 112px;
+}
+.form-group .perfil-guardar-usuario {
+  margin-left: 87px;
+}
+.form-group #usuario-perfil {
+  width: 346px;
+}
+.form-group .perfil-guardar-password {
+  margin-left: 143px;
+}
+.form-group #password1-perfil {
+  width: 346px;
+}
+.form-group #password2-perfil {
+  width: 346px;
+}
+.form-group .perfil-guardar-mail {
+  margin-left: 182px;
+}
+.form-group #mail-perfil {
+  width: 346px;
 }
 
 .menu a {

@@ -33,10 +33,20 @@
 			<ul>
 				<div class="form-group">
 				<li><button type="button" class="foto-perfil btn btn-primary"> Foto de perfil <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-foto btn btn-success">Guardar</button>
-					<input style="display:none" class="image1" id="image-perfil" type="file" name="img" accept="image/*"> 
+					<input style="display:none" class="image1-perfil" id="image-perfil" type="file" name="img" accept="image/*"> 
 				</li>
 				</div>
-				<div style="display:none" class="foto-perfil-error alert alert-danger" role="alert">
+				<div style="display:none" class="image1-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>
+				<div class="form-group">
+				<li><button type="button" class="foto-portada btn btn-primary"> Foto de portada <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="portada-guardar-foto btn btn-success">Guardar</button>
+					<input style="display:none" class="image2-perfil" id="image-portada" type="file" name="img" accept="image/*"> 
+				</li>
+				</div>
+				<div style="display:none" class="image2-perfil-error alert alert-danger" role="alert">
 					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 					<span class="sr-only"></span>
 					<span class="text"></span>
@@ -53,10 +63,20 @@
 				</div>
 				<div class="form-group">
 				<li><button type="button" class="password-perfil btn btn-primary"> Contraseña <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-password btn btn-success">Guardar</button>
-					<input style="display:none" type="password" class="password form-control" id="password-perfil" name="password" placeholder="Introduzca su contraseña">
+					<div class="form-group">
+					<label style="display:none" for="password" id="password1-perfil-label">Contraseña Actual </label>
+					<input style="display:none" type="password" class="password1 form-control" id="password1-perfil" name="password" placeholder="Introduzca su contraseña actual">
+					<label style="display:none" for="password" id="password2-perfil-label">Contraseña Nueva </label>
+					<input style="display:none" type="password" class="password2 form-control" id="password2-perfil" name="password2" placeholder="Introduzca su nueva contraseña">
+					</div>
 				</li>
 				</div>
 				<div style="display:none" class="password-perfil-error alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only"></span>
+					<span class="text"></span>
+				</div>
+				<div style="display:none" class="passwordcheck-perfil-error alert alert-danger" role="alert">
 					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 					<span class="sr-only"></span>
 					<span class="text"></span>
@@ -128,7 +148,7 @@
 							<p id="description"></p>
 							<p id="date"></p>
 							<p id="infoDate"></p>
-							<a class="btn btn-primary verEvento" href="evento.html">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
+							<a class="btn btn-primary verEvento" >Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
 							<a class="btn btn-primary" style="display:none" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
 						</div>
 						<hr>
