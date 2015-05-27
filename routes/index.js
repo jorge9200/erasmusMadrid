@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var formidable = require('formidable');
-
 var id_user=1;
 var id_event;
 var titulo;
@@ -22,9 +20,23 @@ router.post('/registry', function(req, res, next){
     if (result.length != 0) {
       res.send('ERROR');
     }else{
-      insertUser(id_user, name_user, password, email, birthDate, function(err, result){
-        id_user=id_user+1;
-        res.send('OK');
+      maxIdUser(function(err, rows){
+        var id_string = JSON.stringify(rows);
+        id_string = id_string.replace('max(id_user)','');
+        id_string = id_string.replace('"','');
+        id_string = id_string.replace('"','');
+        id_string = id_string.replace(':','');
+        id_string = id_string.replace('[{','');
+        id_string = id_string.replace('}]','');
+        if(id_string!='null'){
+          id_user=parseInt(id_string)+1;
+        }else{
+          id_user=1;
+        }
+        insertUser(id_user, name_user, password, email, birthDate, function(err, result){
+            id_user=id_user+1;
+            res.send('OK');
+        });
       });
     }
   });
@@ -94,10 +106,24 @@ router.post('/eventSubscribe', function(req, res, next){
   var nombre=req.body.nombre;
    getIdUser(nombre,function(err, rows){
     var id=rows[0].id_user;
-    subscribeEvent(id,function(err, rows){  
-      res.send(rows);
+    subscribeEvent(id,function(err, rows){ 
+      res.send('OK');
     }); 
   });
+});
+
+router.post('/userSubscribe', function(req, res, next){
+  var user=req.body.user;
+  var titulo=req.body.titulo;
+  getIdEvent(titulo,function(err, rows){
+   var id_event=rows[0].id_event;
+   getIdUser(user,function(err, rows){
+    var id=rows[0].id_user;
+    userSubscribe(id,id_event,function(err, rows){  
+      res.send('OK');
+    }); 
+   });
+  }); 
 });
 
 router.post('/evento', function(req, res, next){
