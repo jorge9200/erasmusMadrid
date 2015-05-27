@@ -68,6 +68,18 @@ $( document ).ready(function() {
 	});
 
 	$("#load-event").load("header-footer.html #formCreateEvent", function(){
+
+		// Cuando introducimos el titulo del evento cambiamos el name de las imagenes
+		$('.event-modal #title').on('focusout', function(){
+			$('.image1').attr('name', $(this).val());
+			$('.image2').attr('name', $(this).val()+'1');
+			$('.image3').attr('name', $(this).val()+'2');
+			$('.image4').attr('name', $(this).val()+'3');
+			$('.image5').attr('name', $(this).val()+'4');
+			$('.image6').attr('name', $(this).val()+'5');
+
+		});
+
 		// When submit the event modal
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
