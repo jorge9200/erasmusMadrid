@@ -1,4 +1,12 @@
 $(function(){
+/*******Cargar foto de perfil y portada del usuario*******/
+	var nameUser={nombre: $.cookie('userName')};
+
+	$('fb-image-profile').attr("src",'./static/'+nameUser+'-perfil.jpg');
+	$('fb-image-profile').attr("alt",'./static/anonimoperfil.jpg');
+
+	$('fb-image-lg').attr("src",'./static/'+nameUser+'-portada.jpg');
+	$('fb-image-lg').attr("alt",'./static/anonimoportada.jpg');
 
 /*******Cargar eventos del usuario*******/
 	var sel = $("#sel_categ").val();
@@ -6,8 +14,9 @@ $(function(){
 	$('.refresh').click(function(){
 		location.reload();
 	});
-//deberia ser parecido al de listaEventos.js pero cogiendo SOLO los del usuario
-	var nameUser={nombre: $.cookie('userName')};
+	
+	$('#profile-name').text(nameUser);
+
 	$.post('/eventSubscribe',nameUser,function(data){
 	    for (var i = 0; i < data.length; i++) {
             if(sel==data[i].category || sel=='Todos'){
@@ -15,7 +24,6 @@ $(function(){
                 fechaOK=fechaCorrecta(data[i].date);
                 hour=(data[i].date).substring(11, 19);
                 var mensaje=days_between(fechaOK,hour);
-      
                 addEvent(data[i].title,data[i].description,fechaOK,mensaje);
             }
         };
@@ -67,35 +75,51 @@ $(function(){
 	$('.perfil-guardar-foto').click(function(){
 		if (checkValue($('#image-perfil').val(),'image1')) {
 			if (checkIfFileIsImage($('.image1-perfil').val(),'image1')) {
-				var datos = {name_userOld:$.cookie('userName'), name_fotoPerfil:$('.image1-perfil').val()};
-				$.post( "/changeImage", datos, function( data ) {
-					if (data =='OK') {
-						$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
-						$("#load-alert").load("header-footer.html #perfil-success");
-						window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+				/*$.ajax( {
+			      url: '/changeImage',
+			      type: 'POST',
+			      var datos = {name_userOld:$.cookie('userName'), imagen:$('.image1-perfil').val()};
+			      data: new FormData(datos),
+			      processData: false,
+			      contentType: false,
+					success : function( data ){
+						// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
+						if (data == 'OK') {
+							$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
+							$("#load-alert").load("header-footer.html #perfil-success");
+							window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+						}
 					}
-				});
+				});*/
 			}
 		}
 	});
 	$('.portada-guardar-foto').click(function(){
 		if (checkValue($('#image-portada').val(),'image2')) {
 			if (checkIfFileIsImage($('.image2-perfil').val(),'image2')) {
-				var datos = {name_userOld:$.cookie('userName'), name_fotoPortada:$('.image2-perfil').val()};
-				$.post( "/changeImagePortada", datos, function( data ) {
-					if (data == 'OK') {
-						$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
-						$("#load-alert").load("header-footer.html #perfil-success");
-						window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+				/*$.ajax( {
+			      url: '/changeImage',
+			      type: 'POST',
+			      var datos = {name_userOld:$.cookie('userName'), $('.image2-perfil').val()};
+			      data: new FormData(datos),
+			      processData: false,
+			      contentType: false,
+					success : function( data ){
+						// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
+						if (data == 'OK') {
+							$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
+							$("#load-alert").load("header-footer.html #perfil-success");
+							window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+						}
 					}
-				});
+				});*/
 			}
 		}
 	});
 	$('.perfil-guardar-usuario').click(function(){
 		if (checkValue($('#usuario-perfil').val(),'usuario')) {
-			var datos={name_userOld: $.cookie('userName'), name_userNew: $('#usuario-perfil').val()};
-			$.post( "/changeUser",datos, function( data ) {
+			var datos = {name_userOld:$.cookie('userName'), name_userNew:$('#usuario-perfil').val()};
+			$.post( "/changeUser", datos, function( data ) {
 				// Receive answer with OK (if the event isn't in the DB) or ERROR (if  is in the DB)
 				if (data == 'ERROR') {
 					$('.usuario-perfil-error .text').text("ERROR: El nombre de usuario ya existe");
@@ -109,13 +133,12 @@ $(function(){
 					$.removeCookie('userName');
 					$.cookie('userName',datos.name_userNew);
 				}
-				});
+			});
 		}
 	});
 	$('.perfil-guardar-password').click(function(){
-		if (checkValue($('#password-perfil').val(),'password')) {
-			console.log($.cookie('userName'));
-			var datos={name_userOld: $.cookie('userName'), newPassword: $('#password-perfil').val()};
+		if (checkValue($('#password1-perfil').val(),'password') && checkValue($('#password2-perfil').val(),'password')) {
+			var datos = {name_userOld:$.cookie('userName'), newPassword:$('.password2-perfil').val()};
 			$.post( "/changePassword", datos, function( data ) {
 				if (data == 'OK'){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
@@ -127,7 +150,7 @@ $(function(){
 	});
 	$('.perfil-guardar-mail').click(function(){
 		if (checkValue($('#mail-perfil').val(),'mail')) {
-			var datos={name_userOld: $.cookie('userName'), newEmail: $('.mail-perfil').val()};
+			var datos = {name_userOld:$.cookie('userName'), newEmail:$('.mail-perfil').val()};
 			$.post( "/changeMail", datos, function( data ) {
 				if (data == 'OK'){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");

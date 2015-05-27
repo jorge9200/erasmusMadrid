@@ -121,18 +121,18 @@ $( document ).ready(function() {
 			checkNumber($(this).val());
 		});
 		$('.image2').on('change',function(){
-			if(checkIfFileIsImage($(this).val(),'img1')){
+			if(checkIfFileIsImage($(this).val(),'img2') && ($('.image1').val() != '')){
 				$(".image3").prop('disabled', false);
 				$(".image4").prop('disabled', false);
 				$(".image5").prop('disabled', false);
 				$(".image6").prop('disabled', false);
 			}
 		});
-		$('.image2').on('change',function(){
-			checkIfFileIsImage($(this).val(),'img3');
+		$('.image1').on('change',function(){
+			checkIfFileIsImage($(this).val(),'img1');
 		});
 		$('.image3').on('change',function(){
-			checkIfFileIsImage($(this).val(),'img4');
+			checkIfFileIsImage($(this).val(),'img3');
 		});
 		$('.image4').on('change',function(){
 			checkIfFileIsImage($(this).val(),'img4');
