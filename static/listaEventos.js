@@ -4,10 +4,18 @@ $(function(){
     if(eventB=='true'){
         var filterType=$.cookie('event');
         $('.refresh').attr('value',filterType);
-        $('.refresh').text(filterType);
+        //$('.refresh').text(filterType);
         $.removeCookie('eventB');
         $.removeCookie('event');
     }
+    
+    $('#search').click(function(){
+        var search=$("#texto").val();
+        $.cookie('busqueda', search);
+        $.cookie('busquedaB','true');
+        location.reload();
+    })
+
     var sel= $("#sel_categ").val();
     $('.refresh').click(function(){
         location.reload();
@@ -15,16 +23,22 @@ $(function(){
         
     $.get('/lista',function(data){
         //var busqueda=$.cookie('busqueda');
+        var busqueda=$.cookie('busqueda');
+        var busquedaB=$.cookie('busquedaB');
         for (var i = 0; i < data.length; i++) {
             if(sel==data[i].category || sel=='Todos'){
+                if((busquedaB=='true')&&(data[i].title.toLowerCase().indexOf(busqueda.toLowerCase())>=0)||busquedaB!='true'){
+                    $.removeCookie('busqueda');
+                    $.removeCookie('busquedaB');
 
-                fechaOK=fechaCorrecta(data[i].date);
-                hour=(data[i].date).substring(11, 19);
-                var mensaje=days_between(fechaOK,hour);
+                    fechaOK=fechaCorrecta(data[i].date);
+                    hour=(data[i].date).substring(11, 19);
+                    var mensaje=days_between(fechaOK,hour);
       
-                description=(data[i].description).split('.');
-                description=description[0]+'...';
-                addEvent(data[i].title,description,fechaOK,mensaje);
+                    description=(data[i].description).split('.');
+                    description=description[0]+'...';
+                    addEvent(data[i].title,description,fechaOK,mensaje);
+                }
             }
         };
     });
@@ -33,12 +47,10 @@ $(function(){
         $('#subscribe').show();
     }
 
-    $('.verEvento').click(function(){
-         var id=$(this).attr('id');
-         $.cookie('prueba',id);        
-    });
+
 });
 
+var nEvento = 0;
 var addEvent = function(title,description,date,mensaje){
     var eventToDom = $('.event.prototype').clone();
 
@@ -56,9 +68,16 @@ var addEvent = function(title,description,date,mensaje){
     eventToDom.find('#month').text(monthName);
     eventToDom.find('#day').text(day);
     eventToDom.find('#infoDate').text(mensaje);
-
+    eventToDom.find('.verEvento').attr("onclick","goToEvent(\'"+title+"\')");
+    nEvento++;
+    
     $('#startEvents').after(eventToDom);
     eventToDom.after('<hr>');
+    }
+    function goToEvent(title){
+        $.removeCookie('evento');
+        $.cookie('evento',title);
+        //href="evento.html"
 }
 
 var fechaCorrecta = function(date){

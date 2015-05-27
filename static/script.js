@@ -139,6 +139,10 @@ $( document ).ready(function() {
 		    swichImage($(this).attr('id'));
 		});
 		$('.toEventFilter').click(function () {
+			searchEvent($(this).attr('id'));
+		});
+	    
+	    $('.verEvento').click(function () {
 		   searchEvent($(this).attr('id'));
 		});
 	});
