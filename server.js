@@ -75,6 +75,13 @@ global.maxIdUser = function(callback) {
 };
 
 //Devuelve el max(id_event) para que se inserte un evento con el siguiente id al obtenido
+global.maxIdEvent = function(callback) {
+    connection.query("SELECT max(id_event) FROM event", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+//Devuelve el max(id_event) para que se inserte un evento con el siguiente id al obtenido
 global.maxId = function(callback) {
     connection.query("SELECT max(id_event) FROM event", function(err, rows, fields) {
         callback(err, rows);

@@ -56,9 +56,13 @@ router.post('/log', function(req, res, next){
 });
 
 router.post('/insertNewEvent', function(req, res, next){
-  //console.log(req.body.number);//el numero no lo recoge bien
   var title=req.body.title;
-  var category=req.body.category;
+  var category = '';
+  if(req.body.category == 'Gastronomia'){
+    category = 'Gastronomía'
+  }else{
+    category = req.body.category;
+  }
   var description=req.body.description;
   var address=req.body.address;
   var calle=req.body.calle;
@@ -79,7 +83,6 @@ router.post('/insertNewEvent', function(req, res, next){
     id_string = id_string.replace('[{','');
     id_string = id_string.replace('}]','');
     id_event=parseInt(id_string)+1;
-
     getTitle(title,function(err, rows){
       if (rows.length != 0) {
         res.send('ERROR');
@@ -106,9 +109,9 @@ router.post('/eventSubscribe', function(req, res, next){
   var nombre=req.body.nombre;
    getIdUser(nombre,function(err, rows){
     var id=rows[0].id_user;
-    subscribeEvent(id,function(err, rows){ 
+    subscribeEvent(id,function(err, rows){
       res.send('OK');
-    }); 
+    });
   });
 });
 
@@ -119,11 +122,11 @@ router.post('/userSubscribe', function(req, res, next){
    var id_event=rows[0].id_event;
    getIdUser(user,function(err, rows){
     var id=rows[0].id_user;
-    userSubscribe(id,id_event,function(err, rows){  
+    userSubscribe(id,id_event,function(err, rows){
       res.send('OK');
-    }); 
+    });
    });
-  }); 
+  });
 });
 
 router.post('/evento', function(req, res, next){
@@ -153,7 +156,7 @@ router.post('/changePassword', function(req, res, next){
   var newPassword=req.body.newPassword;
   changePassword(name_userOld,newPassword,function(err, result){
       res.send('OK');
-  });    
+  });
 });
 
 router.post('/changeMail', function(req, res, next){
@@ -161,7 +164,7 @@ router.post('/changeMail', function(req, res, next){
   var newEmail=req.body.newEmail;
   changeMail(name_userOld,newEmail,function(err, result){
       res.send('OK');
-  });    
+  });
 });
 
 module.exports = router;

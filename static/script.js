@@ -68,9 +68,20 @@ $( document ).ready(function() {
 	});
 
 	$("#load-event").load("header-footer.html #formCreateEvent", function(){
+		// Cuando introducimos el titulo del evento cambiamos el name de las imagenes
+		$('.event-modal #title').on('focusout', function(){
+			$('.image1').attr('name', $(this).val());
+			$('.image2').attr('name', $(this).val()+'1');
+			$('.image3').attr('name', $(this).val()+'2');
+			$('.image4').attr('name', $(this).val()+'3');
+			$('.image5').attr('name', $(this).val()+'4');
+			$('.image6').attr('name', $(this).val()+'5');
+
+		});
 		// When submit the event modal
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
+			console.log($('#categoria').val());
 			if (checkParametersEvent()){
 				//$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
 				$.ajax( {
@@ -80,13 +91,11 @@ $( document ).ready(function() {
 		      processData: false,
 		      contentType: false,
 					success : function( data ){
-						console.log('VALOR DE DATA: '+data);
 						// Receive answer with OK (if the user is in the DB) or ERROR (if  isn't in the DB)
 						if (data == 'ERROR') {
 							$('.cevent-error .text').text("ERROR: El nombre de evento ya existe");
 							$('.cevent-error').show();
 						}else{
-							saveImages();
 							$('#formCreateEvent').modal('toggle');
 							$('.cevent-error .sr-only').text("");
 							$('.cevent-error').hide();
@@ -111,9 +120,8 @@ $( document ).ready(function() {
 		$('.numero').on('focusout',function(){
 			checkNumber($(this).val());
 		});
-		$('.image1').on('change',function(){
+		$('.image2').on('change',function(){
 			if(checkIfFileIsImage($(this).val(),'img1')){
-				$(".image2").prop('disabled', false);
 				$(".image3").prop('disabled', false);
 				$(".image4").prop('disabled', false);
 				$(".image5").prop('disabled', false);
@@ -141,7 +149,7 @@ $( document ).ready(function() {
 		$('.toEventFilter').click(function () {
 			searchEvent($(this).attr('id'));
 		});
-	    
+
 	    $('.verEvento').click(function () {
 		   searchEvent($(this).attr('id'));
 		});
@@ -335,35 +343,6 @@ var checkParametersEvent = function(){
 	}
 	return parametersEventOk;
 }
-// Save the images of the creation of the event in /static
-var saveImages = function(){
-	// Gets the input values
-	var image1 = $('.image1').val();
-	var image2 = $('.image2').val();
-	var image3 = $('.image3').val();
-	var image4 = $('.image4').val();
-	var image5 = $('.image5').val();
-	var image6 = $('.image6').val();
-	if (image1 != ""){
-		// Copy image to this directory
-		var path = $('.image1').formaction();
-	}
-	if (image2 != ""){
-		// Copy image to this directory
-	}
-	if (image3 != ""){
-		// Copy image to this directory
-	}
-	if (image4 != ""){
-		// Copy image to this directory
-	}
-	if (image5 != ""){
-		// Copy image to this directory
-	}
-	if (image6 != ""){
-		// Copy image to this directory
-	}
-}
 
 var cargaCabecera = function(){
 	var logged=$.cookie('logged');
@@ -378,7 +357,7 @@ var cargaCabecera = function(){
 	}
 
 }
-//Función para hacer log in TODO: comprobar que usuario esta en BD y almacenar en coockie
+//Función para hacer log in comprobar que usuario esta en BD y almacenar en coockie
 var afterLogged = function(){
 	$('#formLogModal').modal('toggle');
 	var logged=$.cookie('logged');

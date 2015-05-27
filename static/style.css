@@ -64,7 +64,7 @@ html, body{
   text-decoration: none;
 }
 
-#sign-success {
+#sign-success, #event-success, #perfil-success {
   box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
   width: 30%;
   position: fixed;
@@ -111,7 +111,7 @@ html, body{
   box-shadow: 6px 6px 29px 0px rgba(0,0,0,0.75);
   text-align: center;
   font-size:9px;
-  font-family: sans-serif; 
+  font-family: sans-serif;
 }
 
 .item{
@@ -169,7 +169,7 @@ html, body{
 
 .jumbotron .container h1{
   color: Black;
-  font-size: 48px;  
+  font-size: 48px;
   font-family: 'Shift', sans-serif;
   font-weight: bold;
 }
@@ -438,7 +438,7 @@ html, body{
 
 @media (max-width:768px)
 {
-    
+
 .fb-profile-text>h1{
     font-weight: 700;
     font-size:16px;
@@ -448,7 +448,7 @@ html, body{
 {
     margin: -45px 10px 0px 25px;
     z-index: 9;
-    width: 20%; 
+    width: 20%;
 }
 
 
@@ -495,7 +495,7 @@ html, body{
 }
 
 .container hr{
-  border-bottom: 2px solid #77BED2;  
+  border-bottom: 2px solid #77BED2;
 }
 
 
