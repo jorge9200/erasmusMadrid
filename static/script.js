@@ -83,7 +83,6 @@ $( document ).ready(function() {
 		// When submit the event modal
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
-			$('image1').val('image1');
 			if (checkParametersEvent()){
 				//$.post( "/insertNewEvent", $(this).serialize(), function( data ) {
 				$.ajax( {
