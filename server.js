@@ -25,7 +25,12 @@ app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer({ dest: __dirname + '/static'}));
+app.use(multer({ dest: __dirname + '/static',
+ rename: function (fieldname, filename) {
+    return fieldname;
+  }
+}));
+
 app.use(cookieParser());
 
 app.use('/', routes);
