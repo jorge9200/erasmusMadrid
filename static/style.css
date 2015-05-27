@@ -64,7 +64,7 @@ html, body{
   text-decoration: none;
 }
 
-#sign-success {
+#sign-success, #event-success, #perfil-success {
   box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
   width: 30%;
   position: fixed;
