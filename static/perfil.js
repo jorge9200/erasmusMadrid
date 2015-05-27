@@ -1,13 +1,25 @@
 $(function(){
-
+/*******Cargar foto de perfil y portada del usuario*******/
+	$.get('/fotoPerfil', function(data){
+		if (data != '') {
+	    	$('fb-image-profile').attr("src",data);
+		}
+	});
+	$.get('/fotoPortada', function(data){
+		if (data != '') {
+	    	$('fb-image-lg').attr("src",data);
+		}
+	});
 /*******Cargar eventos del usuario*******/
 	var sel = $("#sel_categ").val();
 
 	$('.refresh').click(function(){
 		location.reload();
 	});
-//deberia ser parecido al de listaEventos.js pero cogiendo SOLO los del usuario
+	
 	var nameUser={nombre: $.cookie('userName')};
+	$('#profile-name').text(nameUser);
+
 	$.post('/eventSubscribe',nameUser,function(data){
 	    for (var i = 0; i < data.length; i++) {
             if(sel==data[i].category || sel=='Todos'){

@@ -321,11 +321,13 @@ var checkParametersEvent = function(){
 	var date = $('.event-modal .form-group .date').val();
 	var hour = $('.hour').val();
 	var image1 = $('.image1').val();
+	var image2 = $('.image2').val();
 
 	// Show a error message if remains some input to fill
 	var parametersEventOk = false;
 	var isImage = checkIfFileIsImage(image1,'img1');
-	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage || hour==""){
+	var isImage1 = checkIfFileIsImage(image2,'img2');
+	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage || !isImage2 || hour==""){
 		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos obligatorios");
 		$('.param-error').show();
 	}else{
