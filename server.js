@@ -9,6 +9,7 @@ var http = require('http');
 var mysql = require('mysql');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var multer = require('multer');
 
 // APPLICATION
 var app = express();
@@ -24,6 +25,11 @@ app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer({ dest: __dirname + '/static',
+ rename: function (fieldname, filename) {
+    return fieldname;
+  }
+}));
 app.use(cookieParser());
 
 app.use('/', routes);
@@ -89,7 +95,7 @@ global.getTitle = function(title, callback) {
     });
 };
 
-//Devuelve la información de todos los eventos 
+//Devuelve la información de todos los eventos
 global.getEvent = function(callback) {
     connection.query("SELECT title,description,category,date FROM event ORDER BY date DESC", function(err, rows, fields) {
         callback(err, rows);
