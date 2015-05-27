@@ -3,8 +3,13 @@ $(function(){
     var eventB=$.cookie('eventB');
     if(eventB=='true'){
         var filterType=$.cookie('event');
-        $('.refresh').attr('value',filterType);
-        //$('.refresh').text(filterType);
+        if(filterType == 'Vida nocturna'){
+            $('#sel_categ').val('Vida nocturna');
+        }else if (filterType == 'Turismo'){
+            $('#sel_categ').val('Turismo');
+        }else if (filterType == 'Gastronomía'){
+            $('#sel_categ').val('Gastronomía');
+        }
         $.removeCookie('eventB');
         $.removeCookie('event');
     }

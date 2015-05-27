@@ -1,25 +1,13 @@
 $(function(){
-/*******Cargar foto de perfil y portada del usuario*******/
-	$.get('/fotoPerfil', function(data){
-		if (data != '') {
-	    	$('fb-image-profile').attr("src",data);
-		}
-	});
-	$.get('/fotoPortada', function(data){
-		if (data != '') {
-	    	$('fb-image-lg').attr("src",data);
-		}
-	});
+
 /*******Cargar eventos del usuario*******/
 	var sel = $("#sel_categ").val();
 
 	$('.refresh').click(function(){
 		location.reload();
 	});
-	
+//deberia ser parecido al de listaEventos.js pero cogiendo SOLO los del usuario
 	var nameUser={nombre: $.cookie('userName')};
-	$('#profile-name').text(nameUser);
-
 	$.post('/eventSubscribe',nameUser,function(data){
 	    for (var i = 0; i < data.length; i++) {
             if(sel==data[i].category || sel=='Todos'){
@@ -106,8 +94,8 @@ $(function(){
 	});
 	$('.perfil-guardar-usuario').click(function(){
 		if (checkValue($('#usuario-perfil').val(),'usuario')) {
-			var datos = {name_userOld:$.cookie('userName'), name_userNew:$('#usuario-perfil').val()};
-			$.post( "/changeUser", datos, function( data ) {
+			var datos={name_userOld: $.cookie('userName'), name_userNew: $('#usuario-perfil').val()};
+			$.post( "/changeUser",datos, function( data ) {
 				// Receive answer with OK (if the event isn't in the DB) or ERROR (if  is in the DB)
 				if (data == 'ERROR') {
 					$('.usuario-perfil-error .text').text("ERROR: El nombre de usuario ya existe");
@@ -121,12 +109,13 @@ $(function(){
 					$.removeCookie('userName');
 					$.cookie('userName',datos.name_userNew);
 				}
-			});
+				});
 		}
 	});
 	$('.perfil-guardar-password').click(function(){
-		if (checkValue($('#password1-perfil').val(),'password') && checkValue($('#password2-perfil').val(),'password')) {
-			var datos = {name_userOld:$.cookie('userName'), newPassword:$('.password2-perfil').val()};
+		if (checkValue($('#password-perfil').val(),'password')) {
+			console.log($.cookie('userName'));
+			var datos={name_userOld: $.cookie('userName'), newPassword: $('#password-perfil').val()};
 			$.post( "/changePassword", datos, function( data ) {
 				if (data == 'OK'){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
@@ -138,7 +127,7 @@ $(function(){
 	});
 	$('.perfil-guardar-mail').click(function(){
 		if (checkValue($('#mail-perfil').val(),'mail')) {
-			var datos = {name_userOld:$.cookie('userName'), newEmail:$('.mail-perfil').val()};
+			var datos={name_userOld: $.cookie('userName'), newEmail: $('.mail-perfil').val()};
 			$.post( "/changeMail", datos, function( data ) {
 				if (data == 'OK'){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");

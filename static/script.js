@@ -68,18 +68,6 @@ $( document ).ready(function() {
 	});
 
 	$("#load-event").load("header-footer.html #formCreateEvent", function(){
-
-		// Cuando introducimos el titulo del evento cambiamos el name de las imagenes
-		$('.event-modal #title').on('focusout', function(){
-			$('.image1').attr('name', $(this).val());
-			$('.image2').attr('name', $(this).val()+'1');
-			$('.image3').attr('name', $(this).val()+'2');
-			$('.image4').attr('name', $(this).val()+'3');
-			$('.image5').attr('name', $(this).val()+'4');
-			$('.image6').attr('name', $(this).val()+'5');
-
-		});
-
 		// When submit the event modal
 		$('.event-modal').on('submit', function(e){
 			e.preventDefault();
@@ -333,13 +321,11 @@ var checkParametersEvent = function(){
 	var date = $('.event-modal .form-group .date').val();
 	var hour = $('.hour').val();
 	var image1 = $('.image1').val();
-	var image2 = $('.image2').val();
 
 	// Show a error message if remains some input to fill
 	var parametersEventOk = false;
 	var isImage = checkIfFileIsImage(image1,'img1');
-	var isImage1 = checkIfFileIsImage(image2,'img2');
-	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage || !isImage2 || hour==""){
+	if (titulo=="" || descripcion=="" || direccion=="" || numero=="" || date=="" || !isImage || hour==""){
 		$('.param-error .text').text("ERROR: Por favor, rellene todos los campos obligatorios");
 		$('.param-error').show();
 	}else{
