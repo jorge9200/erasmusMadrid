@@ -9,7 +9,6 @@ var http = require('http');
 var mysql = require('mysql');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var multer = require('multer');
 
 // APPLICATION
 var app = express();
@@ -25,12 +24,6 @@ app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer({ dest: __dirname + '/static',
- rename: function (fieldname, filename) {
-    return fieldname;
-  }
-}));
-
 app.use(cookieParser());
 
 app.use('/', routes);
@@ -63,13 +56,20 @@ global.getUser = function(name_user, callback) {
 
 //Devuelve el id_user según el nombre de usuario
 global.getIdUser = function(name_user, callback) {
-    connection.query("SELECT id_user FROM user WHERE name_user='"+ name_user +"';", function(err, rows, fields) {
+    connection.query("SELECT id_user FROM user WHERE name_user='"+name_user+"';", function(err, rows, fields) {
         callback(err, rows);
     });
 };
 
 //Devuelve el max(id_event) para que se inserte un evento con el siguiente id al obtenido
-global.maxIdEvent = function(callback) {
+global.maxIdUser = function(callback) {
+    connection.query("SELECT max(id_user) FROM user", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+//Devuelve el max(id_event) para que se inserte un evento con el siguiente id al obtenido
+global.maxId = function(callback) {
     connection.query("SELECT max(id_event) FROM event", function(err, rows, fields) {
         callback(err, rows);
     });
@@ -89,7 +89,7 @@ global.getTitle = function(title, callback) {
     });
 };
 
-//Devuelve la información de todos los eventos
+//Devuelve la información de todos los eventos 
 global.getEvent = function(callback) {
     connection.query("SELECT title,description,category,date FROM event ORDER BY date DESC", function(err, rows, fields) {
         callback(err, rows);
@@ -110,6 +110,12 @@ global.subscribeEvent = function(id_user,callback) {
     });
 };
 
+global.userSubscribe = function(id_user,id_event,callback) {
+    connection.query("INSERT IGNORE INTO user_event(id_user,id_event) VALUES ('"+id_user+"','"+id_event+"');",function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
 //perfil
 global.changeUser = function(name_userNew,name_userOld,callback) {
     connection.query("UPDATE user SET name_user='"+name_userNew+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
@@ -125,6 +131,12 @@ global.changePassword = function(name_userOld,newPassword,callback) {
 
 global.changeMail = function(name_userOld,newEmail,callback) {
     connection.query("UPDATE user SET email='"+newEmail+"' WHERE name_user='"+name_userOld+"';" , function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
+global.getIdEvent = function(name_event, callback) {
+    connection.query("SELECT id_event FROM event WHERE title='"+ name_event +"';", function(err, rows, fields) {
         callback(err, rows);
     });
 };
