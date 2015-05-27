@@ -1,4 +1,4 @@
-html, body{ 
+html, body{
   margin:0;
   padding:0;
   height:100%;
@@ -9,44 +9,151 @@ html, body{
   position: relative;
   background-color: #F7F3E8;
 }
-.imgEvent:hover { 
-  opacity: 0.3; filter: alpha(opacity=30);
-} 
-.item{
-    height: 500px;
-    margin-top: 0px;
-    width: 100%;
-    background-size: cover;
-    position: relative;
+
+.modal-title {
+  color: #FFFFFF;
+  font-size: 18px;
 }
+
+.modal-header {
+    background-color: #77BED2;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+#header {
+  background-image: -moz-linear-gradient(bottom, #D5E1DD, 75%, #ffffff);
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+
+.button-nav {
+  font-family: sans-serif;
+  color: black;
+  font-size: 16px;
+  background-image: -moz-linear-gradient(bottom, #D5E1DD, 75%, #ffffff);
+  padding: 6px 10px 6px 10px;
+  border: none;
+  text-decoration: none;
+}
+
+.button-nav:hover{
+  background-image: -moz-linear-gradient(bottom, #000000, 75%, #2B3E42);
+  border-color: #2B3E42;
+  color: white;
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+}
+
+.register-modal .checkbox label {
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0;
+  min-height: 20px;
+  padding-left: 0px;
+}
+
+.userProfile {
+  font-family: sans-serif;
+  color: black;
+  font-size: 16px;
+  background-image: -moz-linear-gradient(bottom, #889C95, 75%, #ffffff);
+  padding: 6px 10px 6px 10px;
+  border: none;
+  text-decoration: none;
+}
+
+#sign-success {
+  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
+  width: 30%;
+  position: fixed;
+  z-index: 2;
+  top: 35px;
+  right: 0;
+}
+
+.pull-left #nav{
+  margin-left: 250px;
+}
+
+.pull-right #nav{
+  margin-right: 250px;
+}
+.form-group #bloque {
+  display: inline-block;
+}
+.form-group #bloque2{
+  display: inline-block;
+}
+.form-group .direccion{
+  width: 30%;
+}
+.form-group .numero{
+  display: block;
+  width: 17%;
+}
+.form-group .date{
+  width: 54%;
+}
+.form-group .hora{
+  display: block;
+  width: 17%;
+}
+
+#footer {
+  width:100%;
+  height:20px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background-image: -moz-linear-gradient(top, #D5E1DD, 75%, #ffffff);
+  box-shadow: 6px 6px 29px 0px rgba(0,0,0,0.75);
+  text-align: center;
+  font-size:9px;
+  font-family: sans-serif; 
+}
+
+.item{
+  height: 500px;
+  margin-top: 0px;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+}
+
 #skyline{
   background-image: url('./skyline.jpg');
   margin-top: 35px
 }
+
 #palacio{
   background-image: url('./palacio.jpg');
   margin-top: 35px
 }
+
 #plazamayor{
   background-image: url('./plazamayor.jpg');
   margin-top: 35px
 }
+
 #metropolis{
   background-image: url('./metropoli.jpg');
   margin-top: 35px
 }
+
 #ayuntamiento{
   background-image: url('./ayuntamiento.jpg');
   margin-top: 35px
 }
-body > #container {
-  height: auto;
-  min-height: 100%;
+
+#content { /*dejo este porque asi no se ve la linea de abajo del todo*/
+  padding-bottom: 20px;
 }
 
-#content {
+/*#content {
   padding-bottom: 3em;
-}
+}*/
 
 #content .jumbotron {
   height: 500px;
@@ -85,20 +192,6 @@ body > #container {
   text-decoration: underline;
 }
 
-.learn-more {
-  background-color: #f7f7f7;
-}
-
-.learn-more h3 {
-  font-family: 'Shift', sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.learn-more a {
-  color: #00b0ff;
-}
-
 .neighborhood-guides {
     background-color: #F7F3E8;
     border-bottom: 1px solid #dbdbdb;
@@ -114,78 +207,63 @@ body > #container {
     margin-bottom: 13px;
 }
 
-.modal-title {
-  color: #FFFFFF;
-  font-size: 18px;
-}
-
-.modal-header {
-    background-color: #77BED2;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-}
-
-#header {
-  background-image: -moz-linear-gradient(bottom, #D5E1DD, 75%, #ffffff);
-  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
-  width: 100%;
-  position: fixed;
-  z-index: 2;
-}
-
-.button-nav {
-  font-family: sans-serif;
-  color: black;
-  font-size: 16px;
-  background-image: -moz-linear-gradient(bottom, #D5E1DD, 75%, #ffffff);
-  padding: 6px 10px 6px 10px;
-  border: none;
-  text-decoration: none;
-}
-
-.userProfile {
-  font-family: sans-serif;
-  color: black;
-  font-size: 16px;
-  background-image: -moz-linear-gradient(bottom, #889C95, 75%, #ffffff);
-  padding: 6px 10px 6px 10px;
-  border: none;
-  text-decoration: none;
-}
-
-.button-nav:hover{
-  background-image: -moz-linear-gradient(bottom, #000000, 75%, #2B3E42);
-  border-color: #2B3E42;
-  color: white;
-  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
-}
-#sign-success {
-  box-shadow: 6px 6px 29px -10px rgba(0,0,0,0.51);
-  width: 30%;
-  position: fixed;
-  z-index: 2;
-  top: 35px;
-  right: 0;
-}
-
-/*.footer {
-  background-color: #f7f7f7;
-}
-
-.footer li {
-  display: inline;
-  color: #5a5a5a;
-  font-size: 11px;
-  font-weight: bold;
-  padding: 14px 10px;
-  text-transform: uppercase;
-}*/
-
 #eventList{
   padding-top: 60px;
 }
-#eventList h2{
-  font-size: 20px;
+
+.row .col-lg-12 .page-header{ /*comun para listaEventos y eventos (y puede que perfil, comprobarlo)*/
+  border-bottom: 2px solid #77BED2;
+  margin: 40px 0 20px;
+  padding-bottom: 9px;
+}
+
+#tfnewsearch{
+  float:right;
+  padding:20px;
+}
+
+.tftextinput{
+  margin: 0;
+  padding: 5px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:14px;
+  border:1px solid #0076a3; border-right:0px;
+  border-top-left-radius: 5px 5px;
+  border-bottom-left-radius: 5px 5px;
+}
+
+.tfbutton {
+  margin: 0;
+  padding: 5px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:14px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border: solid 1px #0076a3; border-right:0px;
+  background: #77bed2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+  background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+  border-top-right-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+}
+
+.tfbutton:hover {
+  text-decoration: none;
+  background: #007ead;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+  background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+}
+
+/* Fixes submit button height problem in Firefox */
+.tfbutton::-moz-focus-inner {
+  border: 0;
+}
+
+.tfclear{
+  clear:both;
 }
 
 #lista{
@@ -211,8 +289,10 @@ body > #container {
   opacity: 0;
 }
 
+.prototype {
+  display: none;
+}
 
-/*Tabla para mostrar la fecha con el calendario de fondo*/
 .dateImg{
   background-image: url(./calendarIcon.jpg);
   background-size: 100% 100%;
@@ -235,8 +315,6 @@ body > #container {
 }
 
 .day td{
-  /*font-family: CalendarFont;
-  font-size: 70px;*/
   font-size: 50px;
 }
 
@@ -248,7 +326,6 @@ body > #container {
   padding-bottom: 10px;
   font-size: 20px;
 }
-/***************/
 
 .dateMssg{
   float: right;
@@ -261,78 +338,169 @@ body > #container {
   text-align: center;
   font-size:2.8em;
   font-family: 'Permanent Marker', cursive;
-
 }
 
-/*
+.imgEvent:hover {
+  opacity: 0.3; filter: alpha(opacity=30);
+}
+
+#descImg{
+  padding-top: 20px;
+}
+
+#wrapper hr{
+  border-bottom: 2px solid #77BED2;
+}
+
+.menu {
+  background-color: #77BED2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: -380px;  /* start off behind the scenes */
+  height: 100%;
+  position: fixed;
+  width: 380px;
+  z-index: 2;
+}
+
+.menu ul {
+  border-top: 1px solid #fff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #fff;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 45px;
+  padding-bottom: 3px;
+  padding-left: 20px;
+}
+
+.menu a {
+  color: #636366;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.form-group .perfil-guardar-foto {
+  margin-left: 130px;
+}
+.form-group .portada-guardar-foto { /*agregar esta opcion al menu. Comprobar ultimo sync de Minguito*/
+  margin-left: 112px;
+}
+.form-group .perfil-guardar-usuario {
+  margin-left: 87px;
+}
+.form-group #usuario-perfil {
+  width: 346px;
+}
+.form-group .perfil-guardar-password {
+  margin-left: 143px;
+}
+.form-group #password1-perfil {
+  width: 346px;
+}
+.form-group #password2-perfil {
+  width: 346px;
+}
+.form-group .perfil-guardar-mail {
+  margin-left: 182px;
+}
+.form-group #mail-perfil {
+  width: 346px;
+}
+
+.icon-close {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.glyphicon{
+  cursor: pointer;
+}
+
+.fb-profile img.fb-image-lg{
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.fb-image-profile
+{
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%;
+}
+
+@media (max-width:768px)
+{
+    
+.fb-profile-text>h1{
+    font-weight: 700;
+    font-size:16px;
+}
+
+.fb-image-profile
+{
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%; 
+}
+
+
+
+
+/*body > #container {
+  height: auto;
+  min-height: 100%;
+}
+
+.learn-more {
+  background-color: #f7f7f7;
+}
+
+.learn-more h3 {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.learn-more a {
+  color: #00b0ff;
+}
+
+.footer {
+  background-color: #f7f7f7;
+}
+
+.footer li {
+  display: inline;
+  color: #5a5a5a;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+#eventList h2{
+  font-size: 20px;
+}
+
 .oculto{
   opacity: 0;
-}
-*/
-
-#content { 
-  padding-bottom: 20px;
-}
-
-#footer {
-  width:100%;
-  height:20px;
-  position:absolute;
-  bottom:0;
-  left:0;
-  background-image: -moz-linear-gradient(top, #D5E1DD, 75%, #ffffff);
-  box-shadow: 6px 6px 29px 0px rgba(0,0,0,0.75);
-  text-align: center;
-  font-size:9px;
-  font-family: sans-serif; 
-}
-
-.pull-left #nav{
-  margin-left: 250px;
-}
-
-.pull-right #nav{
-  margin-right: 250px;
-}
-.form-group #bloque {
-  display: inline-block;
-}
-.form-group #bloque2{
-  display: inline-block;
-}
-.form-group .direccion{
-  width: 30%;
-}
-.form-group .numero{
-  display: block;
-  width: 17%;
-}
-.form-group .date{
-  width: 54%;
-}
-.form-group .hora{
-  display: block;
-  width: 17%;
-}
-.row .col-lg-12 .page-header{
-  border-bottom: 2px solid #77BED2;
-  margin: 40px 0 20px;
-  padding-bottom: 9px;
 }
 
 .container hr{
   border-bottom: 2px solid #77BED2;  
 }
-.register-modal .checkbox label {
-  cursor: pointer;
-  font-weight: 400;
-  margin-bottom: 0;
-  min-height: 20px;
-  padding-left: 0px;
-}
-/*style de events*/
+
+
 .list {
-  padding-top: 60px; /*lo pongo para que al salir un evento la parte de arriba no quede tapada por el header*/
+  padding-top: 60px;
   background-color: #efefef;
   border-bottom: 1px solid #dbdbdb;
 }
@@ -351,81 +519,27 @@ body > #container {
   padding-top: 18px;
 }
 
-.prototype {
-  display: none;
-}
-
 #imgEvents {
   padding: 15px;
   height: 271px;
   width: 242px;
 }
-/*FIN style de events*/
- #tfheader{
-        background-color:#c3dfef;
-    }
-    #tfnewsearch{
-        float:right;
-        padding:20px;
-    }
-    .tftextinput{
-        margin: 0;
-        padding: 5px 15px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size:14px;
-        border:1px solid #0076a3; border-right:0px;
-        border-top-left-radius: 5px 5px;
-        border-bottom-left-radius: 5px 5px;
-    }
-    .tfbutton {
-        margin: 0;
-        padding: 5px 15px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size:14px;
-        outline: none;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        border: solid 1px #0076a3; border-right:0px;
-        background: #77bed2;
-        background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-        background: -moz-linear-gradient(top,  #00adee,  #0078a5);
-        border-top-right-radius: 5px 5px;
-        border-bottom-right-radius: 5px 5px;
-    }
-    .tfbutton:hover {
-        text-decoration: none;
-        background: #007ead;
-        background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-        background: -moz-linear-gradient(top,  #0095cc,  #00678e);
-    }
-    /* Fixes submit button height problem in Firefox */
-    .tfbutton::-moz-focus-inner {
-      border: 0;
-    }
-    .tfclear{
-        clear:both;
-    }
 
-/*style de evento.html*/
-#descImg{
-  padding-top: 20px;
+#tfheader{
+  background-color:#c3dfef;
 }
 
-/*FIN style de evento.html*/
-
-<<<<<<< HEAD
-/*CSS Comentarios*/
 .detailBox {
-    width:320px;
-    border:1px solid #bbb;
-    margin:50px;
+  width:320px;
+  border:1px solid #bbb;
+  margin:50px;
 }
+
 .titleBox {
-    background-color:#fdfdfd;
-    padding:10px;
+  background-color:#fdfdfd;
+  padding:10px;
 }
+
 .titleBox label{
   color:#444;
   margin:0;
@@ -482,113 +596,4 @@ body > #container {
 .actionBox {
     border-top:1px dotted #bbb;
     padding:10px;
-}
-=======
-/* perfil */
-
-#wrapper hr{
-  border-bottom: 2px solid #77BED2;
-}
-
-.menu {
-  /*background-image: url('./fondo_menu.jpg');*/
-  background-color: #77BED2;
-  background-size: cover;
-  background-repeat: no-repeat;
-  left: -380px;  /* start off behind the scenes */
-  height: 100%;
-  position: fixed;
-  width: 380px;
-  z-index: 2;
-}
-
-.menu ul {
-  border-top: 1px solid #fff;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li {
-  border-bottom: 1px solid #fff;
-  font-family: 'Open Sans', sans-serif;
-  line-height: 45px;
-  padding-bottom: 3px;
-  padding-left: 20px;
-  padding-top: 3px;
-}
-
-.form-group .perfil-guardar-foto {
-  margin-left: 130px;
-}
-.form-group .portada-guardar-foto {
-  margin-left: 112px;
-}
-.form-group .perfil-guardar-usuario {
-  margin-left: 87px;
-}
-.form-group #usuario-perfil {
-  width: 346px;
-}
-.form-group .perfil-guardar-password {
-  margin-left: 143px;
-}
-.form-group #password1-perfil {
-  width: 346px;
-}
-.form-group #password2-perfil {
-  width: 346px;
-}
-.form-group .perfil-guardar-mail {
-  margin-left: 182px;
-}
-.form-group #mail-perfil {
-  width: 346px;
-}
-
-.menu a {
-  color: #636366;
-  font-size: 15px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.icon-close {
-  cursor: pointer;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
-.glyphicon{
-  cursor: pointer;
-}
-
-.fb-profile img.fb-image-lg{
-    z-index: 0;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.fb-image-profile
-{
-    margin: -90px 10px 0px 50px;
-    z-index: 9;
-    width: 20%;
-}
-
-@media (max-width:768px)
-{
-    
-.fb-profile-text>h1{
-    font-weight: 700;
-    font-size:16px;
-}
-
-.fb-image-profile
-{
-    margin: -45px 10px 0px 25px;
-    z-index: 9;
-    width: 20%; 
-}
-
-/* FIN perfil */
+}*/

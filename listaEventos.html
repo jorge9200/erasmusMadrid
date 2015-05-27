@@ -1,105 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-    <link rel="stylesheet" href="./static/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+	<link rel="stylesheet" href="./static/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+	<title>erasmusMadrid | Lista de eventos</title>
 
-
-
-
-    <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-
-
-
- 
-    <meta charset="UTF-8">
-    <title>erasmusMadrid | Lista de eventos</title>
-
-    <script src="static/listaEventos.js"></script>
-    <script src="static/script.js"></script>
+	<script src="./static/listaEventos.js"></script>
+	<script src="./static/script.js"></script>
 
 </head>
 
 <body>
-    <div id="wrapper">
-        <!--Cargar el header con los formularios de registro y login del header-footer.html-->
-        <div id="load-header"></div>
-        <div id="load-registry"></div>
-        <div id="load-log"></div>
-    <!-- Page Content -->
-    <div class="container" id="eventList">
-        <!-- Page Heading -->
-        <div class="row search-menu">
-            <div class="col-lg-12">
-                <h1 class="page-header">Búsqueda de eventos
-                    <small>
-                        <p></p>
-                        <p></p>
-                        <p>Categoría</p>
-                            <select id="sel_categ">
-                             <option class="refresh" value="Todos">Todos</option>
-                             <option class="refresh" value="Turismo">Turismo</option>
-                             <option class="refresh" value="Gastronomía">Gastronomía</option>
-                             <option class="refresh" value="Vida nocturna">Vida nocturna</option>
-                        </select>
-                        <form id="tfnewsearch" method="get" action="http://www.google.com">
-                            <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="Buscar" class="tfbutton">
-                        </form>
-                        <div class="tfclear"></div>
-                    </small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
+	<div id="wrapper">
+		<!--Cargar el header con los formularios de registro y login del header-footer.html-->
+		<div id="load-header"></div>
+		<div id="load-registry"></div>
+		<div id="load-log"></div>
+	<!-- Page Content -->
+	<div class="container" id="eventList">
+		<!-- Page Heading -->
+		<div class="row search-menu">
+			<div class="col-lg-12">
+				<h1 class="page-header">Búsqueda de eventos
+					<small>
+						<p></p>
+						<p></p>
+						<p>Categoría</p>
+							<select id="sel_categ">
+							 <option class="refresh" value="Todos">Todos</option>
+							 <option class="refresh" value="Turismo">Turismo</option>
+							 <option class="refresh" value="Gastronomía">Gastronomía</option>
+							 <option class="refresh" value="Vida nocturna">Vida nocturna</option>
+						</select>
+						<form id="tfnewsearch" method="get" action="http://www.google.com">
+							<input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="Buscar" class="tfbutton">
+						</form>
+						<div class="tfclear"></div>
+					</small>
+				</h1>
+			</div>
+		</div>
+		<!-- /.row -->
 
-        <div id="lista">
-            <div class="row prototype event">
-                <div class="col-md-7">
-                    <img class="event-image img-responsive" src="" style="width:653px;height:280px;">
-                </div>
-                <div class="col-md-5">
-                    <h3 id="title"></h3>
-                    <p id="description"></p>
-                    <table class="col-md-4 dateImg">
-                        <tr class="year">
-                            <td id="year"></td>
-                        </tr>
-                        <tr class="day">
-                            <td id="day"></td>
-                        </tr>
-                        <tr class="month">
-                            <td id="month"></td>
-                        </tr>
-                    </table>
-                    <p id="infoDate" class="col-md-8 dateMssg"></p>
-                    <a id="" class="btn btn-primary verEvento" href="evento.html">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    <a class="btn btn-primary" style="display:none" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
-                </div>
-                <hr>
-            </div>
+		<div id="lista">
+			<div class="row prototype event">
+				<div class="col-md-7">
+					<img class="event-image img-responsive" src="" style="width:653px;height:280px;">
+				</div>
+				<div class="col-md-5">
+					<h3 id="title"></h3>
+					<p id="description"></p>
+					<table class="col-xs-6 col-md-4 dateImg">
+						<tr class="year">
+							<td id="year"></td>
+						</tr>
+						<tr class="day">
+							<td id="day"></td>
+						</tr>
+						<tr class="month">
+							<td id="month"></td>
+						</tr>
+					</table>
+					<p id="infoDate" class="col-xs-6 col-md-8 dateMssg"></p>
+					<div class="col-xs-6 col-md-8">
+						<a id="" class="btn btn-primary pull-left verEvento" href="evento.html">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
+						<a class="btn btn-primary pull-right" style="display:none" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
+					</div>
+				</div>
+				<hr>
+			</div>
 
-            <hr id="startEvents">
+			<hr id="startEvents">
 
-            <!-- eventos de prueba -->
+			<!-- eventos de prueba -->
 
-            <!-- /eventos de prueba-->
+			<!-- /eventos de prueba-->
 
-        </div>
+		</div>
 
-    </div><!-- Footer -->
-        <footer>
-            <div id="load-footer"></div>
-            <!-- /.row -->
-        </footer>
+	</div><!-- Footer -->
+		<footer>
+			<div id="load-footer"></div>
+			<!-- /.row -->
+		</footer>
 
-    <!-- /.container -->
+	<!-- /.container -->
 </div>
 </body>
 </html>
