@@ -9,6 +9,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<meta charset="UTF-8">
 
+	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<title>erasmusMadrid | Perfil</title>
@@ -139,19 +141,30 @@
 			<!-- /.row -->
 			<div id="lista">
 					<div class="row prototype event">
-						<div class="col-md-7">
-							<img class="event-image img-responsive" src="" style="width:653px;height:280px;">
-						</div>
-						<div class="col-md-5">
-							<h3 id="title"></h3>
-							<p id="description"></p>
-							<p id="date"></p>
-							<p id="infoDate"></p>
-							<a class="btn btn-primary verEvento" href="evento.html">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
-							<a class="btn btn-primary" style="display:none" href="#">Suscribirme <span class="glyphicon glyphicon glyphicon-plus"></span></a>
-						</div>
-						<hr>
+					<div class="col-md-7">
+						<img class="event-image img-responsive" src="" style="width:653px;height:280px;">
 					</div>
+					<div class="col-md-5">
+						<h3 id="title"></h3>
+						<p id="description"></p>
+						<table class="col-xs-6 col-md-4 dateImg">
+							<tr class="year">
+								<td id="year"></td>
+							</tr>
+							<tr class="day">
+								<td id="day"></td>
+							</tr>
+							<tr class="month">
+								<td id="month"></td>
+							</tr>
+						</table>
+						<p id="infoDate" class="col-xs-6 col-md-8 dateMssg"></p>
+						<div class="col-xs-6 col-md-8">
+							<a id="" class="btn btn-primary pull-left verEvento" href="evento.html">Ver evento <span class="glyphicon glyphicon-chevron-right"></span></a>
+						</div>
+					</div>
+					<hr>
+				</div>
 
 					<hr id="startEvents">
 			</div>
