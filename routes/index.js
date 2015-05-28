@@ -120,11 +120,18 @@ router.post('/userSubscribe', function(req, res, next){
   var titulo=req.body.titulo;
   getIdEvent(titulo,function(err, rows){
    var id_event=rows[0].id_event;
-   getIdUser(user,function(err, rows){
-    var id=rows[0].id_user;
-    userSubscribe(id,id_event,function(err, rows){
-      res.send('OK');
-    });
+   getIdEventFromUserEventTable(id_event, function(err, rows){
+     console.log(rows);
+     if(rows.length == 0){
+       getIdUser(user,function(err, rows){
+        var id=rows[0].id_user;
+        userSubscribe(id,id_event,function(err, rows){
+          res.send('OK');
+        });
+       });
+     }else{
+       res.send('Evento ya subscrito');
+     }
    });
   });
 });

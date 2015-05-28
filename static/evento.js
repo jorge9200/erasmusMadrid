@@ -8,13 +8,13 @@ $(function(){
 		fechaOK=fechaCorrecta(data[0].date);
 		horaOK=(data[0].date).substring(11, 16);
 		completeEvent(data[0].title,data[0].description,data[0].address,fechaOK,horaOK,data[0].comment);
-		var dir=data[0].address;
+		var dir=data[0].address+', Madrid';
 		google.maps.event.addDomListener(window, 'load', cargaMapa(dir));
 	});
 /***********************/
 
 /*Carga el mapa con la direccion marcada*/
-	
+
 	//cargarDireccion();
 /****************************************/
 });
@@ -31,9 +31,9 @@ var completeEvent = function(title,description,address,date,hour,comment){
 	/*Cargamos los campos de información*/
 	$('#eventTitle').text(title);
 	$('#eventDescription').text(description);
-	$('#eventAddress').text('Dirección: '+address);
-	$('#eventDate').text('Fecha: '+date);
-	$('#eventHour').text('Hora: '+hour);
+	$('#eventAddress').text(address);
+	$('#eventDate').text(date);
+	$('#eventHour').text(hour);
 	$('#eventEslogan').text(comment);
 }
 
@@ -47,7 +47,7 @@ var fechaCorrecta = function(date){
 var cargaMapa = function initialize(dir){
 	var coord = new google.maps.LatLng(40.415152, -3.702341);
 	var geocoder = new google.maps.Geocoder();
-		
+
 	var mapProp = {
 		center: coord,
 		zoom:17,

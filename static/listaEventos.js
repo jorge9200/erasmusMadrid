@@ -13,7 +13,7 @@ $(function(){
         $.removeCookie('eventB');
         $.removeCookie('event');
     }
-    
+
     $('#search').click(function(){
         var search=$("#texto").val();
         $.cookie('busqueda', search);
@@ -25,7 +25,7 @@ $(function(){
     $('.refresh').click(function(){
         location.reload();
     });
-        
+
     $.get('/lista',function(data){
         //var busqueda=$.cookie('busqueda');
         var busqueda=$.cookie('busqueda');
@@ -39,13 +39,13 @@ $(function(){
                     fechaOK=fechaCorrecta(data[i].date);
                     hour=(data[i].date).substring(11, 19);
                     var mensaje=days_between(fechaOK,hour);
-      
+
                     description=(data[i].description).split('.');
                     description=description[0]+'...';
                     addEvent(data[i].title,description,fechaOK,mensaje);
                 }
             }
-        };
+        }
     });
     var logIn=$.cookie('logged');
     if(logIn=='true'){
@@ -65,7 +65,7 @@ var addEvent = function(title,description,date,mensaje){
     var day = fechaImg[0];
 
     eventToDom.removeClass('prototype');
-    
+
     eventToDom.find('.event-image').attr("src", "./static/"+title+".jpg");
     eventToDom.find('#title').text(title);
     eventToDom.find('#description').text(description);
@@ -75,10 +75,20 @@ var addEvent = function(title,description,date,mensaje){
     eventToDom.find('#infoDate').text(mensaje);
     eventToDom.find('.verEvento').attr("onclick","goToEvent(\'"+title+"\')");
     nEvento++;
-    
+    eventToDom.find('#subscribe').attr("onclick","goToSubscribe(\'"+title+"\')");
+
     $('#startEvents').after(eventToDom);
     eventToDom.after('<hr>');
 }
+
+var goToSubscribe = function(title){
+  var parametros = {user: $.cookie('userName'), titulo: title};
+  $.post('/userSubscribe', parametros, function(data){
+    console.log(data);
+  });
+
+}
+
 function goToEvent(title){
     $.removeCookie('evento');
     $.cookie('evento',title);
@@ -98,7 +108,7 @@ function days_between(date1,hour) {
     var arrayDate1=date1.split('/');
     var arrayHour=hour.split(':');
     var oneDay = 1000 * 60 * 60 * 24; // hours*minutes*seconds*milliseconds
-    var firstDate = new Date(arrayDate1[2],arrayDate1[1]-1,arrayDate1[0],arrayHour[0],arrayHour[1],arrayHour[2]);  
+    var firstDate = new Date(arrayDate1[2],arrayDate1[1]-1,arrayDate1[0],arrayHour[0],arrayHour[1],arrayHour[2]);
     var dias=Math.round(Math.abs((hoy.getTime() - firstDate.getTime())/(oneDay)));
     var mensaje;
     if(dias==0){

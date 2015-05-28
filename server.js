@@ -154,6 +154,13 @@ global.getIdEvent = function(name_event, callback) {
     });
 };
 
+global.getIdEventFromUserEventTable = function(id_event, callback) {
+    console.log(id_event);
+    connection.query("SELECT * FROM user_event WHERE id_event='"+ id_event +"';", function(err, rows, fields) {
+        callback(err, rows);
+    });
+};
+
 // ERROR HANDLERS
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
