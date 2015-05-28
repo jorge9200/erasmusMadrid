@@ -3,179 +3,97 @@
 
 <head>
 
-    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-    <link rel="stylesheet" href="./static/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <meta charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="static/evento.js"></script>
-    <title>erasmusMadrid | Evento</title>
+	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+	<link rel="stylesheet" href="./static/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="static/evento.js"></script>
+	<title>erasmusMadrid | Evento</title>
 
-    <script src="./static/script.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script src="./static/script.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
 
 </head>
 
 <body>
 <div id="wrapper">
-    <div id="load-header"></div>
-    <div id="load-registry"></div>
-    <div id="load-log"></div>
-    <div id="load-event"></div>    
+	<div id="load-header"></div>
+	<div id="load-registry"></div>
+	<div id="load-log"></div>
+	<div id="load-event"></div>    
 
-    <!-- Page Content -->
-    <div class="container" id="descImg">
+	<!-- Page Content -->
+	<div class="container" id="descImg">
 
-        <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header" id="eventTitle"></h1>
-            </div>
-        </div>
-        <!-- /.row -->
+		<!-- Portfolio Item Heading -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header" id="eventTitle"></h1>
+			</div>
+		</div>
+		<!-- /.row -->
 
-        <!-- Portfolio Item Row -->
-        <div class="row">
+		<!-- Portfolio Item Row -->
+		<div class="row">
 
-            <div class="col-md-8">
-                <img class="img-responsive" id="eventImg1" src="" alt="">
-            </div>
+			<div class="col-md-8" style="height: 100%;">
+				<img class="img-responsive" id="eventImg1" src="" alt="" style="height:100%;">
+			</div>
 
-            <div class="col-md-4">
-                <h3>Descripción</h3>
-                <p id="eventDescription"></p>
-                <ul>
-                    <li id="eventAddress"></li>
-                    <li id="eventDate"></li>
-                    <li id="eventHour"></li>
-                </ul>
-                <div id="googleMap" style="height:198px;"></div>
-            </div>
+			<div class="col-md-4">
+				<h3>Descripción</h3>
+				<p id="eventDescription"></p>
+				<dl>
+					<dt>Dirección:</dt>
+					<dd id="eventAddress"></dd>
+					<dt>Fecha:</dt>
+					<dd id="eventDate"></dd>
+					<dt>Hora:</dt>
+					<dd id="eventHour"></dd>
+				</dl>
+				<div id="googleMap" style="height:198px;"></div>
+			</div>
 
-        </div>
-        <!-- /.row -->
+		</div>
+		<!-- /.row -->
 
-        <!-- Related Projects Row -->
-        <div class="row">
+		<!-- Related Projects Row -->
+		<div class="row" id="rowImg">
 
-            <div class="col-lg-12">
-                <h3 class="page-header" id="eventEslogan"></h3>
-            </div>
+			<div class="col-lg-12">
+				<h3 class="page-header" id="eventEslogan"></h3>
+			</div>
+			<div class="row col-lg-12">
+				<div class="col-sm-3 col-xs-6">
+					<img class="img-responsive portfolio-item imgEvent" id="eventImg2" src="" alt="">
+				</div>
 
-            <div class="col-sm-3 col-xs-6">
-                <img class="img-responsive portfolio-item imgEvent" id="eventImg2" src="" alt="">
-            </div>
+				<div class="col-sm-3 col-xs-6">
+					<img class="img-responsive portfolio-item imgEvent" id="eventImg3" src="" alt="">
+				</div>
 
-            <div class="col-sm-3 col-xs-6">
-                <img class="img-responsive portfolio-item imgEvent" id="eventImg3" src="" alt="">
-            </div>
+				<div class="col-sm-3 col-xs-6">
+					<img class="img-responsive portfolio-item imgEvent" id="eventImg4" src="" alt="">
+				</div>
 
-            <div class="col-sm-3 col-xs-6">
-                <img class="img-responsive portfolio-item imgEvent" id="eventImg4" src="" alt="">
-            </div>
+				<div class="col-sm-3 col-xs-6">
+					<img class="img-responsive portfolio-item imgEvent" id="eventImg5" src="" alt="">
+				</div>
+			</div>
+		</div>
+		<hr>
+		<!-- /.row -->
+		<!-- Footer -->
+		<footer>
+			<div id="load-footer"></div>
+			<!-- /.row -->
+		</footer>
 
-            <div class="col-sm-3 col-xs-6">
-                <img class="img-responsive portfolio-item imgEvent" id="eventImg5" src="" alt="">
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <!--<div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header" id="eventTitle">Comentarios</h3>
-                <form class="form-inline" role="form" method="POST" action="/comment">
-                    <textarea class="form-control" type="text" placeholder="Escribe tu comentario"/></textarea>
-                    <button type="submit" onclick='addComment()' class="btn btn-default pull-right">Añadir</button>
-                </form>
-                <br>
-                <ul class="listComments">
-                    <br>
-                    <li>
-                        <div class="commenterImage">
-                          <img src="http://lorempixel.com/50/50/people/6" />
-                        </div>
-                        <div class="commentText">
-                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        </div>
-                    </li>
-                    <br>
-                    <li>
-                        <div class="commenterImage">
-                          <img src="http://lorempixel.com/50/50/people/7" />
-                        </div>
-                        <div class="commentText">
-                            <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        </div>
-                    </li>
-                    <br>
-                    <li>
-                        <div class="commenterImage">
-                          <img src="http://lorempixel.com/50/50/people/9" />
-                        </div>
-                        <div class="commentText">
-                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        </div>
-                    </li>
-                    <br>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <br>-->
-
-
-            <!--<h3 class="page-header">Comentarios</h3>
-            <button type="button" class="close" aria-hidden="true">&times;</button>
-                <div class="actionBox">
-                    <ul class="commentList">
-                    <li>
-                        <div class="commenterImage">
-                          <img src="http://lorempixel.com/50/50/people/6" />
-                        </div>
-                        <div class="commentText">
-                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="commenterImage">
-                          <img src="http://lorempixel.com/50/50/people/7" />
-                        </div>
-                        <div class="commentText">
-                            <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="commenterImage">
-                          <img src="http://lorempixel.com/50/50/people/9" />
-                        </div>
-                        <div class="commentText">
-                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline" role="form">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Your comments" />
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-default">Add</button>
-                    </div>
-                </form>
-            </div>-->
-        <!-- Footer -->
-        <footer>
-            <div id="load-footer"></div>
-            <!-- /.row -->
-        </footer>
-
-    </div>
-    <!-- /.container -->
+	</div>
+	<!-- /.container -->
 </div>
 </body>
 

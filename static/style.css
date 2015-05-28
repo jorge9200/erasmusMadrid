@@ -375,18 +375,6 @@ html, body{
   width: 100%;
 }
 
-#eventAddress{
-
-}
-
-#eventDate{
-
-}
-
-#eventHour{
-
-}
-
 #rowImg{
   display: inline-block;
 }
@@ -479,11 +467,9 @@ html, body{
     margin-bottom: 10px;
 }
 
-
-
 .fb-image-profile
 {
-    background-image: url("./anonimoportada.jpg");
+    background-image: url("./anonimoperfil.jpg");
     margin: -90px 10px 0px 50px;
     z-index: 9;
     width: 210px;
