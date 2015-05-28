@@ -193,17 +193,79 @@ $(function(){
 
 var addEvent = function(title, description,date,mensaje){
     var eventToDom = $('.event.prototype').clone();
+
+    var fechaImg = date.split('/');
+    var year = fechaImg[2];
+    var monthName = monthToName(fechaImg[1]);
+    var day = fechaImg[0];
+
+    eventToDom.removeClass('prototype');
+
     eventToDom.removeClass('prototype');
     eventToDom.find('.event-image').attr("src", "./static/"+title+".jpg");
     eventToDom.find('#title').text(title);
     eventToDom.find('#description').text(description);
-    eventToDom.find('#date').text(date);
+    eventToDom.find('#year').text(year);
+    eventToDom.find('#month').text(monthName);
+    eventToDom.find('#day').text(day);
     eventToDom.find('#infoDate').text(mensaje);
     eventToDom.find('#calendario').text(date);
+    eventToDom.find('.verEvento').attr("onclick","goToEvent(\'"+title+"\')");
 
     $('#startEvents').after(eventToDom);
     eventToDom.after('<hr>');
 }
+
+function goToEvent(title){
+    $.removeCookie('evento');
+    $.cookie('evento',title);
+    //href="evento.html"
+}
+
+
+function monthToName(month){
+    var monthText = parseInt(month);
+    switch(monthText){
+        case 1:
+            monthText = "Enero";
+            break;
+        case 2:
+            monthText = "Febrero";
+            break;
+        case 3:
+            monthText = "Marzo";
+            break;
+        case 4:
+            monthText = "Abril";
+            break;
+        case 5:
+            monthText = "Mayo";
+            break;
+        case 6:
+            monthText = "Junio";
+            break;
+        case 7:
+            monthText = "Julio";
+            break;
+        case 8:
+            monthText = "Agosto";
+            break;
+        case 9:
+            monthText = "Septiembre";
+            break;
+        case 10:
+            monthText = "Octubre";
+            break;
+        case 11:
+            monthText = "Noviembre";
+            break;
+        case 12:
+            monthText = "Diciembre";
+            break;
+    }
+    return monthText;
+}
+
 
 
 var fechaCorrecta = function(date){
@@ -225,9 +287,9 @@ function days_between(date1,hour) {
     if(dias==0){
         mensaje='¡El evento es hoy!';
     }else if(dias==1){
-        mensaje='¡Falta '+dias+' día para el evento!';
+        mensaje='El evento es mañana!';
     }else{
-        mensaje='¡Faltan '+dias+' días para el evento!';
+        mensaje='¡Faltan '+dias+' días!';
     }
     return mensaje;
 }

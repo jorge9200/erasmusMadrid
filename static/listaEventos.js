@@ -78,11 +78,11 @@ var addEvent = function(title,description,date,mensaje){
     
     $('#startEvents').after(eventToDom);
     eventToDom.after('<hr>');
-    }
-    function goToEvent(title){
-        $.removeCookie('evento');
-        $.cookie('evento',title);
-        //href="evento.html"
+}
+function goToEvent(title){
+    $.removeCookie('evento');
+    $.cookie('evento',title);
+    //href="evento.html"
 }
 
 var fechaCorrecta = function(date){
