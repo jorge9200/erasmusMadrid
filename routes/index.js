@@ -50,7 +50,7 @@ router.post('/log', function(req, res, next){
     if (result.length == 0 || password != result[0].password) {
       res.send('ERROR');
     }else{
-      res.send('OK');
+      res.send(result[0].email);
     }
   });
 });
@@ -94,10 +94,6 @@ router.post('/insertNewEvent', function(req, res, next){
       }
     });
   });
-});
-
-router.post('/changeImage', function(req, res, next){
-  res.send('OK');
 });
 
 router.get('/lista', function(req, res, next){

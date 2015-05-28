@@ -2,6 +2,7 @@ $(function(){
 
 	$('#image-perfil').attr('name', $.cookie('userName')+'perfil');
 	$('#image-portada').attr('name', $.cookie('userName')+'portada');
+	$('.email').text('Email: '+$.cookie('email'));
 /*******Cargar foto de perfil y portada del usuario*******/
 	var nameUser={nombre: $.cookie('userName')};
 
@@ -114,7 +115,7 @@ $(function(){
 							$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 							$("#load-alert").load("header-footer.html #perfil-success");
 							window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
-							location.reload(); 
+							location.reload();
 						}
 					}
 				});
@@ -137,6 +138,7 @@ $(function(){
 					window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
 					$.removeCookie('userName');
 					$.cookie('userName',datos.name_userNew);
+					location.reload();
 				}
 			});
 		}
@@ -149,6 +151,7 @@ $(function(){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 					$("#load-alert").load("header-footer.html #perfil-success");
 					window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+					location.reload();
 				}
 			});
 		}
@@ -161,6 +164,8 @@ $(function(){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 					$("#load-alert").load("header-footer.html #perfil-success");
 					window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+					$.cookie('email', $('#mail-perfil').val());
+					location.reload();
 				}
 			});
 		}

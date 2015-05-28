@@ -13,6 +13,7 @@ $( document ).ready(function() {
 					$('.log-error .text').text("ERROR: El nombre de usuario no está registrado o la contraseña no es válida");
 					$('.log-error').show();
 				}else{
+					$.cookie('email', data);
 					afterLogged();
 					$('.log-error .sr-only').text("");
 					$('.log-error').hide();
@@ -37,6 +38,7 @@ $( document ).ready(function() {
 						$('.registry-error .text').text("ERROR: El nombre de usuario ya existe");
 						$('.registry-error').show();
 					}else{
+						$.cookie('email', $('.email').val());
 						$('#formRegistryModal').modal('toggle');
 						$('.registry-error .sr-only').text("");
 						$('.registry-error').hide();
