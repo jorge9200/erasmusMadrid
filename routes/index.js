@@ -110,7 +110,7 @@ router.post('/eventSubscribe', function(req, res, next){
    getIdUser(nombre,function(err, rows){
     var id=rows[0].id_user;
     subscribeEvent(id,function(err, rows){
-      res.send('OK');
+      res.send(rows);
     });
   });
 });
