@@ -15,7 +15,7 @@ $(function(){
 		location.reload();
 	});
 	
-	$('#profile-name').text(nameUser);
+	$('#profile-name').text(nameUser.nombre);
 
 	$.post('/eventSubscribe',nameUser,function(data){
 	    for (var i = 0; i < data.length; i++) {
