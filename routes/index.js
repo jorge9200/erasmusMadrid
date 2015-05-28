@@ -96,6 +96,10 @@ router.post('/insertNewEvent', function(req, res, next){
   });
 });
 
+router.post('/changeImage', function(req, res, next){
+  res.send('OK');
+});
+
 router.get('/lista', function(req, res, next){
 	var evento;
 	getEvent(function(err, rows){

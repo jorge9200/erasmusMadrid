@@ -26,7 +26,7 @@
 		<div id="load-registry"></div>
 		<div id="load-log"></div>
 		<div id="load-event"></div>
-	
+
 		<div class="menu">
 			<!-- Menu icon -->
 			<div class="icon-close glyphicon glyphicon-menu-hamburger"></div>
@@ -34,9 +34,11 @@
 			<!-- Menu -->
 			<ul>
 				<div class="form-group">
-				<li><button type="button" class="foto-perfil btn btn-primary"> Foto de perfil <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-foto btn btn-success">Guardar</button>
-					<input style="display:none" class="image1-perfil" id="image-perfil" type="file" name="img" accept="image/*"> 
-				</li>
+				<form class="image-perfil" method="POST" action="/changeImage">
+					<li><button type="button" class="foto-perfil btn btn-primary" type="submit"> Foto de perfil <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-foto btn btn-success">Guardar</button>
+						<input style="display:none" class="image1-perfil" id="image-perfil" type="file" name="img" accept="image/*">
+					</li>
+				</form>
 				</div>
 				<div style="display:none" class="image1-perfil-error alert alert-danger" role="alert">
 					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -44,9 +46,11 @@
 					<span class="text"></span>
 				</div>
 				<div class="form-group">
-				<li><button type="button" class="foto-portada btn btn-primary"> Foto de portada <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="portada-guardar-foto btn btn-success">Guardar</button>
-					<input style="display:none" class="image2-perfil" id="image-portada" type="file" name="img" accept="image/*"> 
-				</li>
+				<form class="image-portada" method="POST" action="/changeImage">
+					<li><button type="button" class="foto-portada btn btn-primary"> Foto de portada <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="portada-guardar-foto btn btn-success">Guardar</button>
+						<input style="display:none" class="image2-perfil" id="image-portada" type="file" name="img" accept="image/*">
+					</li>
+				</form>
 				</div>
 				<div style="display:none" class="image2-perfil-error alert alert-danger" role="alert">
 					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -92,7 +96,7 @@
 					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 					<span class="sr-only"></span>
 					<span class="text"></span>
-				</div>	
+				</div>
 				<div style="display:none" class="mail-perfil-error alert alert-danger" role="alert">
 					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 					<span class="sr-only"></span>

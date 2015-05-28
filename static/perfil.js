@@ -1,4 +1,7 @@
 $(function(){
+
+	$('#image-perfil').attr('name', $.cookie('userName')+'perfil');
+	$('#image-portada').attr('name', $.cookie('userName')+'portada');
 /*******Cargar foto de perfil y portada del usuario*******/
 	var nameUser={nombre: $.cookie('userName')};
 
@@ -14,7 +17,7 @@ $(function(){
 	$('.refresh').click(function(){
 		location.reload();
 	});
-	
+
 	$('#profile-name').text(nameUser.nombre);
 
 	$.post('/eventSubscribe',nameUser,function(data){
@@ -54,7 +57,7 @@ $(function(){
 			animated = false;
 		}
 	});
-	
+
 	//cierra menu
 	$('.icon-close').click( function(){
 		$('.menu').animate({
@@ -72,14 +75,14 @@ $(function(){
 		$('.portada-guardar-foto').show();
 		$('#image-portada').show();
 	});
-	$('.perfil-guardar-foto').click(function(){
+	$('.image-perfil').on('submit', function(e){
+		e.preventDefault();
 		if (checkValue($('#image-perfil').val(),'image1')) {
 			if (checkIfFileIsImage($('.image1-perfil').val(),'image1')) {
-				/*$.ajax( {
+				$.ajax( {
 			      url: '/changeImage',
 			      type: 'POST',
-			      var datos = {name_userOld:$.cookie('userName'), imagen:$('.image1-perfil').val()};
-			      data: new FormData(datos),
+			      data: new FormData(this),
 			      processData: false,
 			      contentType: false,
 					success : function( data ){
@@ -88,20 +91,21 @@ $(function(){
 							$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 							$("#load-alert").load("header-footer.html #perfil-success");
 							window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+							location.reload();
 						}
 					}
-				});*/
+				});
 			}
 		}
 	});
-	$('.portada-guardar-foto').click(function(){
+	$('.image-portada').on('submit', function(e){
+		e.preventDefault();
 		if (checkValue($('#image-portada').val(),'image2')) {
 			if (checkIfFileIsImage($('.image2-perfil').val(),'image2')) {
-				/*$.ajax( {
+				$.ajax( {
 			      url: '/changeImage',
 			      type: 'POST',
-			      var datos = {name_userOld:$.cookie('userName'), $('.image2-perfil').val()};
-			      data: new FormData(datos),
+			      data: new FormData(this),
 			      processData: false,
 			      contentType: false,
 					success : function( data ){
@@ -110,9 +114,10 @@ $(function(){
 							$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
 							$("#load-alert").load("header-footer.html #perfil-success");
 							window.setTimeout(function() { $("#perfil-success").alert('close'); }, 2000);
+							location.reload(); 
 						}
 					}
-				});*/
+				});
 			}
 		}
 	});
@@ -138,7 +143,7 @@ $(function(){
 	});
 	$('.perfil-guardar-password').click(function(){
 		if (checkValue($('#password1-perfil').val(),'password') && checkValue($('#password2-perfil').val(),'password')) {
-			var datos = {name_userOld:$.cookie('userName'), newPassword:$('.password2-perfil').val()};
+			var datos = {name_userOld:$.cookie('userName'), newPassword:$('#password2-perfil').val()};
 			$.post( "/changePassword", datos, function( data ) {
 				if (data == 'OK'){
 					$('#event-success').text("¡Enhorabuena! Ha modificado el parámetro correctamente");
@@ -281,7 +286,7 @@ function days_between(date1,hour) {
     var arrayDate1=date1.split('/');
     var arrayHour=hour.split(':');
     var oneDay = 1000 * 60 * 60 * 24; // hours*minutes*seconds*milliseconds
-    var firstDate = new Date(arrayDate1[2],arrayDate1[1]-1,arrayDate1[0],arrayHour[0],arrayHour[1],arrayHour[2]);  
+    var firstDate = new Date(arrayDate1[2],arrayDate1[1]-1,arrayDate1[0],arrayHour[0],arrayHour[1],arrayHour[2]);
     var dias=Math.round(Math.abs((hoy.getTime() - firstDate.getTime())/(oneDay)));
     var mensaje;
     if(dias==0){

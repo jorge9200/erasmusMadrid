@@ -67,6 +67,9 @@ $( document ).ready(function() {
 		});
 	});
 
+	$('.fb-image-profile').attr('src', './static/'+$.cookie('userName')+'perfil.jpg');
+	$('.fb-image-lg').attr('src', './static/'+$.cookie('userName')+'portada.jpg');
+
 	$("#load-event").load("header-footer.html #formCreateEvent", function(){
 		// Cuando introducimos el titulo del evento cambiamos el name de las imagenes
 		$('.event-modal #title').on('focusout', function(){
