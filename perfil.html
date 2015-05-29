@@ -29,13 +29,13 @@
 
 		<div class="menu">
 			<!-- Menu icon -->
-			<div class="icon-close glyphicon glyphicon-menu-hamburger"></div>
+			<div class="icon-close glyphicon glyphicon-remove"></div>
 
 			<!-- Menu -->
 			<ul>
 				<div class="form-group">
 				<form class="image-perfil" method="POST" action="/changeImage">
-					<li><button type="button" class="foto-perfil btn btn-primary" type="submit"> Foto de perfil <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-foto btn btn-success">Guardar</button>
+					<li><button type="button" class="foto-perfil btn btn-primary" type="submit"> Foto de perfil  <span class="glyphicon glyphicon-pencil"></span></button><button type="submit" style="display:none" class="perfil-guardar-foto btn btn-success">Guardar</button>
 						<input style="display:none" class="image1-perfil" id="image-perfil" type="file" name="img" accept="image/*">
 					</li>
 				</form>
@@ -104,20 +104,21 @@
 		<div class="container">
 			<div class="fb-profile">
 				<img align="left" class="fb-image-lg" src="./static/anonimoportada.jpg" alt=""/>
-				<img align="left" class="fb-image-profile thumbnail" src="./static/anonimoperfil.jpg" alt=""/>
+				<img align="left" class="fb-image-profile" src="./static/anonimoperfil.jpg" alt=""/>
 				<div class="fb-profile-text">
-					<h1 id="profile-name"></h1><span class="email">EMAIL</span>
-<span class="config">Configurar</span><span class="glyphicon glyphicon-cog" id="config"></span>
+					<h1 id="profile-name"></h1>
+					<h5><span class="email"></span></h5>
+					<h6><button type="button" id="config" class="config">Configurar    <span class="glyphicon glyphicon-cog"></span></button></h6>
 				</div>
 			</div>
 		</div>
 		<!-- /encabezado -->
 
-		<div class="container" id="eventList">
+		<div class="container">
 	        <!-- Page Heading -->
 			<div class="row search-menu">
 				<div class="col-lg-12">
-					<h1 class="page-header">Tus eventos
+					<h1 class="page-header" id="profileList">Tus eventos
 						<small>
 							<p></p>
 							<p></p>

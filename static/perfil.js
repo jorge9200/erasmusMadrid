@@ -48,14 +48,6 @@ $(function(){
 				left: '380px'
 			}, 200);
 			animated = true;
-		}else{
-			$('.menu').animate({
-				left: '-380px'
-			}, 200);
-			$('#wrapper').animate({
-				left: '0px'
-			}, 200);
-			animated = false;
 		}
 	});
 
@@ -67,14 +59,16 @@ $(function(){
 		$('#wrapper').animate({
 			left: '0px'
 		}, 200);
+		animated = false;
 	});
+
 	$('.foto-perfil').click(function(){
-		$('.perfil-guardar-foto').show();
-		$('#image-perfil').show();
+		$('.perfil-guardar-foto').toggle();
+		$('#image-perfil').toggle();
 	});
 	$('.foto-portada').click(function(){
-		$('.portada-guardar-foto').show();
-		$('#image-portada').show();
+		$('.portada-guardar-foto').toggle();
+		$('#image-portada').toggle();
 	});
 	$('.image-perfil').on('submit', function(e){
 		e.preventDefault();
@@ -175,15 +169,15 @@ $(function(){
 		$('#usuario-perfil').show();
 	});
 	$('.password-perfil').click(function(){
-		$('.perfil-guardar-password').show();
-		$('#password1-perfil-label').show();
-		$('#password1-perfil').show();
-		$('#password2-perfil-label').show();
-		$('#password2-perfil').show();
+		$('.perfil-guardar-password').toggle();
+		$('#password1-perfil-label').toggle();
+		$('#password1-perfil').toggle();
+		$('#password2-perfil-label').toggle();
+		$('#password2-perfil').toggle();
 	});
 	$('.email-perfil').click(function(){
-		$('.perfil-guardar-mail').show();
-		$('#mail-perfil').show();
+		$('.perfil-guardar-mail').toggle();
+		$('#mail-perfil').toggle();
 	});
 	// When focus out the email input
 	$('.mail-perfil').on('focusout',function(){

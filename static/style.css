@@ -424,7 +424,7 @@ html, body{
 .form-group .perfil-guardar-foto {
   margin-left: 130px;
 }
-.form-group .portada-guardar-foto { /*agregar esta opcion al menu. Comprobar ultimo sync de Minguito*/
+.form-group .portada-guardar-foto {
   margin-left: 112px;
 }
 .form-group .perfil-guardar-usuario {
@@ -451,8 +451,9 @@ html, body{
 
 .icon-close {
   cursor: pointer;
-  padding-left: 10px;
+  padding-left: 17px;
   padding-top: 10px;
+  font-size: 25px;
 }
 
 .glyphicon{
@@ -470,19 +471,44 @@ html, body{
 .fb-image-profile
 {
     background-image: url("./anonimoperfil.jpg");
+    background-size: cover;
+
     margin: -90px 10px 0px 50px;
     z-index: 9;
     width: 210px;
     height: 180px;
 }
 
-@media (max-width:768px)
-{
-
 .fb-profile-text>h1{
     font-weight: 700;
-    font-size:16px;
+    font-size:25px;
 }
+
+.email{
+	opacity: 0.7;
+}
+
+#config{
+  border-style: none;
+  padding-top: 2px;
+  padding-left: 0px;
+  opacity: 0.4;
+}
+
+#config:hover{
+  opacity: 1;
+}
+
+#profileList{
+  padding: 20px 0px 20px 0px;
+  margin-top: 0px;
+}
+
+
+
+
+
+
 
 
 /*body > #container {
