@@ -96,6 +96,10 @@ router.post('/insertNewEvent', function(req, res, next){
   });
 });
 
+router.post('/changeImage', function(req, res, next){
+  res.send('OK');
+});
+
 router.get('/lista', function(req, res, next){
 	var evento;
 	getEvent(function(err, rows){
@@ -120,19 +124,18 @@ router.post('/userSubscribe', function(req, res, next){
   var titulo=req.body.titulo;
   getIdEvent(titulo,function(err, rows){
    var id_event=rows[0].id_event;
-   getIdEventFromUserEventTable(id_event, function(err, rows){
-     console.log(rows);
-     if(rows.length == 0){
-       getIdUser(user,function(err, rows){
-        var id=rows[0].id_user;
+   getIdUser(user,function(err, rows){
+   var id=rows[0].id_user;
+    getIdEventFromUserEventTable(id_event,id, function(err, rows){
+      if(rows.length == 0){
         userSubscribe(id,id_event,function(err, rows){
           res.send('OK');
         });
-       });
-     }else{
-       res.send('Evento ya subscrito');
-     }
+      }else{
+        res.send('Evento ya subscrito');
+      }
    });
+  });
   });
 });
 

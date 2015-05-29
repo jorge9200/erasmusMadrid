@@ -83,6 +83,7 @@ var addEvent = function(title,description,date,mensaje){
 
 var goToSubscribe = function(title){
   var parametros = {user: $.cookie('userName'), titulo: title};
+  console.log(parametros.user);
   $.post('/userSubscribe', parametros, function(data){
     console.log(data);
   });

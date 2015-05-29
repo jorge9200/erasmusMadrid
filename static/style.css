@@ -301,6 +301,10 @@ html, body{
   font-family: 'Oswald', sans-serif;
 }
 
+#description{
+	text-align: justify;
+}
+
 .year{
   height: 30px;
 }
