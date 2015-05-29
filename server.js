@@ -154,9 +154,9 @@ global.getIdEvent = function(name_event, callback) {
     });
 };
 
-global.getIdEventFromUserEventTable = function(id_event,user, callback) {
+global.getIdEventFromUserEventTable = function(id_event, callback) {
     console.log(id_event);
-    connection.query("SELECT * FROM user_event WHERE id_event='"+id_event+"' AND id_user='"+ user +"';", function(err, rows, fields) {
+    connection.query("SELECT * FROM user_event WHERE id_event='"+ id_event +"';", function(err, rows, fields) {
         callback(err, rows);
     });
 };
