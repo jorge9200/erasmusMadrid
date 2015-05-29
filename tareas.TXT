@@ -1,9 +1,4 @@
-﻿- Página de perfil del usuario, al darle al boton del usuario en la cabecera que vaya a esa página de su perfil.
-- Al crear un evento, molaría que nada más darle a crear llevase directamente a la página de ese evento.
-- Comprobar login/sign in/crear evento en las 3 paginas disponibles.
-- Al hacer sign out en perfil.html ir a index.html.
-- Arreglar el mandar foto al servidor al modifical foto de portada y perfil en perfil.js.
-- Arreglar cargar fotos de portada y perfil en perfil.js.
-- Botón de buscar en perfil.html.
+﻿- Al crear un evento, molaría que nada más darle a crear llevase directamente a la página de ese evento.
 - Limpiar los datos de los input de los formularios al cerrarse el modal.
+- Si un usuario crea un evento, que directamente ese usuario se suscriba al evento.
 
